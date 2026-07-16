@@ -1,0 +1,40 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["Fact_DemandaDiaria","Fact_PerfilHorario","Fact_FinanzasServicio","Fact_RendimientoRutas","Fact_FactoresPropina","Fact_AnomaliasDiarias","Fact_PronosticoDemanda","Fact_ZonasSegmentadas","Fact_ClasificacionDemanda","Fact_MetricasPronostico","Fact_PerfilesSegmentacion","Fact_MetricasSegmentacion","Fact_MatrizConfusion","Fact_MetricasClasificacion","Fact_MetricasModelos","DimFecha","DimServicio","DimPago","DimHora","DimZonaOrigen","DimZonaDestino","DimCluster","D10_Auditoria"]
+
+ref table D10_Auditoria
+ref table Fact_DemandaDiaria
+ref table Fact_PerfilHorario
+ref table Fact_FinanzasServicio
+ref table Fact_RendimientoRutas
+ref table Fact_FactoresPropina
+ref table Fact_AnomaliasDiarias
+ref table Fact_PronosticoDemanda
+ref table Fact_ZonasSegmentadas
+ref table Fact_ClasificacionDemanda
+ref table Fact_MetricasPronostico
+ref table Fact_PerfilesSegmentacion
+ref table Fact_MetricasSegmentacion
+ref table Fact_MatrizConfusion
+ref table Fact_MetricasClasificacion
+ref table Fact_MetricasModelos
+ref table DimFecha
+ref table DimServicio
+ref table DimPago
+ref table DimHora
+ref table DimZonaOrigen
+ref table DimZonaDestino
+ref table DimCluster
+
+ref cultureInfo es-ES
+

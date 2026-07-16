@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi2",
+  "position": {
+    "x": 260,
+    "y": 95,
+    "z": 1000,
+    "height": 115,
+    "width": 230,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "D3 Tasa Propina Ponderada"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.D3 Tasa Propina Ponderada",
+              "nativeQueryRef": "D3 Tasa Propina Ponderada"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

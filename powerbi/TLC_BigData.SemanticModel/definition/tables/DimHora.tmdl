@@ -1,0 +1,33 @@
+table DimHora
+	lineageTag: e7350959-c37f-43ec-b48f-e8f68f4760a5
+
+	column Hora
+		dataType: int64
+		lineageTag: 50c8537d-6679-4d06-8ae6-39cfed3cf760
+		summarizeBy: none
+		sourceColumn: Hora
+
+	column FranjaHoraria
+		dataType: string
+		lineageTag: 309278db-f680-4ca1-9c93-23064bbaa4c2
+		summarizeBy: none
+		sourceColumn: FranjaHoraria
+
+	column EsHoraPico
+		dataType: boolean
+		lineageTag: 80fdebba-3264-4277-a392-866dc1e53945
+		summarizeBy: none
+		sourceColumn: EsHoraPico
+
+	partition DimHora = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:/Users/Pieers/dev/bigdata-final/exports/powerbi/dimensions/DimHora.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados,{{"Hora", Int64.Type}, {"FranjaHoraria", type text}, {"EsHoraPico", type logical}}, "es-ES")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
+

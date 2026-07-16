@@ -1,0 +1,216 @@
+table Fact_DemandaDiaria
+	lineageTag: 4939e163-66df-45ee-95a9-19c3853b7b31
+
+	measure 'D1 Viajes Totales' = SUM(Fact_DemandaDiaria[trip_count])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: 1d5bd215-f7e4-4d31-a405-5cc76eb49e85
+
+	measure 'D1 Ingresos Totales' = SUM(Fact_DemandaDiaria[total_revenue])
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: d38eb951-2e24-49a2-9acb-0f3d960fdb59
+
+	measure 'D1 Ingreso por Viaje' = DIVIDE([D1 Ingresos Totales], [D1 Viajes Totales])
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: eb831f15-5fd6-4b0c-b11c-17c488681aae
+
+	measure 'D1 Distancia Promedio' = DIVIDE(SUM(Fact_DemandaDiaria[distance_miles]), [D1 Viajes Totales])
+		formatString: 0.00 "mi"
+		displayFolder: Medidas
+		lineageTag: 8720ca50-1b08-4298-9e87-56e67c76f401
+
+	column pickup_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3489fb70-dd99-4e0e-9076-266d4fa23d77
+		summarizeBy: none
+		sourceColumn: pickup_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column pickup_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 821f99a3-ecc1-4eb0-a3b7-942a507c870f
+		summarizeBy: none
+		sourceColumn: pickup_month
+
+	column pickup_day_of_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bcec360-aea1-4847-89ca-4a94c184ad53
+		summarizeBy: none
+		sourceColumn: pickup_day_of_week
+
+	column service
+		dataType: string
+		lineageTag: 41db8dad-993e-4ce3-aebb-84e5fca7483b
+		summarizeBy: none
+		sourceColumn: service
+
+	column pickup_location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b67c70ed-6bb3-4536-a83d-5aadb2f38310
+		summarizeBy: none
+		sourceColumn: pickup_location_id
+
+	column pickup_borough
+		dataType: string
+		lineageTag: 93504c54-04c4-4966-afee-dcde9f1ed8aa
+		summarizeBy: none
+		sourceColumn: pickup_borough
+
+	column pickup_zone
+		dataType: string
+		lineageTag: ea6b528a-bd63-45aa-8550-e69e643a1ac7
+		summarizeBy: none
+		sourceColumn: pickup_zone
+
+	column pickup_service_zone
+		dataType: string
+		lineageTag: 51821c86-0820-4c92-86b7-267a00c48e62
+		summarizeBy: none
+		sourceColumn: pickup_service_zone
+
+	column trip_count
+		dataType: int64
+		formatString: 0
+		lineageTag: c6c18ef6-96fe-4c33-9572-00d78cdcb4da
+		summarizeBy: none
+		sourceColumn: trip_count
+
+	column passenger_total
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 931edac3-6f3e-469a-98bc-28b2b285b84d
+		summarizeBy: none
+		sourceColumn: passenger_total
+
+	column total_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 9d360ac2-e19e-4bb9-91cd-2e71cf91fa83
+		summarizeBy: none
+		sourceColumn: total_revenue
+
+	column fare_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: aa551e73-ff1e-45f5-8b87-7e1fbec6f0f7
+		summarizeBy: none
+		sourceColumn: fare_revenue
+
+	column tip_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d354944a-bc9d-4983-bbef-a6edd6a808f6
+		summarizeBy: none
+		sourceColumn: tip_revenue
+
+	column tolls_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 3529dce4-4780-4623-adda-991ee6666d4f
+		summarizeBy: none
+		sourceColumn: tolls_revenue
+
+	column distance_miles
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e1f3df06-007c-42b2-8483-6de0f302a02b
+		summarizeBy: none
+		sourceColumn: distance_miles
+
+	column duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 1fdb0417-d322-4526-acb1-4558131fadb4
+		summarizeBy: none
+		sourceColumn: duration_minutes
+
+	column avg_trip_distance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5e0ede04-7966-4809-9a4b-eed78a223e28
+		summarizeBy: none
+		sourceColumn: avg_trip_distance
+
+	column avg_trip_duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 43a658d6-02e5-4ffa-839f-b80830289859
+		summarizeBy: none
+		sourceColumn: avg_trip_duration_minutes
+
+	column avg_total_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 196ff251-f662-48a4-9060-12ff612cc230
+		summarizeBy: none
+		sourceColumn: avg_total_amount
+
+	column night_trips
+		dataType: int64
+		formatString: 0
+		lineageTag: c6f2d966-f9b5-4c0d-81ff-05524c969d73
+		summarizeBy: none
+		sourceColumn: night_trips
+
+	column rush_hour_trips
+		dataType: int64
+		formatString: 0
+		lineageTag: c32402dc-dd77-4318-acf4-03beb0b89acc
+		summarizeBy: none
+		sourceColumn: rush_hour_trips
+
+	column weekend_trips
+		dataType: int64
+		formatString: 0
+		lineageTag: b54c8b1c-41db-46a3-abec-0a954213ec34
+		summarizeBy: none
+		sourceColumn: weekend_trips
+
+	column revenue_per_trip
+		dataType: double
+		formatString: #,0.00
+		lineageTag: f942b203-f1a5-477d-acf1-32d45ecbbe62
+		summarizeBy: none
+		sourceColumn: revenue_per_trip
+
+	column avg_speed_mph
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 41d310f5-af66-4d25-bd9f-65dbe11af551
+		summarizeBy: none
+		sourceColumn: avg_speed_mph
+
+	column tip_share
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 86436589-d3f6-4198-8317-42444fd66758
+		summarizeBy: none
+		sourceColumn: tip_share
+
+	column pickup_year
+		dataType: int64
+		formatString: 0
+		lineageTag: f15f04b3-b91c-431b-b342-eaab6c2bab46
+		summarizeBy: none
+		sourceColumn: pickup_year
+
+	partition Fact_DemandaDiaria = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/descriptive_daily_demand"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in Table.AddColumn(t, "pickup_year", each y, Int64.Type)),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

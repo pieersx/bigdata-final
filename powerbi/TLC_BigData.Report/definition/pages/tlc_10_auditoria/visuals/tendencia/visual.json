@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "Fecha"
+                }
+              },
+              "queryRef": "D10_Auditoria.Fecha",
+              "nativeQueryRef": "Fecha",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              },
+              "queryRef": "D10_Auditoria.Estado",
+              "nativeQueryRef": "Estado"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "A10 Eventos"
+                }
+              },
+              "queryRef": "D10_Auditoria.A10 Eventos",
+              "nativeQueryRef": "A10 Eventos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "D10_Auditoria"
+                  }
+                },
+                "Property": "Fecha"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

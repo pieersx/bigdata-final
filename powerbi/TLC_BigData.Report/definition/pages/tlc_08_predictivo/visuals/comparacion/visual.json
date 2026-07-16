@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "comparacion",
+  "position": {
+    "x": 20,
+    "y": 465,
+    "z": 4000,
+    "height": 225,
+    "width": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "borough"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.borough",
+              "nativeQueryRef": "borough",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "D8 Ingreso por Viaje"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.D8 Ingreso por Viaje",
+              "nativeQueryRef": "D8 Ingreso por Viaje"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ZonasSegmentadas"
+                  }
+                },
+                "Property": "D8 Ingreso por Viaje"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

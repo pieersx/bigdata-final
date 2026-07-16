@@ -1,0 +1,155 @@
+table Fact_PerfilHorario
+	lineageTag: 152300af-a41e-4bec-ba40-ddf53355e076
+
+	measure 'D2 Viajes Totales' = SUM(Fact_PerfilHorario[trip_count])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: e6fb2d12-e86d-4e69-8553-6942c45799e1
+
+	measure 'D2 Duracion Promedio Ponderada' = DIVIDE(SUM(Fact_PerfilHorario[duration_minutes]), [D2 Viajes Totales])
+		formatString: 0.00 "min"
+		displayFolder: Medidas
+		lineageTag: 718d10ad-c018-41c8-bcb4-65835da100cd
+
+	measure 'D2 Ingresos Totales' = SUM(Fact_PerfilHorario[total_revenue])
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: fe868cff-fd2b-4dfb-be93-6995aafacdf1
+
+	column pickup_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8896e60b-3d4a-4c98-b94b-06940043a586
+		summarizeBy: none
+		sourceColumn: pickup_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column pickup_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3613ecb3-c793-4473-ab34-00caa7687df1
+		summarizeBy: none
+		sourceColumn: pickup_month
+
+	column pickup_day_of_week
+		dataType: int64
+		formatString: 0
+		lineageTag: d68b53e2-c030-45dc-b407-972100c2d456
+		summarizeBy: none
+		sourceColumn: pickup_day_of_week
+
+	column pickup_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 5efcb738-680d-4caf-b66c-e66572eb83a4
+		summarizeBy: none
+		sourceColumn: pickup_hour
+
+	column service
+		dataType: string
+		lineageTag: 8d408c91-23b3-45b6-9722-789a64369ac5
+		summarizeBy: none
+		sourceColumn: service
+
+	column pickup_location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d743279-0711-432b-9c18-a94e252059ca
+		summarizeBy: none
+		sourceColumn: pickup_location_id
+
+	column pickup_borough
+		dataType: string
+		lineageTag: 743ff7de-2be0-438c-b27b-27e0b790c6d5
+		summarizeBy: none
+		sourceColumn: pickup_borough
+
+	column pickup_zone
+		dataType: string
+		lineageTag: 878be895-1974-45d1-b85e-00be89802c6f
+		summarizeBy: none
+		sourceColumn: pickup_zone
+
+	column pickup_service_zone
+		dataType: string
+		lineageTag: 941ecc12-0793-4976-aa91-9f9e93ee40b0
+		summarizeBy: none
+		sourceColumn: pickup_service_zone
+
+	column trip_count
+		dataType: int64
+		formatString: 0
+		lineageTag: b1905546-f140-46c7-ab65-410c15e4e2cc
+		summarizeBy: none
+		sourceColumn: trip_count
+
+	column total_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5b89b3d6-bc53-4746-992f-c52f09e6e6d1
+		summarizeBy: none
+		sourceColumn: total_revenue
+
+	column tip_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6327b2ee-06ba-40df-915c-9080d92846f5
+		summarizeBy: none
+		sourceColumn: tip_revenue
+
+	column distance_miles
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6fe75292-428a-462b-9705-888bf557fb8a
+		summarizeBy: none
+		sourceColumn: distance_miles
+
+	column duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: b0883a78-94c4-4f92-bc8a-56b82faebb60
+		summarizeBy: none
+		sourceColumn: duration_minutes
+
+	column avg_trip_distance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d9bcab4f-4c7b-4656-a793-36632b774d1b
+		summarizeBy: none
+		sourceColumn: avg_trip_distance
+
+	column avg_trip_duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5aa242e3-4819-4b58-a21d-15b3c917d9f0
+		summarizeBy: none
+		sourceColumn: avg_trip_duration_minutes
+
+	column avg_total_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d58ee779-d0b1-42a6-aeeb-98a7ae4f6867
+		summarizeBy: none
+		sourceColumn: avg_total_amount
+
+	column pickup_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 897eb85e-c74f-4020-9b4a-be5e2d3bcd48
+		summarizeBy: none
+		sourceColumn: pickup_year
+
+	partition Fact_PerfilHorario = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/descriptive_hourly_profile"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in Table.AddColumn(t, "pickup_year", each y, Int64.Type)),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

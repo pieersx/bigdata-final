@@ -1,0 +1,27 @@
+table DimServicio
+	lineageTag: efcbaad5-1503-4050-802a-502ac441820d
+
+	column Servicio
+		dataType: string
+		lineageTag: 6449e67d-f5a1-47c8-880f-15449bc2d783
+		summarizeBy: none
+		sourceColumn: Servicio
+
+	column ServicioNombre
+		dataType: string
+		lineageTag: d9141572-c013-4053-a4d1-544965fbef07
+		summarizeBy: none
+		sourceColumn: ServicioNombre
+
+	partition DimServicio = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:/Users/Pieers/dev/bigdata-final/exports/powerbi/dimensions/DimServicio.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados,{{"Servicio", type text}, {"ServicioNombre", type text}}, "es-ES")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
+

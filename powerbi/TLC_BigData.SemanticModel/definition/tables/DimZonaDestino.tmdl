@@ -1,0 +1,39 @@
+table DimZonaDestino
+	lineageTag: e564242d-b9b2-4075-ba4d-4d67094cfb52
+
+	column LocationID
+		dataType: int64
+		lineageTag: a6c5c6b1-a14f-4632-830e-688559ac4306
+		summarizeBy: none
+		sourceColumn: LocationID
+
+	column Borough
+		dataType: string
+		lineageTag: f2421765-b13e-4e53-80b5-fbd9ad85b503
+		summarizeBy: none
+		sourceColumn: Borough
+
+	column Zone
+		dataType: string
+		lineageTag: 00d3c461-f6f4-41f5-a72d-ce4238f3eed1
+		summarizeBy: none
+		sourceColumn: Zone
+
+	column service_zone
+		dataType: string
+		lineageTag: ebe77343-19b6-46f7-8c90-247c2d5906c2
+		summarizeBy: none
+		sourceColumn: service_zone
+
+	partition DimZonaDestino = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:/Users/Pieers/dev/bigdata-final/exports/powerbi/dimensions/DimZonaDestino.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados,{{"LocationID", Int64.Type}, {"Borough", type text}, {"Zone", type text}, {"service_zone", type text}}, "es-ES")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
+

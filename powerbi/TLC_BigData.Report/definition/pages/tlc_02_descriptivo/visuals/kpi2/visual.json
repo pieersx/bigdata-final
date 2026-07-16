@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi2",
+  "position": {
+    "x": 260,
+    "y": 95,
+    "z": 1000,
+    "height": 115,
+    "width": 230,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PerfilHorario"
+                    }
+                  },
+                  "Property": "D2 Duracion Promedio Ponderada"
+                }
+              },
+              "queryRef": "Fact_PerfilHorario.D2 Duracion Promedio Ponderada",
+              "nativeQueryRef": "D2 Duracion Promedio Ponderada"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

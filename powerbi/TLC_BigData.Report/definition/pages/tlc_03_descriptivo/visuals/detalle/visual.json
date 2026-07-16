@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "detalle",
+  "position": {
+    "x": 640,
+    "y": 465,
+    "z": 5000,
+    "height": 225,
+    "width": 620,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "payment_type"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.payment_type",
+              "nativeQueryRef": "payment_type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "D3 Ingresos Totales"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.D3 Ingresos Totales",
+              "nativeQueryRef": "D3 Ingresos Totales"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_FinanzasServicio"
+                  }
+                },
+                "Property": "D3 Ingresos Totales"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

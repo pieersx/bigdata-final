@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "prediction_date"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.prediction_date",
+              "nativeQueryRef": "prediction_date",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "predicted_high_demand"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.predicted_high_demand",
+              "nativeQueryRef": "predicted_high_demand"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "D9 Accuracy Calculada"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.D9 Accuracy Calculada",
+              "nativeQueryRef": "D9 Accuracy Calculada"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ClasificacionDemanda"
+                  }
+                },
+                "Property": "prediction_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

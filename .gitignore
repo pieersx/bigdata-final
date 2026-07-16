@@ -1,0 +1,29 @@
+# Datos y resultados generados (no versionar)
+data/
+artifacts/
+exports/
+logs/
+.env
+
+# Python / Spark
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+metastore_db/
+derby.log
+spark-warehouse/
+
+# IDE / sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Power BI temporales
+*.pbix.autosave
+**/.pbi/
+**/TMDLScripts/

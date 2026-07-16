@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "comparacion",
+  "position": {
+    "x": 20,
+    "y": 465,
+    "z": 4000,
+    "height": 225,
+    "width": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FactoresPropina"
+                    }
+                  },
+                  "Property": "service"
+                }
+              },
+              "queryRef": "Fact_FactoresPropina.service",
+              "nativeQueryRef": "service",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FactoresPropina"
+                    }
+                  },
+                  "Property": "D6 Viajes con Propina %"
+                }
+              },
+              "queryRef": "Fact_FactoresPropina.D6 Viajes con Propina %",
+              "nativeQueryRef": "D6 Viajes con Propina %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_FactoresPropina"
+                  }
+                },
+                "Property": "D6 Viajes con Propina %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

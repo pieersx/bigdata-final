@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "categorias",
+  "position": {
+    "x": 20,
+    "y": 225,
+    "z": 2000,
+    "height": 220,
+    "width": 600,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FactoresPropina"
+                    }
+                  },
+                  "Property": "pickup_borough"
+                }
+              },
+              "queryRef": "Fact_FactoresPropina.pickup_borough",
+              "nativeQueryRef": "pickup_borough",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FactoresPropina"
+                    }
+                  },
+                  "Property": "D6 Tasa Propina Ponderada"
+                }
+              },
+              "queryRef": "Fact_FactoresPropina.D6 Tasa Propina Ponderada",
+              "nativeQueryRef": "D6 Tasa Propina Ponderada"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_FactoresPropina"
+                  }
+                },
+                "Property": "D6 Tasa Propina Ponderada"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

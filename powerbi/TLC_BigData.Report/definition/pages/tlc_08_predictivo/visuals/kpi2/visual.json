@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi2",
+  "position": {
+    "x": 260,
+    "y": 95,
+    "z": 1000,
+    "height": 115,
+    "width": 230,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "D8 Ingreso por Viaje"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.D8 Ingreso por Viaje",
+              "nativeQueryRef": "D8 Ingreso por Viaje"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

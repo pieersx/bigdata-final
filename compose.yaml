@@ -1,0 +1,54 @@
+name: tlc-bigdata-final
+
+services:
+  mongo:
+    image: mongo:7.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: tlc
+      MONGO_INITDB_ROOT_PASSWORD: tlc_exam
+      MONGO_INITDB_DATABASE: tlc_audit
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--username", "tlc", "--password", "tlc_exam", "--authenticationDatabase", "admin", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      MONGO_URI: mongodb://tlc:tlc_exam@mongo:27017/tlc_audit?authSource=admin
+      MONGO_DATABASE: tlc_audit
+      SPARK_MASTER: local[*]
+      SPARK_DRIVER_MEMORY: 6g
+      SPARK_LOCAL_DIRS: /workspace/data/tmp
+      PIPELINE_CONFIG: /workspace/config/pipeline.yaml
+      TLC_DOWNLOAD_WORKERS: 2
+    volumes:
+      - ./config:/workspace/config:ro
+      - ./src:/workspace/src:ro
+      - ./tests:/workspace/tests:ro
+      - ./scripts:/workspace/scripts:ro
+      - ./data:/workspace/data
+      - ./artifacts:/workspace/artifacts
+      - ./exports:/workspace/exports
+      - ./logs:/workspace/logs
+      - ./powerbi:/workspace/powerbi
+    ports:
+      - "4040:4040"
+    working_dir: /workspace
+    command: ["bash", "-lc", "mkdir -p data/tmp artifacts exports logs && tail -f /dev/null"]
+    stop_grace_period: 30s
+
+volumes:
+  mongo_data:

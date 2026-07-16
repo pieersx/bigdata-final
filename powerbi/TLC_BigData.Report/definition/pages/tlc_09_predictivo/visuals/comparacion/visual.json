@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "comparacion",
+  "position": {
+    "x": 20,
+    "y": 465,
+    "z": 4000,
+    "height": 225,
+    "width": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "predicted_high_demand"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.predicted_high_demand",
+              "nativeQueryRef": "predicted_high_demand",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "D9 Casos Evaluados"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.D9 Casos Evaluados",
+              "nativeQueryRef": "D9 Casos Evaluados"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ClasificacionDemanda"
+                  }
+                },
+                "Property": "D9 Casos Evaluados"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

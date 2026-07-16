@@ -1,0 +1,157 @@
+table Fact_ZonasSegmentadas
+	lineageTag: c293db80-8f9b-404c-85db-b316670ae417
+
+	measure 'D8 Zonas Segmentadas' = DISTINCTCOUNT(Fact_ZonasSegmentadas[pickup_location_id])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: d885fbf4-a90f-446e-b6f9-6085bc28401e
+
+	measure 'D8 Viajes Segmentados' = SUM(Fact_ZonasSegmentadas[total_trips])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: bbbd93ed-37eb-44e5-aee7-d294d1e5f434
+
+	measure 'D8 Ingreso por Viaje' = DIVIDE(SUM(Fact_ZonasSegmentadas[total_revenue]), SUM(Fact_ZonasSegmentadas[total_trips]))
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: e31c877e-4326-4715-ae9b-c3e34673d4ce
+
+	column segment_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 993fad81-441d-4584-bd1a-c1271a344453
+		summarizeBy: none
+		sourceColumn: segment_id
+
+	column zone_id
+		dataType: string
+		lineageTag: a386d59d-cf3e-4897-b21e-1b18ddd3c826
+		summarizeBy: none
+		sourceColumn: zone_id
+
+	column total_trips
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a0381869-2f64-4355-b8b0-6d3d162509a7
+		summarizeBy: none
+		sourceColumn: total_trips
+
+	column avg_daily_trips
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 7b6faa49-9997-4d28-891f-5bd2c2bb12ae
+		summarizeBy: none
+		sourceColumn: avg_daily_trips
+
+	column demand_stddev
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 9fcf0f1f-44a7-4f2d-813c-e56aee147c5a
+		summarizeBy: none
+		sourceColumn: demand_stddev
+
+	column active_days
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 2dcb18c3-95a6-4fb1-8543-ecf3f55777e9
+		summarizeBy: none
+		sourceColumn: active_days
+
+	column zone_name
+		dataType: string
+		lineageTag: ad13fc4c-fe91-44d9-8396-5d7d6e8dc1fb
+		summarizeBy: none
+		sourceColumn: zone_name
+
+	column borough
+		dataType: string
+		lineageTag: ebdc016d-eb4f-4206-9c2d-df6e280be712
+		summarizeBy: none
+		sourceColumn: borough
+
+	column avg_fare_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 65974085-9fd5-4243-8de8-ae4e1e9122a0
+		summarizeBy: none
+		sourceColumn: avg_fare_amount
+
+	column avg_trip_distance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 376e60d3-5dcd-471d-80cc-e42735505c9e
+		summarizeBy: none
+		sourceColumn: avg_trip_distance
+
+	column avg_duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 25520e1b-dc0f-4c12-b5d5-d836ca576d2e
+		summarizeBy: none
+		sourceColumn: avg_duration_minutes
+
+	column total_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 1e18bd3f-3f6b-4e57-9c61-e04a9e3ff2e1
+		summarizeBy: none
+		sourceColumn: total_revenue
+
+	column segment_label
+		dataType: string
+		lineageTag: 95767433-cc12-443d-b564-1cff84a81023
+		summarizeBy: none
+		sourceColumn: segment_label
+
+	column demand_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: ab0105e6-916d-4645-87a8-6da3757ca660
+		summarizeBy: none
+		sourceColumn: demand_rank
+
+	column pickup_location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 72233b29-9b78-4e00-b53c-bf5a4c2af720
+		summarizeBy: none
+		sourceColumn: pickup_location_id
+
+	column model_name
+		dataType: string
+		lineageTag: 5add7fe0-7360-419c-8517-7fabc1f999ca
+		summarizeBy: none
+		sourceColumn: model_name
+
+	column generated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 92b797d2-1741-4171-a5e7-04b76c60c1c1
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+	column pickup_zone
+		dataType: string
+		lineageTag: 071e1614-9fb4-4682-b878-f1b8078e9ea5
+		summarizeBy: none
+		sourceColumn: pickup_zone
+
+	column pickup_borough
+		dataType: string
+		lineageTag: 259d46ae-12c3-4562-a1ac-5cd41eb8406e
+		summarizeBy: none
+		sourceColumn: pickup_borough
+
+	partition Fact_ZonasSegmentadas = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/model_segmentation_zones"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in t),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

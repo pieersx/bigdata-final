@@ -1,0 +1,94 @@
+project:
+  name: tlc-bigdata-final
+  timezone: America/New_York
+
+source:
+  official_page: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+  base_url: https://d37ci6vzurychx.cloudfront.net/trip-data
+  zone_lookup_url: https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+  services:
+    - yellow
+    - green
+    - fhv
+    - fhvhv
+  historical_years:
+    - 2023
+    - 2024
+    - 2025
+  current_year: 2026
+  require_complete_historical: true
+  connect_timeout_seconds: 20
+  read_timeout_seconds: 180
+  discovery_timeout_seconds: 30
+  discovery_workers: 8
+  retries: 5
+  retry_backoff_seconds: 2
+  throttle_retries: 20
+  throttle_backoff_seconds: 30
+  chunk_size_bytes: 8388608
+  download_workers: 2
+  user_agent: tlc-bigdata-final/1.0 (academic project; NYC TLC public data)
+
+paths:
+  root: /workspace/data
+  bronze: /workspace/data/bronze
+  silver: /workspace/data/silver
+  quarantine: /workspace/data/quarantine
+  gold: /workspace/data/gold
+  temp: /workspace/data/tmp
+  models: /workspace/artifacts/models
+  exports: /workspace/exports
+  logs: /workspace/logs
+
+spark:
+  app_name: TLC-BigData-Final
+  master: local[*]
+  driver_memory: 6g
+  shuffle_partitions: 48
+  default_parallelism: 12
+  silver_file_workers: 4
+  max_partition_bytes: 134217728
+  adaptive_enabled: true
+  parquet_compression: zstd
+  timezone: America/New_York
+
+quality:
+  valid_location_min: 1
+  valid_location_max: 265
+  max_trip_duration_minutes: 1440
+  max_trip_distance_miles: 500
+  max_total_amount: 10000
+  historical_months_expected: 12
+  fail_on_missing_historical_file: true
+  fail_on_row_loss: true
+
+gold:
+  csv_single_file: true
+  export_full_tables: false
+  powerbi_max_detail_rows: 5000000
+  anomaly_zscore_threshold: 3.0
+
+models:
+  seed: 42
+  forecast:
+    horizon_days: 30
+    test_days: 90
+    max_iter: 80
+    max_depth: 6
+  segmentation:
+    k: 4
+    max_iter: 40
+  classification:
+    test_days: 90
+    num_trees: 100
+    max_depth: 10
+    high_demand_quantile: 0.75
+
+audit:
+  mongo_database: tlc_audit
+  local_jsonl: /workspace/logs/audit_events.jsonl
+  collections:
+    pipeline_runs: pipeline_runs
+    file_manifest: file_manifest
+    quality_results: quality_results
+    model_runs: model_runs

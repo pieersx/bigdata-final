@@ -1,0 +1,27 @@
+table DimPago
+	lineageTag: 93487cc6-7128-40ef-981d-d564a2fe8194
+
+	column TipoPago
+		dataType: int64
+		lineageTag: aa9e458f-4560-4346-a252-c61f9f90c4cd
+		summarizeBy: none
+		sourceColumn: TipoPago
+
+	column PagoNombre
+		dataType: string
+		lineageTag: c2a7e1ca-95ea-4ce1-a876-f841dcd30dc2
+		summarizeBy: none
+		sourceColumn: PagoNombre
+
+	partition DimPago = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:/Users/Pieers/dev/bigdata-final/exports/powerbi/dimensions/DimPago.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados,{{"TipoPago", Int64.Type}, {"PagoNombre", type text}}, "es-ES")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
+

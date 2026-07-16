@@ -1,0 +1,27 @@
+table DimCluster
+	lineageTag: 91fd7b04-37c6-40c4-97d6-b4008a58f698
+
+	column SegmentoID
+		dataType: int64
+		lineageTag: 5b1dc789-3d8b-44a9-82d6-a1ffd292ca88
+		summarizeBy: none
+		sourceColumn: SegmentoID
+
+	column Segmento
+		dataType: string
+		lineageTag: 5e5708c6-188b-453f-b384-71c86177cb11
+		summarizeBy: none
+		sourceColumn: Segmento
+
+	partition DimCluster = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:/Users/Pieers/dev/bigdata-final/exports/powerbi/dimensions/DimCluster.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados,{{"SegmentoID", Int64.Type}, {"Segmento", type text}}, "es-ES")
+				in
+				    Tipos
+
+	annotation PBI_ResultType = Table
+

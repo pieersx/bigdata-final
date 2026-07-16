@@ -1,0 +1,135 @@
+table Fact_FinanzasServicio
+	lineageTag: c3a328b8-14f9-40ae-8ead-bf664c10b453
+
+	measure 'D3 Ingresos Totales' = SUM(Fact_FinanzasServicio[total_revenue])
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: dcf47ae3-e43e-4849-8f96-4dc5715de543
+
+	measure 'D3 Propinas Totales' = SUM(Fact_FinanzasServicio[tip_revenue])
+		formatString: $#,0.00
+		displayFolder: Medidas
+		lineageTag: 864d4997-7876-4848-a7bd-6383e7eb5f41
+
+	measure 'D3 Tasa Propina Ponderada' = DIVIDE(SUM(Fact_FinanzasServicio[tip_revenue]), SUM(Fact_FinanzasServicio[fare_revenue]))
+		formatString: 0.00%
+		displayFolder: Medidas
+		lineageTag: ead3bd29-9679-4135-a49c-31ce65d6e3ab
+
+	measure 'D3 Viajes con Propina %' = DIVIDE(SUM(Fact_FinanzasServicio[tipped_trips]), SUM(Fact_FinanzasServicio[trip_count]))
+		formatString: 0.00%
+		displayFolder: Medidas
+		lineageTag: 4fc0bf44-0d00-4a79-bbd9-c4547262e5a6
+
+	column pickup_month
+		dataType: int64
+		formatString: 0
+		lineageTag: dccc6d53-fc4c-4044-8c1b-23b5579daaf6
+		summarizeBy: none
+		sourceColumn: pickup_month
+
+	column service
+		dataType: string
+		lineageTag: e9da4cfa-7282-479e-8899-568094f7750c
+		summarizeBy: none
+		sourceColumn: service
+
+	column payment_type
+		dataType: int64
+		formatString: 0
+		lineageTag: 02d1b6b6-3fa5-457d-a84c-7e80ef0abc09
+		summarizeBy: none
+		sourceColumn: payment_type
+
+	column trip_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 69d7c330-cf67-41a2-b1b3-cc29ea1dabbe
+		summarizeBy: none
+		sourceColumn: trip_count
+
+	column total_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a425bbc0-19f7-4269-99ee-3bba33e3a0c2
+		summarizeBy: none
+		sourceColumn: total_revenue
+
+	column fare_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 709d6d33-d80d-4d2a-a74a-cbdde5e38d8b
+		summarizeBy: none
+		sourceColumn: fare_revenue
+
+	column tip_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ce442d63-e543-4381-9eae-0e46b2674345
+		summarizeBy: none
+		sourceColumn: tip_revenue
+
+	column tolls_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: c7490c27-82e5-485f-8c4f-863b08393090
+		summarizeBy: none
+		sourceColumn: tolls_revenue
+
+	column taxes_and_surcharges
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 0a085115-f3d2-46a7-8ef0-57d47e31827b
+		summarizeBy: none
+		sourceColumn: taxes_and_surcharges
+
+	column avg_total_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: f41819ca-77f4-40a0-97d9-70453a334c96
+		summarizeBy: none
+		sourceColumn: avg_total_amount
+
+	column avg_tip_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 06dd7d65-3f76-4730-ade1-a87ae0f239af
+		summarizeBy: none
+		sourceColumn: avg_tip_amount
+
+	column tipped_trips
+		dataType: int64
+		formatString: 0
+		lineageTag: 272b34b2-1e24-4423-9a51-07bf7a7767e5
+		summarizeBy: none
+		sourceColumn: tipped_trips
+
+	column pickup_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c489ab4-507e-44a2-89e0-9f8358c2b55b
+		summarizeBy: none
+		sourceColumn: pickup_year
+
+	column month_start
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3e4a155c-6ef0-49fd-98ff-11e5103a5814
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Fact_FinanzasServicio = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/descriptive_service_financials"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in Table.AddColumn(t, "pickup_year", each y, Int64.Type)),
+				    Combinado = Table.AddColumn(Table.Combine(ConDatos[Data]), "month_start", each try #date([pickup_year], [pickup_month], 1) otherwise null, type date)
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

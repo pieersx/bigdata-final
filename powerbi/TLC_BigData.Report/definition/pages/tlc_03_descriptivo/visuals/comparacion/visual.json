@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "comparacion",
+  "position": {
+    "x": 20,
+    "y": 465,
+    "z": 4000,
+    "height": 225,
+    "width": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "service"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.service",
+              "nativeQueryRef": "service",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "D3 Tasa Propina Ponderada"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.D3 Tasa Propina Ponderada",
+              "nativeQueryRef": "D3 Tasa Propina Ponderada"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_FinanzasServicio"
+                  }
+                },
+                "Property": "D3 Tasa Propina Ponderada"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

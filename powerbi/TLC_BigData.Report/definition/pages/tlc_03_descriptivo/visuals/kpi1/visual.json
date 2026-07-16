@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi1",
+  "position": {
+    "x": 20,
+    "y": 95,
+    "z": 0,
+    "height": 115,
+    "width": 230,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "D3 Ingresos Totales"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.D3 Ingresos Totales",
+              "nativeQueryRef": "D3 Ingresos Totales"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,53 @@
+table Fact_MetricasSegmentacion
+	lineageTag: d4299128-4419-4d0a-825d-546b3e1a381a
+
+	measure 'D8 Silhouette' = CALCULATE(MAX(Fact_MetricasSegmentacion[metric_value]), Fact_MetricasSegmentacion[metric_name] = "silhouette")
+		formatString: 0.0000
+		displayFolder: Medidas
+		lineageTag: bef2c137-71d2-4be9-8122-6f51981ef5a0
+
+	column model_name
+		dataType: string
+		lineageTag: f95942fd-cfd9-4455-8da5-3231fe527920
+		summarizeBy: none
+		sourceColumn: model_name
+
+	column metric_name
+		dataType: string
+		lineageTag: 7ff38a00-f466-4946-8084-448f53872a51
+		summarizeBy: none
+		sourceColumn: metric_name
+
+	column metric_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ec74ccd9-577b-4280-acef-dcb733ce0777
+		summarizeBy: none
+		sourceColumn: metric_value
+
+	column metric_text
+		dataType: string
+		lineageTag: 1b5fbfab-4cdf-4e33-97c4-2d84e83dda89
+		summarizeBy: none
+		sourceColumn: metric_text
+
+	column generated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a95af746-e6e4-49a9-a2f5-a3987e745fec
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+	partition Fact_MetricasSegmentacion = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/model_segmentation_metrics"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in t),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

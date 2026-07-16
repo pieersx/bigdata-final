@@ -1,0 +1,119 @@
+table Fact_PerfilesSegmentacion
+	lineageTag: dde861fb-3c56-44f6-b5bf-21d78d4661c9
+
+	column segment_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a6a8dfa5-bfc2-453a-ab57-35cc8073551b
+		summarizeBy: none
+		sourceColumn: segment_id
+
+	column zone_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 83d1814b-7941-4edb-bc45-1c0d878011d8
+		summarizeBy: none
+		sourceColumn: zone_count
+
+	column total_trips
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d7b89c27-adea-4852-9f52-ffce2835c103
+		summarizeBy: none
+		sourceColumn: total_trips
+
+	column avg_avg_daily_trips
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 167ac797-ef44-4ed8-8f53-c4f4533f7577
+		summarizeBy: none
+		sourceColumn: avg_avg_daily_trips
+
+	column avg_demand_stddev
+		dataType: double
+		formatString: #,0.00
+		lineageTag: eb6c625a-223b-43a7-84d7-0974fcbe49c1
+		summarizeBy: none
+		sourceColumn: avg_demand_stddev
+
+	column avg_active_days
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ac32a36e-9e1b-433e-ade0-71965d1f25d6
+		summarizeBy: none
+		sourceColumn: avg_active_days
+
+	column avg_avg_fare_amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: dc64227d-0f03-4ce9-8e3c-c77e78f054dd
+		summarizeBy: none
+		sourceColumn: avg_avg_fare_amount
+
+	column avg_avg_trip_distance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 24d67659-22ce-4890-b30c-29e92d4b1df8
+		summarizeBy: none
+		sourceColumn: avg_avg_trip_distance
+
+	column avg_avg_duration_minutes
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6ebb06cb-cddf-43e3-b6ea-728cc0235e4b
+		summarizeBy: none
+		sourceColumn: avg_avg_duration_minutes
+
+	column avg_total_revenue
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 4ea02158-41d3-44d5-8f3a-b15f51cd8e2b
+		summarizeBy: none
+		sourceColumn: avg_total_revenue
+
+	column demand_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a2202b5-464b-44c1-9e2f-c7323ddbb635
+		summarizeBy: none
+		sourceColumn: demand_rank
+
+	column segment_label
+		dataType: string
+		lineageTag: 795d95dd-1e80-429e-8201-ce3b81b550f8
+		summarizeBy: none
+		sourceColumn: segment_label
+
+	column trip_share
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 30cd2158-cfb3-417a-b88a-1ce83fed5c16
+		summarizeBy: none
+		sourceColumn: trip_share
+
+	column model_name
+		dataType: string
+		lineageTag: 48bb95ff-304d-48d7-ba7d-4232c04d6ec8
+		summarizeBy: none
+		sourceColumn: model_name
+
+	column generated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 42f952e8-c9c8-4f02-89cc-8c42d3776567
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+	partition Fact_PerfilesSegmentacion = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/model_segmentation_profiles"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in t),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

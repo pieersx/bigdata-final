@@ -1,0 +1,118 @@
+table Fact_PronosticoDemanda
+	lineageTag: dd99d5b8-cf47-408d-9cf5-59a202b3c38a
+
+	measure 'D7 Viajes Pronosticados' = SUM(Fact_PronosticoDemanda[forecast_trips])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: 5dfb4cc4-01d6-43d2-b650-abad0bbe45bb
+
+	measure 'D7 Limite Inferior 95' = SUM(Fact_PronosticoDemanda[forecast_lower_95])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: 4ca306ab-26fd-41db-b6a3-7c6c677ce1a1
+
+	measure 'D7 Limite Superior 95' = SUM(Fact_PronosticoDemanda[forecast_upper_95])
+		formatString: #,0
+		displayFolder: Medidas
+		lineageTag: c1e07e6b-df4b-464d-8211-f9e147ef2ba6
+
+	column forecast_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 697375b3-fbfe-425c-bd4c-265a4d4b4b93
+		summarizeBy: none
+		sourceColumn: forecast_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column service_type
+		dataType: string
+		lineageTag: e30d98dd-472a-405f-ab9d-d38fb1f224d4
+		summarizeBy: none
+		sourceColumn: service_type
+
+	column forecast_trips
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 4398cb7f-f47f-493f-aad6-3aaa568d5b31
+		summarizeBy: none
+		sourceColumn: forecast_trips
+
+	column horizon_day
+		dataType: int64
+		formatString: 0
+		lineageTag: b72a7c2b-a2a1-4009-a1ee-30d24c0ec0c5
+		summarizeBy: none
+		sourceColumn: horizon_day
+
+	column forecast_lower_95
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 44d47c3f-c8b1-4968-8b38-512b390b06f7
+		summarizeBy: none
+		sourceColumn: forecast_lower_95
+
+	column forecast_upper_95
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 578ce72d-e308-482f-9c19-bde1efaf207c
+		summarizeBy: none
+		sourceColumn: forecast_upper_95
+
+	column model_name
+		dataType: string
+		lineageTag: 2be7fdc0-d2b3-420f-9007-7b11a7926732
+		summarizeBy: none
+		sourceColumn: model_name
+
+	column pickup_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 982cf8f0-e024-46d4-b5dd-586162bd61e0
+		summarizeBy: none
+		sourceColumn: pickup_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column service
+		dataType: string
+		lineageTag: 757de16b-6dfa-43d1-95a2-b2dae07c25bc
+		summarizeBy: none
+		sourceColumn: service
+
+	column ds
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3a26078c-9649-4848-a09d-9e5b215268ef
+		summarizeBy: none
+		sourceColumn: ds
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column yhat
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e0333bb5-97c8-4b00-b610-ba73bd5f1b89
+		summarizeBy: none
+		sourceColumn: yhat
+
+	column generated_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4861c6be-442d-4525-a735-3630ecdf15d1
+		summarizeBy: none
+		sourceColumn: generated_at_utc
+
+	partition Fact_PronosticoDemanda = m
+		mode: import
+		source =
+				let
+				    Origen = Folder.Files("C:/Users/Pieers/dev/bigdata-final/data/gold/model_timeseries_daily"),
+				    Parquet = Table.SelectRows(Origen, each [Extension] = ".parquet"),
+				    ConDatos = Table.AddColumn(Parquet, "Data", each let p=Text.Replace([Folder Path], "\\", "/"), y=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_year="), "/")) otherwise null, m=try Number.FromText(Text.BeforeDelimiter(Text.AfterDelimiter(p, "pickup_month="), "/")) otherwise null, t=Parquet.Document([Content]) in t),
+				    Combinado = Table.Combine(ConDatos[Data])
+				in
+				    Combinado
+
+	annotation PBI_ResultType = Table
+

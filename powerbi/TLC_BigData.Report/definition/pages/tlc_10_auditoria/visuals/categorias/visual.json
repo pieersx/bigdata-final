@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "categorias",
+  "position": {
+    "x": 20,
+    "y": 225,
+    "z": 2000,
+    "height": 220,
+    "width": 600,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "Categoría"
+                }
+              },
+              "queryRef": "D10_Auditoria.Categoría",
+              "nativeQueryRef": "Categoría",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "A10 Eventos"
+                }
+              },
+              "queryRef": "D10_Auditoria.A10 Eventos",
+              "nativeQueryRef": "A10 Eventos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "D10_Auditoria"
+                  }
+                },
+                "Property": "A10 Eventos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

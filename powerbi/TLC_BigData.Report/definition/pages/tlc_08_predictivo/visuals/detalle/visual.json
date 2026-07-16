@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "detalle",
+  "position": {
+    "x": 640,
+    "y": 465,
+    "z": 5000,
+    "height": 225,
+    "width": 620,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "segment_label"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.segment_label",
+              "nativeQueryRef": "segment_label",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "D8 Zonas Segmentadas"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.D8 Zonas Segmentadas",
+              "nativeQueryRef": "D8 Zonas Segmentadas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ZonasSegmentadas"
+                  }
+                },
+                "Property": "D8 Zonas Segmentadas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1981.5953319314076,
+            "y": 893.87024971402025
+          },
+          "nodeIndex": "D10_Auditoria",
+          "nodeLineageTag": "0e14fded-5a0a-4ae7-864b-80cee3c543af",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.14436408503241,
+            "y": 1370.900207977008
+          },
+          "nodeIndex": "DimCluster",
+          "nodeLineageTag": "91fd7b04-37c6-40c4-97d6-b4008a58f698",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 874.99074789309316,
+            "y": 598.89371828439653
+          },
+          "nodeIndex": "DimFecha",
+          "nodeLineageTag": "5911ad3a-2819-45ef-93ea-b8c6939f2086",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 871.49479774379768,
+            "y": 1662.7259346123221
+          },
+          "nodeIndex": "DimHora",
+          "nodeLineageTag": "e7350959-c37f-43ec-b48f-e8f68f4760a5",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1747.5953319314076,
+            "y": 461.38027356169096
+          },
+          "nodeIndex": "DimPago",
+          "nodeLineageTag": "93487cc6-7128-40ef-981d-d564a2fe8194",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1164.7637400943861,
+            "y": 430.66864101909687
+          },
+          "nodeIndex": "DimServicio",
+          "nodeLineageTag": "efcbaad5-1503-4050-802a-502ac441820d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 581.40741178723351,
+            "y": 1861.7404994280405
+          },
+          "nodeIndex": "DimZonaDestino",
+          "nodeLineageTag": "e564242d-b9b2-4075-ba4d-4d67094cfb52",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 213.20345381756636,
+            "y": 724.18713041838782
+          },
+          "nodeIndex": "DimZonaOrigen",
+          "nodeLineageTag": "a3766b57-5353-4730-ba00-986807325009",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 398.39724529841897,
+            "y": 243.0570469299671
+          },
+          "nodeIndex": "Fact_AnomaliasDiarias",
+          "nodeLineageTag": "8ef51b1a-ea64-498b-8f9c-63c813770da0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 426.11282804808593,
+            "y": 956.12588082128809
+          },
+          "nodeIndex": "Fact_ClasificacionDemanda",
+          "nodeLineageTag": "be855c67-8756-462d-9355-53483beddc88",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 584.81043068678082,
+            "y": 598.841175485094
+          },
+          "nodeIndex": "Fact_DemandaDiaria",
+          "nodeLineageTag": "4939e163-66df-45ee-95a9-19c3853b7b31",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1457.6040896563643,
+            "y": 508.27766402540919
+          },
+          "nodeIndex": "Fact_FactoresPropina",
+          "nodeLineageTag": "438eaa64-1645-4c0c-b3e3-c9842ec54953",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1454.4431440966534,
+            "y": 151.03938419480642
+          },
+          "nodeIndex": "Fact_FinanzasServicio",
+          "nodeLineageTag": "c3a328b8-14f9-40ae-8ead-bf664c10b453",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2265.5953319314076,
+            "y": 931.87024971402025
+          },
+          "nodeIndex": "Fact_MatrizConfusion",
+          "nodeLineageTag": "dddac55f-ca55-48e5-84ab-30f7b622e8f6",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2549.5953319314076,
+            "y": 919.87024971402025
+          },
+          "nodeIndex": "Fact_MetricasClasificacion",
+          "nodeLineageTag": "52e6bf01-26ac-4f9f-b78f-8908efcf6c41",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2833.5953319314076,
+            "y": 943.87024971402025
+          },
+          "nodeIndex": "Fact_MetricasModelos",
+          "nodeLineageTag": "569d745f-6747-43e4-89c3-2df8325c8092",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3117.5953319314076,
+            "y": 907.87024971402025
+          },
+          "nodeIndex": "Fact_MetricasPronostico",
+          "nodeLineageTag": "fdacc39a-e32e-45a5-9630-a91327e50475",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3401.5953319314076,
+            "y": 931.87024971402025
+          },
+          "nodeIndex": "Fact_MetricasSegmentacion",
+          "nodeLineageTag": "d4299128-4419-4d0a-825d-546b3e1a381a",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 1249.4541254213727
+          },
+          "nodeIndex": "Fact_PerfilesSegmentacion",
+          "nodeLineageTag": "dde861fb-3c56-44f6-b5bf-21d78d4661c9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 798.65255103051743,
+            "y": 956.08548038535275
+          },
+          "nodeIndex": "Fact_PerfilHorario",
+          "nodeLineageTag": "152300af-a41e-4bec-ba40-ddf53355e076",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1161.5980864245369,
+            "y": -50
+          },
+          "nodeIndex": "Fact_PronosticoDemanda",
+          "nodeLineageTag": "dd99d5b8-cf47-408d-9cf5-59a202b3c38a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 192.28191447330573,
+            "y": 1604.6793987627409
+          },
+          "nodeIndex": "Fact_RendimientoRutas",
+          "nodeLineageTag": "13ea9e98-eae2-45f3-a27c-1652230b8f61",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 624.36392359623551,
+            "y": 1311.0797806061271
+          },
+          "nodeIndex": "Fact_ZonasSegmentadas",
+          "nodeLineageTag": "c293db80-8f9b-404c-85db-b316670ae417",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 50.346892102823141,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

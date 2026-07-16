@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_RendimientoRutas"
+                    }
+                  },
+                  "Property": "month_start"
+                }
+              },
+              "queryRef": "Fact_RendimientoRutas.month_start",
+              "nativeQueryRef": "month_start",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_RendimientoRutas"
+                    }
+                  },
+                  "Property": "service"
+                }
+              },
+              "queryRef": "Fact_RendimientoRutas.service",
+              "nativeQueryRef": "service"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_RendimientoRutas"
+                    }
+                  },
+                  "Property": "D5 Viajes Rutas"
+                }
+              },
+              "queryRef": "Fact_RendimientoRutas.D5 Viajes Rutas",
+              "nativeQueryRef": "D5 Viajes Rutas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_RendimientoRutas"
+                  }
+                },
+                "Property": "month_start"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d19e6272211e098e93ed",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_RendimientoRutas"
+              }
+            },
+            "Property": "month_start"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8ce1cdbd9a7cfa9353e5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_RendimientoRutas"
+              }
+            },
+            "Property": "service"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1be0a10ede81ea860808",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_RendimientoRutas"
+              }
+            },
+            "Property": "D5 Viajes Rutas"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

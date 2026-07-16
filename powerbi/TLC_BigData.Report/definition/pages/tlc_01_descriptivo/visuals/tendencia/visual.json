@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "pickup_date"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.pickup_date",
+              "nativeQueryRef": "pickup_date",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "service"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.service",
+              "nativeQueryRef": "service"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "D1 Viajes Totales"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.D1 Viajes Totales",
+              "nativeQueryRef": "D1 Viajes Totales"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_DemandaDiaria"
+                  }
+                },
+                "Property": "pickup_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

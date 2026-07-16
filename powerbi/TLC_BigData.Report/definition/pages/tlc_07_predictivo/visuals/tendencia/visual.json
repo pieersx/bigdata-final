@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PronosticoDemanda"
+                    }
+                  },
+                  "Property": "forecast_date"
+                }
+              },
+              "queryRef": "Fact_PronosticoDemanda.forecast_date",
+              "nativeQueryRef": "forecast_date",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PronosticoDemanda"
+                    }
+                  },
+                  "Property": "service"
+                }
+              },
+              "queryRef": "Fact_PronosticoDemanda.service",
+              "nativeQueryRef": "service"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PronosticoDemanda"
+                    }
+                  },
+                  "Property": "D7 Viajes Pronosticados"
+                }
+              },
+              "queryRef": "Fact_PronosticoDemanda.D7 Viajes Pronosticados",
+              "nativeQueryRef": "D7 Viajes Pronosticados"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PronosticoDemanda"
+                  }
+                },
+                "Property": "forecast_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

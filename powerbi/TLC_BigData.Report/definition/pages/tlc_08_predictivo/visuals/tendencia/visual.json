@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "tendencia",
+  "position": {
+    "x": 640,
+    "y": 225,
+    "z": 3000,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "pickup_location_id"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.pickup_location_id",
+              "nativeQueryRef": "pickup_location_id",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "borough"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.borough",
+              "nativeQueryRef": "borough"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "D8 Zonas Segmentadas"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.D8 Zonas Segmentadas",
+              "nativeQueryRef": "D8 Zonas Segmentadas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_ZonasSegmentadas"
+                  }
+                },
+                "Property": "pickup_location_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "categorias",
+  "position": {
+    "x": 20,
+    "y": 225,
+    "z": 2000,
+    "height": 220,
+    "width": 600,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_AnomaliasDiarias"
+                    }
+                  },
+                  "Property": "anomaly_direction"
+                }
+              },
+              "queryRef": "Fact_AnomaliasDiarias.anomaly_direction",
+              "nativeQueryRef": "anomaly_direction",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_AnomaliasDiarias"
+                    }
+                  },
+                  "Property": "D4 Anomalias Detectadas"
+                }
+              },
+              "queryRef": "Fact_AnomaliasDiarias.D4 Anomalias Detectadas",
+              "nativeQueryRef": "D4 Anomalias Detectadas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_AnomaliasDiarias"
+                  }
+                },
+                "Property": "D4 Anomalias Detectadas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

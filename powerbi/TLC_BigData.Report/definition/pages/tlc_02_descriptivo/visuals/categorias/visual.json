@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "categorias",
+  "position": {
+    "x": 20,
+    "y": 225,
+    "z": 2000,
+    "height": 220,
+    "width": 600,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PerfilHorario"
+                    }
+                  },
+                  "Property": "pickup_hour"
+                }
+              },
+              "queryRef": "Fact_PerfilHorario.pickup_hour",
+              "nativeQueryRef": "pickup_hour",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PerfilHorario"
+                    }
+                  },
+                  "Property": "D2 Viajes Totales"
+                }
+              },
+              "queryRef": "Fact_PerfilHorario.D2 Viajes Totales",
+              "nativeQueryRef": "D2 Viajes Totales"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_PerfilHorario"
+                  }
+                },
+                "Property": "D2 Viajes Totales"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

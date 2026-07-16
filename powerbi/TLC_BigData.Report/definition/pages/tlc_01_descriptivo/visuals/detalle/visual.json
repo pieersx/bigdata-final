@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "detalle",
+  "position": {
+    "x": 640,
+    "y": 465,
+    "z": 5000,
+    "height": 225,
+    "width": 620,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "pickup_borough"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.pickup_borough",
+              "nativeQueryRef": "pickup_borough",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "D1 Viajes Totales"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.D1 Viajes Totales",
+              "nativeQueryRef": "D1 Viajes Totales"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_DemandaDiaria"
+                  }
+                },
+                "Property": "D1 Viajes Totales"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

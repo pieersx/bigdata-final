@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TLC_BigData"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "327efbe6-a183-40f4-94bc-37d3bbdf1957"
+  }
+}
