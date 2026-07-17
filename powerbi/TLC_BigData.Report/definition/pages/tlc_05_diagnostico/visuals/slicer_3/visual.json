@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimZonaDestino.Distrito",
-              "nativeQueryRef": "Distrito"
+              "nativeQueryRef": "Distrito",
+              "active": true
             }
           ]
         }

@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_DemandaDiaria.Fecha de recogida",
-              "nativeQueryRef": "Fecha de recogida"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_DemandaDiaria"
-                    }
-                  },
-                  "Property": "D1 Viajes Totales"
-                }
-              },
-              "queryRef": "Fact_DemandaDiaria.D1 Viajes Totales",
-              "nativeQueryRef": "D1 Viajes Totales"
+              "nativeQueryRef": "Fecha de recogida",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_DemandaDiaria.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandaDiaria"
+                    }
+                  },
+                  "Property": "D1 Viajes Totales"
+                }
+              },
+              "queryRef": "Fact_DemandaDiaria.D1 Viajes Totales",
+              "nativeQueryRef": "D1 Viajes Totales"
             }
           ]
         }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimPago.Forma de pago",
-              "nativeQueryRef": "Forma de pago"
+              "nativeQueryRef": "Forma de pago",
+              "active": true
             }
           ]
         }

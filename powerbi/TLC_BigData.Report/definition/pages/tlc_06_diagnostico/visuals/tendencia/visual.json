@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_FactoresPropina.Mes",
-              "nativeQueryRef": "Mes"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_FactoresPropina"
-                    }
-                  },
-                  "Property": "D6 Tasa Propina Ponderada"
-                }
-              },
-              "queryRef": "Fact_FactoresPropina.D6 Tasa Propina Ponderada",
-              "nativeQueryRef": "D6 Tasa Propina Ponderada"
+              "nativeQueryRef": "Mes",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_FactoresPropina.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FactoresPropina"
+                    }
+                  },
+                  "Property": "D6 Tasa Propina Ponderada"
+                }
+              },
+              "queryRef": "Fact_FactoresPropina.D6 Tasa Propina Ponderada",
+              "nativeQueryRef": "D6 Tasa Propina Ponderada"
             }
           ]
         }

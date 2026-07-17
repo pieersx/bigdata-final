@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_ClasificacionDemanda.Fecha de predicción",
-              "nativeQueryRef": "Fecha de predicción"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_ClasificacionDemanda"
-                    }
-                  },
-                  "Property": "D9 Exactitud Calculada"
-                }
-              },
-              "queryRef": "Fact_ClasificacionDemanda.D9 Exactitud Calculada",
-              "nativeQueryRef": "D9 Exactitud Calculada"
+              "nativeQueryRef": "Fecha de predicción",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_ClasificacionDemanda.Alta demanda predicha",
               "nativeQueryRef": "Alta demanda predicha"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ClasificacionDemanda"
+                    }
+                  },
+                  "Property": "D9 Exactitud Calculada"
+                }
+              },
+              "queryRef": "Fact_ClasificacionDemanda.D9 Exactitud Calculada",
+              "nativeQueryRef": "D9 Exactitud Calculada"
             }
           ]
         }

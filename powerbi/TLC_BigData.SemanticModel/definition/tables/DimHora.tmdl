@@ -1,17 +1,21 @@
 table DimHora
+	lineageTag: b4891315-49c0-4057-a446-bf7eb232a2bc
 
-	column 'Hora'
+	column Hora
 		dataType: int64
+		lineageTag: 3a23b657-9152-42c6-8f16-883e87a76a2f
 		summarizeBy: none
 		sourceColumn: Hora
 
-	column 'FranjaHoraria'
+	column FranjaHoraria
 		dataType: string
+		lineageTag: 4f17352f-9e9c-4b7c-ba6b-e7167a087d7b
 		summarizeBy: none
 		sourceColumn: FranjaHoraria
 
 	column 'Es hora punta'
 		dataType: boolean
+		lineageTag: 578f8e91-4bd1-45a0-aa93-2e9bb8109929
 		summarizeBy: none
 		sourceColumn: EsHoraPico
 
@@ -26,3 +30,4 @@ table DimHora
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

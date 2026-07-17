@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimCluster.Segmento",
-              "nativeQueryRef": "Segmento"
+              "nativeQueryRef": "Segmento",
+              "active": true
             }
           ]
         }

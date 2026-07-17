@@ -1,22 +1,27 @@
 table DimZonaDestino
+	lineageTag: ad0ec45b-eb4c-415f-9cf5-326dba071376
 
 	column 'ID de zona'
 		dataType: int64
+		lineageTag: 9d20d9a0-2d67-41d8-bd6b-74e9aa062936
 		summarizeBy: none
 		sourceColumn: LocationID
 
-	column 'Distrito'
+	column Distrito
 		dataType: string
+		lineageTag: 3e50ce23-409d-4557-a6fa-72427d04bb2f
 		summarizeBy: none
 		sourceColumn: Borough
 
-	column 'Zona'
+	column Zona
 		dataType: string
+		lineageTag: f884762e-9897-4878-a967-7fa9b5e8a333
 		summarizeBy: none
 		sourceColumn: Zone
 
 	column 'Tipo de zona'
 		dataType: string
+		lineageTag: 635b9736-93e8-4ac9-a151-4aefda5b4526
 		summarizeBy: none
 		sourceColumn: service_zone
 
@@ -31,3 +36,4 @@ table DimZonaDestino
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

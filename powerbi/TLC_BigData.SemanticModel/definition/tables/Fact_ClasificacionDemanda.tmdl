@@ -1,110 +1,137 @@
 table Fact_ClasificacionDemanda
+	lineageTag: 194b046f-cb34-4216-9478-da6c408c2c67
 
 	measure 'D9 Casos Evaluados' = COUNTROWS(Fact_ClasificacionDemanda)
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: 0a0853a9-f71e-41b6-8bce-a7534835b4e3
 
 	measure 'D9 Aciertos' = SUMX(Fact_ClasificacionDemanda, IF(Fact_ClasificacionDemanda[Alta demanda real] = Fact_ClasificacionDemanda[Alta demanda predicha], 1, 0))
 		formatString: #,0
 		displayFolder: Medidas
-
-	measure 'D9 Exactitud Calculada' = DIVIDE([D9 Aciertos], [D9 Casos Evaluados])
-		formatString: 0.00%
-		displayFolder: Medidas
+		lineageTag: 4c2c1d12-0bde-47d2-a3cb-98c058bf6d00
 
 	measure 'D9 Probabilidad Promedio' = AVERAGE(Fact_ClasificacionDemanda[Probabilidad de alta demanda])
 		formatString: 0.00%
 		displayFolder: Medidas
+		lineageTag: a438702f-c1ac-4fea-a352-36efea9e0e3d
+
+	measure 'D9 Exactitud Calculada' = DIVIDE([D9 Aciertos], [D9 Casos Evaluados])
+		formatString: 0.00%
+		displayFolder: Medidas
+		lineageTag: 58c584d3-5beb-47e0-b984-d574d1d68e48
 
 	column 'ID interno de zona'
 		dataType: string
+		lineageTag: 670e502b-6a68-43e3-adff-03edebba5986
 		summarizeBy: none
 		sourceColumn: zone_id
 
 	column 'Fecha de predicción'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: e167b7aa-6531-425c-9ef6-5aebe3fb4dcd
 		summarizeBy: none
 		sourceColumn: prediction_date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Viajes reales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 97e1a9ae-014d-4303-b3f6-5010965dcfd0
 		summarizeBy: none
 		sourceColumn: actual_trips
 
 	column 'Umbral de alta demanda'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: ba52cfb8-d692-40ff-aa21-9c57190da6ff
 		summarizeBy: none
 		sourceColumn: high_demand_threshold
 
 	column 'Alta demanda real'
 		dataType: int64
 		formatString: 0
+		lineageTag: dee77b0d-2002-4d7b-b369-ebccfbdf3c2a
 		summarizeBy: none
 		sourceColumn: actual_high_demand
 
 	column 'Alta demanda predicha'
 		dataType: int64
 		formatString: 0
+		lineageTag: ca2e15ca-5a59-4c7b-b984-2f7b19b82f74
 		summarizeBy: none
 		sourceColumn: predicted_high_demand
 
 	column 'Probabilidad de alta demanda'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 9bd556fc-6d22-49d4-bec1-70a7f1233f1c
 		summarizeBy: none
 		sourceColumn: probability_high_demand
 
 	column 'Fecha de corte temporal'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 1b3c4101-0f3f-41a5-9d37-87b3f8e88105
 		summarizeBy: none
 		sourceColumn: temporal_cutoff
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column 'Nombre de zona'
 		dataType: string
+		lineageTag: 5d85e673-9098-4026-b6d8-7e9a99583bd6
 		summarizeBy: none
 		sourceColumn: zone_name
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 4035e22b-a4a9-4e4e-9ee7-0cc23975933d
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Conjunto de evaluación'
 		dataType: string
+		lineageTag: 10ebc212-0be1-456a-8957-59bc4df9dceb
 		summarizeBy: none
 		sourceColumn: dataset_split
 
 	column 'Fecha de recogida'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 0893fce4-2f3b-40ef-8459-f12e2ba01934
 		summarizeBy: none
 		sourceColumn: pickup_date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
+		lineageTag: 50306c64-4d9e-436b-a575-fcf293014261
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
 	column 'Clase real'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 0fa87ba0-337a-4b58-bf3b-03f4a5a67a8c
 		summarizeBy: none
 		sourceColumn: label
 
 	column 'Clase predicha'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: e1d4b711-306f-468c-9b20-6da6466a1e29
 		summarizeBy: none
 		sourceColumn: prediction
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: cc0c9017-1997-4ed8-84f9-f950f3794242
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -120,3 +147,4 @@ table Fact_ClasificacionDemanda
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

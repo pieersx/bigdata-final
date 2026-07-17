@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_ClasificacionDemanda.Conjunto de evaluación",
-              "nativeQueryRef": "Conjunto de evaluación"
+              "nativeQueryRef": "Conjunto de evaluación",
+              "active": true
             }
           ]
         },

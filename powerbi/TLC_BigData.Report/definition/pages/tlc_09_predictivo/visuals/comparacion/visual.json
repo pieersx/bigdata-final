@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_ClasificacionDemanda.Alta demanda predicha",
-              "nativeQueryRef": "Alta demanda predicha"
+              "nativeQueryRef": "Alta demanda predicha",
+              "active": true
             }
           ]
         },

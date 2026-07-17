@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_ZonasSegmentadas.Perfil del segmento",
-              "nativeQueryRef": "Perfil del segmento"
+              "nativeQueryRef": "Perfil del segmento",
+              "active": true
             }
           ]
         },

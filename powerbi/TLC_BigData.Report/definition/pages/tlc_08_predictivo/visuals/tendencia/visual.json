@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_ZonasSegmentadas.ID zona de origen",
-              "nativeQueryRef": "ID zona de origen"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_ZonasSegmentadas"
-                    }
-                  },
-                  "Property": "D8 Zonas Segmentadas"
-                }
-              },
-              "queryRef": "Fact_ZonasSegmentadas.D8 Zonas Segmentadas",
-              "nativeQueryRef": "D8 Zonas Segmentadas"
+              "nativeQueryRef": "ID zona de origen",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_ZonasSegmentadas.borough",
               "nativeQueryRef": "borough"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "D8 Zonas Segmentadas"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.D8 Zonas Segmentadas",
+              "nativeQueryRef": "D8 Zonas Segmentadas"
             }
           ]
         }

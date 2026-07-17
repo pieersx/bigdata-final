@@ -1,29 +1,35 @@
 table Fact_MetricasModelos
+	lineageTag: 93f1d701-5d16-4c29-a538-6ee1131ad2f0
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: f97a987e-12c1-48d7-b08d-9f9658c82da2
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Nombre de la métrica'
 		dataType: string
+		lineageTag: 246ef11d-1d12-46e5-8ed4-2519108aff91
 		summarizeBy: none
 		sourceColumn: metric_name
 
 	column 'Valor de la métrica'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 90293aa2-05bb-4b27-9b40-633106d02457
 		summarizeBy: none
 		sourceColumn: metric_value
 
 	column 'Detalle de la métrica'
 		dataType: string
+		lineageTag: adbd653d-118f-4b07-b744-d249e095d6ab
 		summarizeBy: none
 		sourceColumn: metric_text
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: 72c3e5b4-95de-4f74-a542-25aaafeb9924
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -39,3 +45,4 @@ table Fact_MetricasModelos
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

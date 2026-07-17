@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_FinanzasServicio.Tipo de pago",
-              "nativeQueryRef": "Tipo de pago"
+              "nativeQueryRef": "Tipo de pago",
+              "active": true
             }
           ]
         },

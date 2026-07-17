@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_FactoresPropina.Distrito de origen",
-              "nativeQueryRef": "Distrito de origen"
+              "nativeQueryRef": "Distrito de origen",
+              "active": true
             }
           ]
         },

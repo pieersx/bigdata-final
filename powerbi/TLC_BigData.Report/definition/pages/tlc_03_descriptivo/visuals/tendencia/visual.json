@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_FinanzasServicio.Mes",
-              "nativeQueryRef": "Mes"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_FinanzasServicio"
-                    }
-                  },
-                  "Property": "D3 Ingresos Totales"
-                }
-              },
-              "queryRef": "Fact_FinanzasServicio.D3 Ingresos Totales",
-              "nativeQueryRef": "D3 Ingresos Totales"
+              "nativeQueryRef": "Mes",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_FinanzasServicio.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "D3 Ingresos Totales"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.D3 Ingresos Totales",
+              "nativeQueryRef": "D3 Ingresos Totales"
             }
           ]
         }

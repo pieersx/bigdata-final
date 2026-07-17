@@ -1,83 +1,105 @@
 table Fact_PronosticoDemanda
+	lineageTag: 49400f54-fa77-4745-86e1-99b635da3454
 
 	measure 'D7 Viajes Pronosticados' = SUM(Fact_PronosticoDemanda[Viajes pronosticados])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: e0524e6d-8022-491b-9b60-0bd2c18d8e41
 
 	measure 'D7 Limite Inferior 95' = SUM(Fact_PronosticoDemanda[Límite inferior al 95 %])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: 178ac82a-936a-440c-aee3-5db234a22121
 
 	measure 'D7 Limite Superior 95' = SUM(Fact_PronosticoDemanda[Límite superior al 95 %])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: ef4d5044-cd04-488a-9fa6-b2b1dc6229ea
 
 	column 'Fecha pronosticada'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 6eb92101-33dc-4e38-92a1-dfe0ae4724e8
 		summarizeBy: none
 		sourceColumn: forecast_date
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column 'Tipo de servicio'
 		dataType: string
+		lineageTag: b3e9993d-af49-4234-9889-ceeced613ba8
 		summarizeBy: none
 		sourceColumn: service_type
 
 	column 'Viajes pronosticados'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 04b5d14f-e671-49d9-9725-411bce626edb
 		summarizeBy: none
 		sourceColumn: forecast_trips
 
 	column 'Día del horizonte'
 		dataType: int64
 		formatString: 0
+		lineageTag: 496db83b-4951-451f-8d6a-cba212ed6c48
 		summarizeBy: none
 		sourceColumn: horizon_day
 
 	column 'Límite inferior al 95 %'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: d439e71f-8279-4af2-83df-65b0b660e422
 		summarizeBy: none
 		sourceColumn: forecast_lower_95
 
 	column 'Límite superior al 95 %'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 4d82b1a6-0a13-48b8-9554-8d516672ba5f
 		summarizeBy: none
 		sourceColumn: forecast_upper_95
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 438ddd65-8f61-43f8-b3c8-4fd4d8e89f3c
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Fecha de recogida'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 2c3e88b1-9731-45c2-9326-e3700ff9fd2e
 		summarizeBy: none
 		sourceColumn: pickup_date
 
-	column 'Servicio'
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Servicio
 		dataType: string
+		lineageTag: a1611028-a2c0-43cc-93cc-27d9bf2ce684
 		summarizeBy: none
 		sourceColumn: service
 
 	column 'Fecha de la serie'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: fe679d09-8e9f-4b88-b75d-f2c20d9445fd
 		summarizeBy: none
 		sourceColumn: ds
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Predicción del modelo'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 06f79ef0-891a-4d4b-bfe4-42e1821213d5
 		summarizeBy: none
 		sourceColumn: yhat
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: 236c2a89-456e-4256-ac03-0dd3a7dfddef
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -93,3 +115,4 @@ table Fact_PronosticoDemanda
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

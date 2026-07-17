@@ -1,35 +1,42 @@
 table Fact_MatrizConfusion
+	lineageTag: 55e2e6d9-c11b-4e17-bbdf-638e71d640b0
 
 	measure 'D9 Matriz Casos' = SUM(Fact_MatrizConfusion[Cantidad de casos])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: c4dd79fb-4a01-4b6c-bff7-e48e31cd4454
 
 	column 'Clase real'
 		dataType: int64
 		formatString: 0
+		lineageTag: ee271d3d-e928-4e69-9c82-070db0849a68
 		summarizeBy: none
 		sourceColumn: actual_label
 
 	column 'Clase predicha'
 		dataType: int64
 		formatString: 0
+		lineageTag: f637e933-54b5-4403-8734-f6fa82d07dd0
 		summarizeBy: none
 		sourceColumn: predicted_label
 
 	column 'Cantidad de casos'
 		dataType: int64
 		formatString: 0
+		lineageTag: 83f99d15-b7c6-4b0a-84e3-fb7d35ae838f
 		summarizeBy: none
 		sourceColumn: count
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 196745aa-6fc3-467e-b3ee-38162bc4c6d9
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: 4a4512d7-e6f6-4ebf-bc92-b9dc3b6de16f
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -45,3 +52,4 @@ table Fact_MatrizConfusion
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

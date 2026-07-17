@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimFecha.Año",
-              "nativeQueryRef": "Año"
+              "nativeQueryRef": "Año",
+              "active": true
             }
           ]
         }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_AnomaliasDiarias.Dirección de la anomalía",
-              "nativeQueryRef": "Dirección de la anomalía"
+              "nativeQueryRef": "Dirección de la anomalía",
+              "active": true
             }
           ]
         },

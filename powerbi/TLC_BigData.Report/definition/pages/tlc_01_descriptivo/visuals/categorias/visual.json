@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_DemandaDiaria.Distrito de origen",
-              "nativeQueryRef": "Distrito de origen"
+              "nativeQueryRef": "Distrito de origen",
+              "active": true
             }
           ]
         },

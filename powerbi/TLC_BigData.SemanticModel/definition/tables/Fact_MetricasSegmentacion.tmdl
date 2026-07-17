@@ -1,33 +1,40 @@
 table Fact_MetricasSegmentacion
+	lineageTag: d1b4a327-8151-428e-bc6d-de5780b5fda8
 
 	measure 'D8 Calidad de Segmentos (Silhouette)' = CALCULATE(MAX(Fact_MetricasSegmentacion[Valor de la métrica]), Fact_MetricasSegmentacion[Nombre de la métrica] = "silhouette")
 		formatString: 0.0000
 		displayFolder: Medidas
+		lineageTag: 3af55026-c7e5-41fd-a448-156811ba6482
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 3e07b727-6f26-4362-9516-48e0b486d9f6
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Nombre de la métrica'
 		dataType: string
+		lineageTag: f481b79e-73bd-4726-963a-0cba1fb5c956
 		summarizeBy: none
 		sourceColumn: metric_name
 
 	column 'Valor de la métrica'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: da7398ee-98b2-432a-8a05-71b4d4f4e7c5
 		summarizeBy: none
 		sourceColumn: metric_value
 
 	column 'Detalle de la métrica'
 		dataType: string
+		lineageTag: d75ec88e-6cc1-4055-921b-f08cab758733
 		summarizeBy: none
 		sourceColumn: metric_text
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: b6dacd57-3b9f-451f-b0ad-a4bdfe215ff6
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -43,3 +50,4 @@ table Fact_MetricasSegmentacion
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

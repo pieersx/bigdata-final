@@ -1,12 +1,15 @@
 table DimCluster
+	lineageTag: ebc04ed1-eaf2-43bf-a78b-a58858af1843
 
-	column 'SegmentoID'
+	column SegmentoID
 		dataType: int64
+		lineageTag: a45ba3d3-f935-43a9-b81d-c7934ff5cea2
 		summarizeBy: none
 		sourceColumn: SegmentoID
 
-	column 'Segmento'
+	column Segmento
 		dataType: string
+		lineageTag: e4ab801e-48c8-48f2-a303-6c7624401d53
 		summarizeBy: none
 		sourceColumn: Segmento
 
@@ -21,3 +24,4 @@ table DimCluster
 				    Tipos
 
 	annotation PBI_ResultType = Table
+

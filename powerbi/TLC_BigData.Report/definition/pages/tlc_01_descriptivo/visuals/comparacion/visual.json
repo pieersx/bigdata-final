@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_DemandaDiaria.Servicio",
-              "nativeQueryRef": "Servicio"
+              "nativeQueryRef": "Servicio",
+              "active": true
             }
           ]
         },

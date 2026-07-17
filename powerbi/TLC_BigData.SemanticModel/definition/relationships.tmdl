@@ -1,62 +1,62 @@
 relationship e3d598bb-3117-40d1-a423-37fad96d550f
 	fromColumn: Fact_DemandaDiaria.'Fecha de recogida'
-	toColumn: DimFecha.'Fecha'
+	toColumn: DimFecha.Fecha
 
 relationship 0c3801ff-56f8-4f7c-91d0-c430e722b071
 	fromColumn: Fact_PerfilHorario.'Fecha de recogida'
-	toColumn: DimFecha.'Fecha'
+	toColumn: DimFecha.Fecha
 
 relationship 73c916f2-28f4-4ee1-bee7-7ec0b50c9124
 	fromColumn: Fact_AnomaliasDiarias.'Fecha de recogida'
-	toColumn: DimFecha.'Fecha'
+	toColumn: DimFecha.Fecha
 
 relationship 0de28b2b-5eb4-439e-8ca8-ff7b102f64da
 	fromColumn: Fact_PronosticoDemanda.'Fecha pronosticada'
-	toColumn: DimFecha.'Fecha'
+	toColumn: DimFecha.Fecha
 
 relationship 53239061-682b-4291-b296-a08d7d3966f5
 	fromColumn: Fact_ClasificacionDemanda.'Fecha de predicción'
-	toColumn: DimFecha.'Fecha'
+	toColumn: DimFecha.Fecha
 
 relationship 7d688054-cf6c-4c0e-91c7-9dd71a49d6ee
-	fromColumn: Fact_FinanzasServicio.'Mes'
-	toColumn: DimFecha.'Fecha'
+	fromColumn: Fact_FinanzasServicio.Mes
+	toColumn: DimFecha.Fecha
 
 relationship c94fcd98-ec79-483f-ae52-a2bdff3ea9e8
-	fromColumn: Fact_RendimientoRutas.'Mes'
-	toColumn: DimFecha.'Fecha'
+	fromColumn: Fact_RendimientoRutas.Mes
+	toColumn: DimFecha.Fecha
 
 relationship 6ff89c20-139d-4d90-9918-e3d6da76682e
-	fromColumn: Fact_FactoresPropina.'Mes'
-	toColumn: DimFecha.'Fecha'
+	fromColumn: Fact_FactoresPropina.Mes
+	toColumn: DimFecha.Fecha
 
 relationship da1a6a54-5bab-4b51-97d3-05a7d93dc7d1
-	fromColumn: Fact_DemandaDiaria.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_DemandaDiaria.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship 546fd3bc-ba5c-40c9-b6b0-0798a9e88ef7
-	fromColumn: Fact_PerfilHorario.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_PerfilHorario.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship a59ba9fe-2707-49ff-97a3-a6c1ab3f4d4d
-	fromColumn: Fact_FinanzasServicio.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_FinanzasServicio.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship 0ba5e146-1a7e-4a28-83ed-a4ceae098eb1
-	fromColumn: Fact_RendimientoRutas.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_RendimientoRutas.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship a8c6b1ac-2347-4f03-afc4-595d15e23757
-	fromColumn: Fact_FactoresPropina.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_FactoresPropina.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship 5ab05190-8330-4a57-aa03-d59694adc5df
-	fromColumn: Fact_AnomaliasDiarias.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_AnomaliasDiarias.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship 3dc033c5-5c61-421f-99b7-665f1a60be83
-	fromColumn: Fact_PronosticoDemanda.'Servicio'
-	toColumn: DimServicio.'Servicio'
+	fromColumn: Fact_PronosticoDemanda.Servicio
+	toColumn: DimServicio.Servicio
 
 relationship 232f86e9-3bdc-44e4-ae3b-88dbf0adf410
 	fromColumn: Fact_DemandaDiaria.'ID zona de origen'
@@ -88,24 +88,25 @@ relationship ad6aed7f-98c2-44a2-8da9-6f07e0d8bcfe
 
 relationship 475ae241-9d4a-4a8c-8c5c-2d6c39e9a699
 	fromColumn: Fact_FinanzasServicio.'Tipo de pago'
-	toColumn: DimPago.'TipoPago'
+	toColumn: DimPago.TipoPago
 
 relationship 20bfdc66-b94a-479e-90e7-dc81f3e90cfe
 	fromColumn: Fact_FactoresPropina.'Tipo de pago'
-	toColumn: DimPago.'TipoPago'
+	toColumn: DimPago.TipoPago
 
 relationship 07a95e3f-e847-47d0-b577-57cf52fdc46a
 	fromColumn: Fact_PerfilHorario.'Hora de recogida'
-	toColumn: DimHora.'Hora'
+	toColumn: DimHora.Hora
 
 relationship 530a75e8-9fcd-4009-a40f-80403e65267b
 	fromColumn: Fact_FactoresPropina.'Hora de recogida'
-	toColumn: DimHora.'Hora'
+	toColumn: DimHora.Hora
 
 relationship 8c0e0fa7-ffc7-4198-bf02-54b917a99967
 	fromColumn: Fact_ZonasSegmentadas.'ID de segmento'
-	toColumn: DimCluster.'SegmentoID'
+	toColumn: DimCluster.SegmentoID
 
 relationship e4335838-11e6-409f-b087-00f2e2fde3e1
 	fromColumn: Fact_PerfilesSegmentacion.'ID de segmento'
-	toColumn: DimCluster.'SegmentoID'
+	toColumn: DimCluster.SegmentoID
+

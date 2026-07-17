@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "D10_Auditoria.Categoría",
-              "nativeQueryRef": "Categoría"
+              "nativeQueryRef": "Categoría",
+              "active": true
             }
           ]
         },

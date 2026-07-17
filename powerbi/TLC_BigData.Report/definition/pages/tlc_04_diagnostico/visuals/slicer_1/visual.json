@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimServicio.Nombre del servicio",
-              "nativeQueryRef": "Nombre del servicio"
+              "nativeQueryRef": "Nombre del servicio",
+              "active": true
             }
           ]
         }

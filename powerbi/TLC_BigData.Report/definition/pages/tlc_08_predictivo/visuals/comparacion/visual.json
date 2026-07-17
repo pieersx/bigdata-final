@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_ZonasSegmentadas.borough",
-              "nativeQueryRef": "borough"
+              "nativeQueryRef": "borough",
+              "active": true
             }
           ]
         },

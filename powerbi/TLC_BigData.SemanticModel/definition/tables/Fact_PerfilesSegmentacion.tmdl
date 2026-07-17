@@ -1,90 +1,106 @@
 table Fact_PerfilesSegmentacion
+	lineageTag: d05edb74-2b30-4dfd-8bbf-220bb7e280ef
 
 	column 'ID de segmento'
 		dataType: int64
 		formatString: 0
+		lineageTag: a7f0660c-219a-4787-aaea-bddc4d4eb26d
 		summarizeBy: none
 		sourceColumn: segment_id
 
 	column 'Cantidad de zonas'
 		dataType: int64
 		formatString: 0
+		lineageTag: 0dcfd3c3-7913-4778-b40d-6e3d606a37d2
 		summarizeBy: none
 		sourceColumn: zone_count
 
 	column 'Viajes totales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 58d55479-906d-4275-adba-c31e1fc5274a
 		summarizeBy: none
 		sourceColumn: total_trips
 
 	column 'Promedio de viajes diarios'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: f8ece450-c1bd-4b86-b289-738511ba3cf3
 		summarizeBy: none
 		sourceColumn: avg_avg_daily_trips
 
 	column 'Variabilidad promedio de la demanda'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 63dfc14c-9777-4b90-92ea-b8656eb01d7c
 		summarizeBy: none
 		sourceColumn: avg_demand_stddev
 
 	column 'Días activos promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 2bf1afef-ab4d-49b5-a2fd-b701e8c1cbba
 		summarizeBy: none
 		sourceColumn: avg_active_days
 
 	column 'Promedio de tarifa'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 8d6e93ad-4016-4bb6-80cd-db5ab4a3c741
 		summarizeBy: none
 		sourceColumn: avg_avg_fare_amount
 
 	column 'Promedio de distancia'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 7e5d7bd6-7d03-455b-9903-6022ae35908a
 		summarizeBy: none
 		sourceColumn: avg_avg_trip_distance
 
 	column 'Promedio de duración'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: efdb8509-9190-412b-b25a-c0c7c5312f35
 		summarizeBy: none
 		sourceColumn: avg_avg_duration_minutes
 
 	column 'Ingreso total promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 7ffc6eab-e48f-4932-95b5-21229b017f22
 		summarizeBy: none
 		sourceColumn: avg_total_revenue
 
 	column 'Nivel de demanda'
 		dataType: int64
 		formatString: 0
+		lineageTag: 94ddd08a-6048-4688-97a1-792e0189ed76
 		summarizeBy: none
 		sourceColumn: demand_rank
 
 	column 'Perfil del segmento'
 		dataType: string
+		lineageTag: a35940e3-be05-4d7d-adb6-3c75600f37b8
 		summarizeBy: none
 		sourceColumn: segment_label
 
 	column 'Participación de viajes'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 7a0fc73f-9b43-4968-ba5b-2169c77d5cec
 		summarizeBy: none
 		sourceColumn: trip_share
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 2237dc7b-82fc-4a03-879b-f7eefc6b5cb9
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: ed67d871-c443-4d3c-a4e4-9e6fed12011d
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -100,3 +116,4 @@ table Fact_PerfilesSegmentacion
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

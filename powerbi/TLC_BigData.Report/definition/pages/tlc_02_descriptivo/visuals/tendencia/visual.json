@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_PerfilHorario.Fecha de recogida",
-              "nativeQueryRef": "Fecha de recogida"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_PerfilHorario"
-                    }
-                  },
-                  "Property": "D2 Viajes Totales"
-                }
-              },
-              "queryRef": "Fact_PerfilHorario.D2 Viajes Totales",
-              "nativeQueryRef": "D2 Viajes Totales"
+              "nativeQueryRef": "Fecha de recogida",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_PerfilHorario.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PerfilHorario"
+                    }
+                  },
+                  "Property": "D2 Viajes Totales"
+                }
+              },
+              "queryRef": "Fact_PerfilHorario.D2 Viajes Totales",
+              "nativeQueryRef": "D2 Viajes Totales"
             }
           ]
         }

@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_RendimientoRutas.Mes",
-              "nativeQueryRef": "Mes"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_RendimientoRutas"
-                    }
-                  },
-                  "Property": "D5 Viajes Rutas"
-                }
-              },
-              "queryRef": "Fact_RendimientoRutas.D5 Viajes Rutas",
-              "nativeQueryRef": "D5 Viajes Rutas"
+              "nativeQueryRef": "Mes",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_RendimientoRutas.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_RendimientoRutas"
+                    }
+                  },
+                  "Property": "D5 Viajes Rutas"
+                }
+              },
+              "queryRef": "Fact_RendimientoRutas.D5 Viajes Rutas",
+              "nativeQueryRef": "D5 Viajes Rutas"
             }
           ]
         }

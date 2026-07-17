@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimHora.Hora",
-              "nativeQueryRef": "Hora"
+              "nativeQueryRef": "Hora",
+              "active": true
             }
           ]
         }

@@ -1,103 +1,124 @@
 table Fact_FinanzasServicio
+	lineageTag: acdde4a5-3676-4057-9da6-fdca069a296e
 
 	measure 'D3 Ingresos Totales' = SUM(Fact_FinanzasServicio[Ingresos totales])
 		formatString: $#,0.00
 		displayFolder: Medidas
+		lineageTag: 132b5c25-9dcd-467e-b6ce-8df3f03e2844
 
 	measure 'D3 Propinas Totales' = SUM(Fact_FinanzasServicio[Ingresos por propinas])
 		formatString: $#,0.00
 		displayFolder: Medidas
+		lineageTag: 9009363a-81a6-40eb-87a7-921ef4d153a7
 
 	measure 'D3 Tasa Propina Ponderada' = DIVIDE(SUM(Fact_FinanzasServicio[Ingresos por propinas]), SUM(Fact_FinanzasServicio[Ingresos por tarifa]))
 		formatString: 0.00%
 		displayFolder: Medidas
+		lineageTag: b96e8a7b-e20d-4e80-a8ca-5a1e1959739e
 
 	measure 'D3 Viajes con Propina %' = DIVIDE(SUM(Fact_FinanzasServicio[Viajes con propina]), SUM(Fact_FinanzasServicio[Cantidad de viajes]))
 		formatString: 0.00%
 		displayFolder: Medidas
+		lineageTag: c8a19266-4a05-4f3a-9c2b-c18896912f32
 
 	column 'Mes de recogida'
 		dataType: int64
 		formatString: 0
+		lineageTag: ff53f741-cc70-40e2-ad6b-469e9debcfb4
 		summarizeBy: none
 		sourceColumn: pickup_month
 
-	column 'Servicio'
+	column Servicio
 		dataType: string
+		lineageTag: e7b8b7d8-5806-4d35-a6cf-9f0022f539ca
 		summarizeBy: none
 		sourceColumn: service
 
 	column 'Tipo de pago'
 		dataType: int64
 		formatString: 0
+		lineageTag: 8022ab84-0b76-4bff-8c69-fd8ae97fe59b
 		summarizeBy: none
 		sourceColumn: payment_type
 
 	column 'Cantidad de viajes'
 		dataType: int64
 		formatString: 0
+		lineageTag: 8392f7b9-adde-4388-b47e-3f59e08941b8
 		summarizeBy: none
 		sourceColumn: trip_count
 
 	column 'Ingresos totales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 899cdb7d-5cc8-4161-afe9-5447d6b9aa47
 		summarizeBy: none
 		sourceColumn: total_revenue
 
 	column 'Ingresos por tarifa'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 893a7ad8-7d2c-4162-ac69-92487afe9406
 		summarizeBy: none
 		sourceColumn: fare_revenue
 
 	column 'Ingresos por propinas'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: d1671885-95e3-4500-8e3e-7f76815ab9a5
 		summarizeBy: none
 		sourceColumn: tip_revenue
 
 	column 'Ingresos por peajes'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 9f826039-aa7d-4698-acf0-f21838666187
 		summarizeBy: none
 		sourceColumn: tolls_revenue
 
 	column 'Impuestos y recargos'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 8518b1c1-8fec-4ce9-a51b-b13bb6cbfeff
 		summarizeBy: none
 		sourceColumn: taxes_and_surcharges
 
 	column 'Importe total promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 5ea2328f-38aa-47b2-8632-7de7bb41e789
 		summarizeBy: none
 		sourceColumn: avg_total_amount
 
 	column 'Propina promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 351849ae-e94a-40bb-b7cd-688aa09de691
 		summarizeBy: none
 		sourceColumn: avg_tip_amount
 
 	column 'Viajes con propina'
 		dataType: int64
 		formatString: 0
+		lineageTag: 6e3992dd-2fde-4131-8827-d915af779258
 		summarizeBy: none
 		sourceColumn: tipped_trips
 
 	column 'Año de recogida'
 		dataType: int64
 		formatString: 0
+		lineageTag: f5ec7614-7aec-4ccd-a9f1-6ef8fc7f9217
 		summarizeBy: none
 		sourceColumn: pickup_year
 
-	column 'Mes'
+	column Mes
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 4c8cdda9-1413-4bcc-957c-b3288d71c27e
 		summarizeBy: none
 		sourceColumn: month_start
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	partition Fact_FinanzasServicio = m
 		mode: import
@@ -111,3 +132,4 @@ table Fact_FinanzasServicio
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

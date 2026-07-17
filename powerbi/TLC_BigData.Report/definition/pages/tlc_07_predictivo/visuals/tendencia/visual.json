@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_PronosticoDemanda.Fecha pronosticada",
-              "nativeQueryRef": "Fecha pronosticada"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_PronosticoDemanda"
-                    }
-                  },
-                  "Property": "D7 Viajes Pronosticados"
-                }
-              },
-              "queryRef": "Fact_PronosticoDemanda.D7 Viajes Pronosticados",
-              "nativeQueryRef": "D7 Viajes Pronosticados"
+              "nativeQueryRef": "Fecha pronosticada",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_PronosticoDemanda.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PronosticoDemanda"
+                    }
+                  },
+                  "Property": "D7 Viajes Pronosticados"
+                }
+              },
+              "queryRef": "Fact_PronosticoDemanda.D7 Viajes Pronosticados",
+              "nativeQueryRef": "D7 Viajes Pronosticados"
             }
           ]
         }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_RendimientoRutas.Zona de origen",
-              "nativeQueryRef": "Zona de origen"
+              "nativeQueryRef": "Zona de origen",
+              "active": true
             }
           ]
         },

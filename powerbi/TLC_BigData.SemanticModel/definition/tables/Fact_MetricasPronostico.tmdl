@@ -1,41 +1,50 @@
 table Fact_MetricasPronostico
+	lineageTag: df458f73-011e-4d7d-ae07-1f160195fa86
 
 	measure 'D7 Error WMAPE' = DIVIDE(CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "wmape_percent"), 100)
 		formatString: 0.00%
 		displayFolder: Medidas
+		lineageTag: e24513b3-6ddd-4b76-8f9d-bd8454a95496
 
 	measure 'D7 Error RMSE' = CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "rmse")
 		formatString: #,0.00
 		displayFolder: Medidas
+		lineageTag: 8e4dfa2b-6d8b-4eb9-b270-a36af7b5344d
 
 	measure 'D7 Coeficiente R²' = CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "r2")
 		formatString: 0.0000
 		displayFolder: Medidas
+		lineageTag: ba76d8e7-81da-43e7-8ced-dd16a23e4dc8
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: eb61353f-9003-4677-a766-195548419af5
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Nombre de la métrica'
 		dataType: string
+		lineageTag: 0c58aaa3-228d-44dc-b5ac-f1e5ed2ecc74
 		summarizeBy: none
 		sourceColumn: metric_name
 
 	column 'Valor de la métrica'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: dde8e1ec-72e3-4f75-a1e4-cf5880afbc65
 		summarizeBy: none
 		sourceColumn: metric_value
 
 	column 'Detalle de la métrica'
 		dataType: string
+		lineageTag: 16403cb3-6869-4046-a288-3eee0073fbe9
 		summarizeBy: none
 		sourceColumn: metric_text
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: 18cdc6ad-5169-4a7b-a3fc-6f16f10d89a3
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -51,3 +60,4 @@ table Fact_MetricasPronostico
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

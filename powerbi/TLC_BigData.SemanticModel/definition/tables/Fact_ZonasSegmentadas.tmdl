@@ -1,121 +1,144 @@
 table Fact_ZonasSegmentadas
+	lineageTag: 80575770-f226-48b0-9aca-be3902c5a54a
 
 	measure 'D8 Zonas Segmentadas' = DISTINCTCOUNT(Fact_ZonasSegmentadas[ID zona de origen])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: 3a1f3412-94bd-447f-b36e-e0865c827884
 
 	measure 'D8 Viajes Segmentados' = SUM(Fact_ZonasSegmentadas[Viajes totales])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: 4413e67c-eb96-4a8c-b51a-72b882546e86
 
 	measure 'D8 Ingreso por Viaje' = DIVIDE(SUM(Fact_ZonasSegmentadas[Ingresos totales]), SUM(Fact_ZonasSegmentadas[Viajes totales]))
 		formatString: $#,0.00
 		displayFolder: Medidas
+		lineageTag: 11264296-8ed4-4d62-8b30-a381681a90a7
+
+	column borough
+		dataType: string
+		lineageTag: c97620c7-358f-4b22-9831-ef12fe53798b
+		summarizeBy: none
+		sourceColumn: borough
 
 	column 'ID de segmento'
 		dataType: int64
 		formatString: 0
+		lineageTag: 4d4e2e52-09fd-424f-a8b8-c041e59d2bf1
 		summarizeBy: none
 		sourceColumn: segment_id
 
 	column 'ID interno de zona'
 		dataType: string
+		lineageTag: 2dd25fe7-0221-41c4-8713-9404e8249cbb
 		summarizeBy: none
 		sourceColumn: zone_id
 
 	column 'Viajes totales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 541da9d5-cfc1-426a-91e4-6f881cdda1c3
 		summarizeBy: none
 		sourceColumn: total_trips
 
 	column 'Viajes diarios promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: de370416-7f0c-429b-a889-7996768e7232
 		summarizeBy: none
 		sourceColumn: avg_daily_trips
 
 	column 'Variabilidad de la demanda'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 069e40a9-3561-4bc8-861e-91e1822c8b4a
 		summarizeBy: none
 		sourceColumn: demand_stddev
 
 	column 'Días activos'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 4cb258bf-e7af-465a-b1fd-3878348ac85b
 		summarizeBy: none
 		sourceColumn: active_days
 
 	column 'Nombre de zona'
 		dataType: string
+		lineageTag: 6e122795-3deb-45a0-a4fe-67ef101cc9bf
 		summarizeBy: none
 		sourceColumn: zone_name
-
-	column 'borough'
-		dataType: string
-		summarizeBy: none
-		sourceColumn: borough
 
 	column 'Tarifa promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 0697188b-2baf-4ca5-97fe-b604efc09421
 		summarizeBy: none
 		sourceColumn: avg_fare_amount
 
 	column 'Distancia promedio del viaje'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 5767f8a5-848a-4a26-8d42-bf247de56608
 		summarizeBy: none
 		sourceColumn: avg_trip_distance
 
 	column 'Duración promedio en minutos'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: de609580-3eb3-4933-8474-98dcc1c55cec
 		summarizeBy: none
 		sourceColumn: avg_duration_minutes
 
 	column 'Ingresos totales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 60faadc4-bc97-4f25-9be9-a98bfca05888
 		summarizeBy: none
 		sourceColumn: total_revenue
 
 	column 'Perfil del segmento'
 		dataType: string
+		lineageTag: 838c2936-2ad9-451f-9075-fdaf0f227225
 		summarizeBy: none
 		sourceColumn: segment_label
 
 	column 'Nivel de demanda'
 		dataType: int64
 		formatString: 0
+		lineageTag: 39a2086b-e7cd-44a1-b04b-c92aeaee1070
 		summarizeBy: none
 		sourceColumn: demand_rank
 
 	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
+		lineageTag: 871d0415-4ed2-4a67-afa9-038d8e62881c
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
 	column 'Nombre del modelo'
 		dataType: string
+		lineageTag: 41eb4eab-202a-482f-b3db-8ffb52391b3f
 		summarizeBy: none
 		sourceColumn: model_name
 
 	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
+		lineageTag: 668873d2-a644-4d68-8ac5-45186f476ad6
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
 	column 'Zona de origen'
 		dataType: string
+		lineageTag: e3e4a245-720b-4c54-8d8f-320b5631db24
 		summarizeBy: none
 		sourceColumn: pickup_zone
 
 	column 'Distrito de origen'
 		dataType: string
+		lineageTag: 190055ab-4e34-4e4a-bdb1-f614bbdaee84
 		summarizeBy: none
 		sourceColumn: pickup_borough
 
@@ -131,3 +154,4 @@ table Fact_ZonasSegmentadas
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

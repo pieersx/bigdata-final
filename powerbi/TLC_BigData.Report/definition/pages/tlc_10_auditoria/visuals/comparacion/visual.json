@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "D10_Auditoria.Estado",
-              "nativeQueryRef": "Estado"
+              "nativeQueryRef": "Estado",
+              "active": true
             }
           ]
         },

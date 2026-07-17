@@ -1,170 +1,203 @@
 table Fact_DemandaDiaria
+	lineageTag: 192ea7a5-6db3-4070-bd04-dc39f65012c4
 
 	measure 'D1 Viajes Totales' = SUM(Fact_DemandaDiaria[Cantidad de viajes])
 		formatString: #,0
 		displayFolder: Medidas
+		lineageTag: 93cd101d-fe69-4afc-94d1-c946510fafb8
 
 	measure 'D1 Ingresos Totales' = SUM(Fact_DemandaDiaria[Ingresos totales])
 		formatString: $#,0.00
 		displayFolder: Medidas
+		lineageTag: 3af1d85e-a26a-4408-a25e-d4999c7a71a8
 
 	measure 'D1 Ingreso por Viaje' = DIVIDE([D1 Ingresos Totales], [D1 Viajes Totales])
 		formatString: $#,0.00
 		displayFolder: Medidas
+		lineageTag: 98379936-28c9-4722-af67-26c666efa9b6
 
 	measure 'D1 Distancia Promedio' = DIVIDE(SUM(Fact_DemandaDiaria[Distancia total en millas]), [D1 Viajes Totales])
 		formatString: 0.00 "mi"
 		displayFolder: Medidas
+		lineageTag: b7cc8670-3c06-456f-9e3c-a33fc5cf49f2
 
 	column 'Fecha de recogida'
 		dataType: dateTime
 		formatString: Short Date
+		lineageTag: 5d835999-52e8-4764-9bbc-4925cc181759
 		summarizeBy: none
 		sourceColumn: pickup_date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Mes de recogida'
 		dataType: int64
 		formatString: 0
+		lineageTag: bd143210-dc6b-4b46-a9cb-ebd22e5efc19
 		summarizeBy: none
 		sourceColumn: pickup_month
 
 	column 'Día de la semana'
 		dataType: int64
 		formatString: 0
+		lineageTag: 91272f99-2b89-4aa3-81a9-0347a7fa9b74
 		summarizeBy: none
 		sourceColumn: pickup_day_of_week
 
-	column 'Servicio'
+	column Servicio
 		dataType: string
+		lineageTag: 3b1002cd-5e42-44c6-bbe5-4828fd48f6c8
 		summarizeBy: none
 		sourceColumn: service
 
 	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
+		lineageTag: 571d29f7-013c-4ea4-b26c-e6e72c96ea6e
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
 	column 'Distrito de origen'
 		dataType: string
+		lineageTag: 31693838-646b-4b25-817f-e5257cbeb658
 		summarizeBy: none
 		sourceColumn: pickup_borough
 
 	column 'Zona de origen'
 		dataType: string
+		lineageTag: ac56cc05-c865-4cf3-9ffc-7511560af4c2
 		summarizeBy: none
 		sourceColumn: pickup_zone
 
 	column 'Tipo de zona de origen'
 		dataType: string
+		lineageTag: 7537ecec-5137-42cb-b709-b2226cfe6420
 		summarizeBy: none
 		sourceColumn: pickup_service_zone
 
 	column 'Cantidad de viajes'
 		dataType: int64
 		formatString: 0
+		lineageTag: d99f606c-ccea-4d86-88a0-976fe8ce2d31
 		summarizeBy: none
 		sourceColumn: trip_count
 
 	column 'Cantidad de pasajeros'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 28c3f812-f866-47e6-b4bf-cf4bea34a9c8
 		summarizeBy: none
 		sourceColumn: passenger_total
 
 	column 'Ingresos totales'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: f549a73c-1bd0-46f2-9767-1990fe9c2b19
 		summarizeBy: none
 		sourceColumn: total_revenue
 
 	column 'Ingresos por tarifa'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: bb380b73-42f5-4bc0-8d7d-ed5e611ba60b
 		summarizeBy: none
 		sourceColumn: fare_revenue
 
 	column 'Ingresos por propinas'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: af03a44e-cd8d-49b9-99f3-a9bcadf7f523
 		summarizeBy: none
 		sourceColumn: tip_revenue
 
 	column 'Ingresos por peajes'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 644eb33c-603e-4337-bab5-730d533d1e91
 		summarizeBy: none
 		sourceColumn: tolls_revenue
 
 	column 'Distancia total en millas'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 5fe409cd-ea73-4b81-8c3a-917a31d98129
 		summarizeBy: none
 		sourceColumn: distance_miles
 
 	column 'Duración total en minutos'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 223845bf-f4b2-4211-ba27-7393ba4eda6e
 		summarizeBy: none
 		sourceColumn: duration_minutes
 
 	column 'Distancia promedio del viaje'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 77c167d5-17c3-4267-9a7e-680bb1a7cb45
 		summarizeBy: none
 		sourceColumn: avg_trip_distance
 
 	column 'Duración promedio del viaje'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 1a33ab1a-7503-4f56-ba47-93e08f94f79e
 		summarizeBy: none
 		sourceColumn: avg_trip_duration_minutes
 
 	column 'Importe total promedio'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 0f35d943-9209-4b4e-88f4-09502a4df0e6
 		summarizeBy: none
 		sourceColumn: avg_total_amount
 
 	column 'Viajes nocturnos'
 		dataType: int64
 		formatString: 0
+		lineageTag: 56e4bb15-118f-4973-9c9e-b4842752f7fb
 		summarizeBy: none
 		sourceColumn: night_trips
 
 	column 'Viajes en hora punta'
 		dataType: int64
 		formatString: 0
+		lineageTag: b9a8a18e-1d95-4fa3-89b5-775bbf0a2adf
 		summarizeBy: none
 		sourceColumn: rush_hour_trips
 
 	column 'Viajes de fin de semana'
 		dataType: int64
 		formatString: 0
+		lineageTag: 95feac4c-b4d6-4ed1-96d5-acbbd0858dff
 		summarizeBy: none
 		sourceColumn: weekend_trips
 
 	column 'Ingreso por viaje'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: d3540c50-4e9d-4488-953e-89f1538992ce
 		summarizeBy: none
 		sourceColumn: revenue_per_trip
 
 	column 'Velocidad promedio en mph'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 75c13375-d796-41e0-b48e-06c53e8c3522
 		summarizeBy: none
 		sourceColumn: avg_speed_mph
 
 	column 'Proporción de propina'
 		dataType: double
 		formatString: #,0.00
+		lineageTag: 9cbd3bec-3ad2-44e0-a667-97a233b01568
 		summarizeBy: none
 		sourceColumn: tip_share
 
 	column 'Año de recogida'
 		dataType: int64
 		formatString: 0
+		lineageTag: d0fe73d3-f10c-4c15-90cd-1ff51d887e6b
 		summarizeBy: none
 		sourceColumn: pickup_year
 
@@ -180,3 +213,4 @@ table Fact_DemandaDiaria
 				    Combinado
 
 	annotation PBI_ResultType = Table
+

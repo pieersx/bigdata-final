@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "D10_Auditoria.Fecha",
-              "nativeQueryRef": "Fecha"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "D10_Auditoria"
-                    }
-                  },
-                  "Property": "A10 Eventos"
-                }
-              },
-              "queryRef": "D10_Auditoria.A10 Eventos",
-              "nativeQueryRef": "A10 Eventos"
+              "nativeQueryRef": "Fecha",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "D10_Auditoria.Estado",
               "nativeQueryRef": "Estado"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D10_Auditoria"
+                    }
+                  },
+                  "Property": "A10 Eventos"
+                }
+              },
+              "queryRef": "D10_Auditoria.A10 Eventos",
+              "nativeQueryRef": "A10 Eventos"
             }
           ]
         }

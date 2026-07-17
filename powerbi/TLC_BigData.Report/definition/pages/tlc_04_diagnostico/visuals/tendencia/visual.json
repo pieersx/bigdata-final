@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Fact_AnomaliasDiarias.Fecha de recogida",
-              "nativeQueryRef": "Fecha de recogida"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_AnomaliasDiarias"
-                    }
-                  },
-                  "Property": "D4 Anomalias Detectadas"
-                }
-              },
-              "queryRef": "Fact_AnomaliasDiarias.D4 Anomalias Detectadas",
-              "nativeQueryRef": "D4 Anomalias Detectadas"
+              "nativeQueryRef": "Fecha de recogida",
+              "active": true
             }
           ]
         },
@@ -64,6 +47,24 @@
               },
               "queryRef": "Fact_AnomaliasDiarias.Servicio",
               "nativeQueryRef": "Servicio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_AnomaliasDiarias"
+                    }
+                  },
+                  "Property": "D4 Anomalias Detectadas"
+                }
+              },
+              "queryRef": "Fact_AnomaliasDiarias.D4 Anomalias Detectadas",
+              "nativeQueryRef": "D4 Anomalias Detectadas"
             }
           ]
         }

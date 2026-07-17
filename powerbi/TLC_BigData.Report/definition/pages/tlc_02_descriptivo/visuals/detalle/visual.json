@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_PerfilHorario.Hora de recogida",
-              "nativeQueryRef": "Hora de recogida"
+              "nativeQueryRef": "Hora de recogida",
+              "active": true
             }
           ]
         },

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Fact_PronosticoDemanda.Día del horizonte",
-              "nativeQueryRef": "Día del horizonte"
+              "nativeQueryRef": "Día del horizonte",
+              "active": true
             }
           ]
         }
