@@ -1,6 +1,6 @@
 # Catálogo de dashboards Power BI
 
-El proyecto `powerbi/TLC_BigData.pbip` contiene diez páginas, seis visuales por página.
+El proyecto `powerbi/TLC_BigData.pbip` contiene diez páginas y 94 visuales en total.
 Cada contrato es generado desde Gold o auditoría y no contiene detalle muestreado.
 
 | Página | Tipo | Pregunta de decisión | Contrato |

@@ -7,7 +7,7 @@
 
 El proyecto implementa una arquitectura Medallion completa con ingesta oficial TLC,
 reconciliación de calidad, nueve tablas Gold, tres modelos de PySpark ML, auditoría
-persistida en MongoDB y diez páginas Power BI. La ejecución final terminó con 28
+persistida en MongoDB y diez páginas Power BI. La ejecución final terminó con 30
 pruebas aprobadas, lint sin observaciones y `tlc-pipeline verify` con cero fallos.
 
 ## Cobertura y reconciliación
@@ -79,7 +79,7 @@ datos y Power BI indicó **Problemas 0**.
 | D09 Clasificación de alta demanda | 23.760 | 3,35 MB |
 | D10 Control y auditoría | 1.760 | 0,25 MB |
 
-Cada página contiene seis visuales; el proyecto totaliza 60 visuales. El generador
+Cada página contiene entre ocho y diez visuales; el proyecto totaliza 94 visuales. El generador
 usa rutas absolutas Windows para que la actualización funcione aunque se regenere el
 PBIP desde Docker.
 
@@ -89,9 +89,9 @@ PBIP desde Docker.
   calidad y modelos.
 - El export final contiene 1.771 eventos en CSV y JSON.
 - `ruff check src tests scripts`: aprobado.
-- `pytest -q`: **28 passed** en 120,67 s.
+- `pytest -q`: **30 passed** en 89,54 s.
 - `tlc-pipeline verify`: **8 controles aprobados, 0 fallos**; reporte generado el
-  16-07-2026 a las 18:47:32 UTC.
+  17-07-2026 a las 02:30:51 UTC.
 - Verificación adicional: nombres de medidas Power BI globalmente únicos, rutas de
   contratos absolutas y cero apariciones de `PLACEHOLDER` en los diez CSV.
 
@@ -101,6 +101,8 @@ PBIP desde Docker.
 - Reporte de verificación: `exports/verification_report.json`
 - Auditoría: `exports/audit_events.csv` y `exports/audit_events.json`
 - Contratos Power BI: `exports/powerbi/`
+- Notebooks ejecutados: `notebooks/` (7 de 7)
+- Automatización exclusiva de ingesta/Silver 2026: `scripts/run_2026_only.ps1`
 - Modelos: `artifacts/models/`
 - Arquitectura: `docs/architecture.md`
 

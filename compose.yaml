@@ -39,6 +39,7 @@ services:
       - ./src:/workspace/src:ro
       - ./tests:/workspace/tests:ro
       - ./scripts:/workspace/scripts:ro
+      - ./notebooks:/workspace/notebooks
       - ./data:/workspace/data
       - ./artifacts:/workspace/artifacts
       - ./exports:/workspace/exports

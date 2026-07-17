@@ -71,8 +71,8 @@ def test_professional_model_has_relationships_measures_and_slicers() -> None:
         root / "TLC_BigData.SemanticModel" / "definition" / "relationships.tmdl"
     ).read_text(encoding="utf-8")
     assert relationships.count("relationship ") >= 25
-    assert "DimFecha.'Fecha'" in relationships
-    assert "DimServicio.'Servicio'" in relationships
+    assert "DimFecha.Fecha" in relationships
+    assert "DimServicio.Servicio" in relationships
     assert "DimZonaOrigen.'ID de zona'" in relationships
     assert "DimZonaDestino.'ID de zona'" in relationships
 

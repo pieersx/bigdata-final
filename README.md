@@ -21,9 +21,14 @@ Fuente oficial: <https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page>
 | 1 auditoría | Página 10 y contrato `D10_Auditoria.csv` |
 
 El proyecto Power BI nativo está en `powerbi/TLC_BigData.pbip`. Contiene 10 páginas y
-60 visuales. Su catálogo está documentado en `docs/dashboard_catalog.md`.
+94 visuales. Su catálogo está documentado en `docs/dashboard_catalog.md`.
 La explicación completa de gráficos, métricas y términos en inglés está disponible en
 `docs/GUIA_POWER_BI.md`.
+
+Los siete notebooks comentados para la defensa están en `notebooks/`. Empiece por
+`00_ingesta_automatica_2026.ipynb` y continúe en orden numérico. El comando seguro
+para ensayar la carga del año corriente es `scripts/run_2026_only.ps1`; en modo
+predeterminado solo muestra el plan y con `-Mode Execute` lo ejecuta.
 
 ## Arquitectura
 

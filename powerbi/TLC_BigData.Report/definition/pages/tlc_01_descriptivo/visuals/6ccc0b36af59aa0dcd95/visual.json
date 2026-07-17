@@ -1,79 +1,83 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "comparacion",
+  "name": "6ccc0b36af59aa0dcd95",
   "position": {
-    "x": 20,
-    "y": 440,
-    "z": 4,
-    "height": 250,
-    "width": 600,
-    "tabOrder": 4
+    "x": 233,
+    "y": 88,
+    "z": 13,
+    "height": 79,
+    "width": 195,
+    "tabOrder": 13
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "slicer",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_DemandaDiaria"
+                      "Entity": "DimFecha"
                     }
                   },
-                  "Property": "Servicio"
+                  "Property": "Mes"
                 }
               },
-              "queryRef": "Fact_DemandaDiaria.Servicio",
-              "nativeQueryRef": "Servicio",
+              "queryRef": "DimFecha.Mes",
+              "nativeQueryRef": "Mes",
               "active": true
             }
           ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_DemandaDiaria"
-                    }
-                  },
-                  "Property": "D1 Ingresos Totales"
-                }
-              },
-              "queryRef": "Fact_DemandaDiaria.D1 Ingresos Totales",
-              "nativeQueryRef": "D1 Ingresos Totales"
-            }
-          ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Fact_DemandaDiaria"
-                  }
-                },
-                "Property": "D1 Ingresos Totales"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
             "titleWrap": {
               "expr": {
                 "Literal": {
@@ -115,7 +119,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Ingresos Totales por Servicio'"
+                  "Value": "'Mes'"
                 }
               }
             }
@@ -128,7 +132,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -205,32 +209,91 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "db496e47f04422f4fba3",
+        "name": "4ee2193e1d2704fb08ab",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Fact_DemandaDiaria"
+                "Entity": "DimFecha"
               }
             },
-            "Property": "Servicio"
+            "Property": "Año"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "DimFecha",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Año"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "b1be9444b7cc050b5e90",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimFecha"
+              }
+            },
+            "Property": "Mes"
           }
         },
         "type": "Categorical"
-      },
-      {
-        "name": "4dc2c5806488f88ae042",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_DemandaDiaria"
-              }
-            },
-            "Property": "D1 Ingresos Totales"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }
