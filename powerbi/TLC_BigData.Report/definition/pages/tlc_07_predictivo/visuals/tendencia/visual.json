@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_PronosticoDemanda"
                     }
                   },
-                  "Property": "forecast_date"
+                  "Property": "Fecha pronosticada"
                 }
               },
-              "queryRef": "Fact_PronosticoDemanda.forecast_date",
-              "nativeQueryRef": "forecast_date",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_PronosticoDemanda"
-                    }
-                  },
-                  "Property": "service"
-                }
-              },
-              "queryRef": "Fact_PronosticoDemanda.service",
-              "nativeQueryRef": "service"
+              "queryRef": "Fact_PronosticoDemanda.Fecha pronosticada",
+              "nativeQueryRef": "Fecha pronosticada"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D7 Viajes Pronosticados"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PronosticoDemanda"
+                    }
+                  },
+                  "Property": "Servicio"
+                }
+              },
+              "queryRef": "Fact_PronosticoDemanda.Servicio",
+              "nativeQueryRef": "Servicio"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_PronosticoDemanda"
                   }
                 },
-                "Property": "forecast_date"
+                "Property": "Fecha pronosticada"
               }
             },
             "direction": "Ascending"

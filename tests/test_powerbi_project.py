@@ -73,18 +73,18 @@ def test_professional_model_has_relationships_measures_and_slicers() -> None:
     assert relationships.count("relationship ") >= 25
     assert "DimFecha.'Fecha'" in relationships
     assert "DimServicio.'Servicio'" in relationships
-    assert "DimZonaOrigen.'LocationID'" in relationships
-    assert "DimZonaDestino.'LocationID'" in relationships
+    assert "DimZonaOrigen.'ID de zona'" in relationships
+    assert "DimZonaDestino.'ID de zona'" in relationships
 
     tables = root / "TLC_BigData.SemanticModel" / "definition" / "tables"
     measures = "\n".join(path.read_text(encoding="utf-8") for path in tables.glob("*.tmdl"))
     for expected in (
         "D3 Tasa Propina Ponderada",
         "D4 Porcentaje Anomalias",
-        "D7 WMAPE",
-        "D8 Silhouette",
-        "D9 AUC",
-        "D9 Accuracy Calculada",
+        "D7 Error WMAPE",
+        "D8 Calidad de Segmentos (Silhouette)",
+        "D9 Área bajo ROC (AUC)",
+        "D9 Exactitud Calculada",
     ):
         assert expected in measures
 

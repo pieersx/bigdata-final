@@ -4,10 +4,10 @@
   "position": {
     "x": 215,
     "y": 15,
-    "z": 8000,
+    "z": 11,
     "height": 72,
     "width": 185,
-    "tabOrder": 8000
+    "tabOrder": 11
   },
   "visual": {
     "visualType": "slicer",
@@ -23,63 +23,16 @@
                       "Entity": "DimServicio"
                     }
                   },
-                  "Property": "Servicio"
+                  "Property": "Nombre del servicio"
                 }
               },
-              "queryRef": "DimServicio.Servicio",
-              "nativeQueryRef": "Servicio",
-              "active": true
+              "queryRef": "DimServicio.Nombre del servicio",
+              "nativeQueryRef": "Nombre del servicio"
             }
           ]
         }
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b0953e6ebb37ef8211d5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimServicio"
-              }
-            },
-            "Property": "Servicio"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

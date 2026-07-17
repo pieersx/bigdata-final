@@ -1,15 +1,12 @@
 table DimServicio
-	lineageTag: efcbaad5-1503-4050-802a-502ac441820d
 
-	column Servicio
+	column 'Servicio'
 		dataType: string
-		lineageTag: 6449e67d-f5a1-47c8-880f-15449bc2d783
 		summarizeBy: none
 		sourceColumn: Servicio
 
-	column ServicioNombre
+	column 'Nombre del servicio'
 		dataType: string
-		lineageTag: d9141572-c013-4053-a4d1-544965fbef07
 		summarizeBy: none
 		sourceColumn: ServicioNombre
 
@@ -24,4 +21,3 @@ table DimServicio
 				    Tipos
 
 	annotation PBI_ResultType = Table
-

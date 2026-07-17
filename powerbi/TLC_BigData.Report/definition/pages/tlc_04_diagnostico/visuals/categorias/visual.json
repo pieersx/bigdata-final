@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_AnomaliasDiarias"
                     }
                   },
-                  "Property": "anomaly_direction"
+                  "Property": "Dirección de la anomalía"
                 }
               },
-              "queryRef": "Fact_AnomaliasDiarias.anomaly_direction",
-              "nativeQueryRef": "anomaly_direction",
-              "active": true
+              "queryRef": "Fact_AnomaliasDiarias.Dirección de la anomalía",
+              "nativeQueryRef": "Dirección de la anomalía"
             }
           ]
         },

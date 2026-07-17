@@ -1,136 +1,113 @@
 table Fact_RendimientoRutas
-	lineageTag: 13ea9e98-eae2-45f3-a27c-1652230b8f61
 
-	measure 'D5 Viajes Rutas' = SUM(Fact_RendimientoRutas[trip_count])
+	measure 'D5 Viajes Rutas' = SUM(Fact_RendimientoRutas[Cantidad de viajes])
 		formatString: #,0
 		displayFolder: Medidas
-		lineageTag: 31d74321-1864-4124-bba9-dc116002b434
 
-	measure 'D5 Duracion Ponderada' = DIVIDE(SUMX(Fact_RendimientoRutas, Fact_RendimientoRutas[avg_trip_duration_minutes] * Fact_RendimientoRutas[trip_count]), [D5 Viajes Rutas])
+	measure 'D5 Duracion Ponderada' = DIVIDE(SUMX(Fact_RendimientoRutas, Fact_RendimientoRutas[Duración promedio del viaje] * Fact_RendimientoRutas[Cantidad de viajes]), [D5 Viajes Rutas])
 		formatString: 0.00 "min"
 		displayFolder: Medidas
-		lineageTag: bc3e2b16-0224-44a4-a8fb-3ef1f8fa3ce7
 
-	measure 'D5 Velocidad Ponderada' = DIVIDE(SUMX(Fact_RendimientoRutas, Fact_RendimientoRutas[avg_speed_mph] * Fact_RendimientoRutas[trip_count]), [D5 Viajes Rutas])
+	measure 'D5 Velocidad Ponderada' = DIVIDE(SUMX(Fact_RendimientoRutas, Fact_RendimientoRutas[Velocidad promedio en mph] * Fact_RendimientoRutas[Cantidad de viajes]), [D5 Viajes Rutas])
 		formatString: 0.00 "mph"
 		displayFolder: Medidas
-		lineageTag: ec4d977e-3892-4991-88f1-d33abce11178
 
-	column service
+	column 'Servicio'
 		dataType: string
-		lineageTag: 45370bcf-8f20-474e-9967-72f309ba9f2a
 		summarizeBy: none
 		sourceColumn: service
 
-	column pickup_location_id
+	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
-		lineageTag: 3b87e84c-b39d-4e78-b7e6-a1f6a050981c
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
-	column pickup_borough
+	column 'Distrito de origen'
 		dataType: string
-		lineageTag: e1bdfb3d-9bd2-4b31-8144-a31ef51e9bef
 		summarizeBy: none
 		sourceColumn: pickup_borough
 
-	column pickup_zone
+	column 'Zona de origen'
 		dataType: string
-		lineageTag: 6501b890-5016-40ca-94b5-9815bf0fb1b2
 		summarizeBy: none
 		sourceColumn: pickup_zone
 
-	column dropoff_location_id
+	column 'ID zona de destino'
 		dataType: int64
 		formatString: 0
-		lineageTag: 1813a2b4-4e9a-46b3-9535-b45fa12948c0
 		summarizeBy: none
 		sourceColumn: dropoff_location_id
 
-	column dropoff_borough
+	column 'Distrito de destino'
 		dataType: string
-		lineageTag: 41e3e64f-c017-44b4-8a55-30ae74293f6c
 		summarizeBy: none
 		sourceColumn: dropoff_borough
 
-	column dropoff_zone
+	column 'Zona de destino'
 		dataType: string
-		lineageTag: fccc4ae3-fd40-4fb2-817b-da2e15622036
 		summarizeBy: none
 		sourceColumn: dropoff_zone
 
-	column trip_count
+	column 'Cantidad de viajes'
 		dataType: int64
 		formatString: 0
-		lineageTag: 2211cde1-c437-4ec9-b9cc-45d5358c204d
 		summarizeBy: none
 		sourceColumn: trip_count
 
-	column total_revenue
+	column 'Ingresos totales'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 67cb4659-7f37-4026-a7f0-88dce3adc686
 		summarizeBy: none
 		sourceColumn: total_revenue
 
-	column avg_trip_distance
+	column 'Distancia promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: dbd70eb0-cbdb-49ad-ba0a-7b4be7e92065
 		summarizeBy: none
 		sourceColumn: avg_trip_distance
 
-	column avg_trip_duration_minutes
+	column 'Duración promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: d7f2cc69-2d2d-4286-a341-17619540e6d4
 		summarizeBy: none
 		sourceColumn: avg_trip_duration_minutes
 
-	column avg_speed_mph
+	column 'Velocidad promedio en mph'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 2403e434-7ad3-43cf-b681-551d39764667
 		summarizeBy: none
 		sourceColumn: avg_speed_mph
 
-	column median_trip_duration_minutes
+	column 'Mediana de duración del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: ad211fe6-8699-494e-9460-f79c53cd71f2
 		summarizeBy: none
 		sourceColumn: median_trip_duration_minutes
 
-	column avg_fare_per_mile
+	column 'Tarifa promedio por milla'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: ec6c006b-0f6b-4e2c-83a3-7dab09e5be56
 		summarizeBy: none
 		sourceColumn: avg_fare_per_mile
 
-	column pickup_year
+	column 'Año de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: e88c4675-4757-4bce-ac96-23152afa3156
 		summarizeBy: none
 		sourceColumn: pickup_year
 
-	column pickup_month
+	column 'Mes de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 4de8f994-970a-405c-af04-44ccd63da454
 		summarizeBy: none
 		sourceColumn: pickup_month
 
-	column month_start
+	column 'Mes'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: 0eadbfa0-c379-4e96-afa0-2b9a02bb392c
 		summarizeBy: none
 		sourceColumn: month_start
-
-		annotation UnderlyingDateTimeDataType = Date
 
 	partition Fact_RendimientoRutas = m
 		mode: import
@@ -144,4 +121,3 @@ table Fact_RendimientoRutas
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

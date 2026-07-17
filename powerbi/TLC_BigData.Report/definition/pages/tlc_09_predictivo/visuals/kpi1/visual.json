@@ -23,11 +23,11 @@
                       "Entity": "Fact_ClasificacionDemanda"
                     }
                   },
-                  "Property": "D9 Accuracy Calculada"
+                  "Property": "D9 Exactitud Calculada"
                 }
               },
-              "queryRef": "Fact_ClasificacionDemanda.D9 Accuracy Calculada",
-              "nativeQueryRef": "D9 Accuracy Calculada"
+              "queryRef": "Fact_ClasificacionDemanda.D9 Exactitud Calculada",
+              "nativeQueryRef": "D9 Exactitud Calculada"
             }
           ]
         }

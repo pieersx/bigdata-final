@@ -1,137 +1,110 @@
 table Fact_ClasificacionDemanda
-	lineageTag: be855c67-8756-462d-9355-53483beddc88
 
 	measure 'D9 Casos Evaluados' = COUNTROWS(Fact_ClasificacionDemanda)
 		formatString: #,0
 		displayFolder: Medidas
-		lineageTag: 71e182d0-2c05-44d0-88e1-d814edebca8c
 
-	measure 'D9 Aciertos' = SUMX(Fact_ClasificacionDemanda, IF(Fact_ClasificacionDemanda[actual_high_demand] = Fact_ClasificacionDemanda[predicted_high_demand], 1, 0))
+	measure 'D9 Aciertos' = SUMX(Fact_ClasificacionDemanda, IF(Fact_ClasificacionDemanda[Alta demanda real] = Fact_ClasificacionDemanda[Alta demanda predicha], 1, 0))
 		formatString: #,0
 		displayFolder: Medidas
-		lineageTag: 72c5e28c-0fba-42cb-a78e-31b801c89831
 
-	measure 'D9 Accuracy Calculada' = DIVIDE([D9 Aciertos], [D9 Casos Evaluados])
+	measure 'D9 Exactitud Calculada' = DIVIDE([D9 Aciertos], [D9 Casos Evaluados])
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: 1c042c33-511d-4a5d-8170-fef93bbead50
 
-	measure 'D9 Probabilidad Promedio' = AVERAGE(Fact_ClasificacionDemanda[probability_high_demand])
+	measure 'D9 Probabilidad Promedio' = AVERAGE(Fact_ClasificacionDemanda[Probabilidad de alta demanda])
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: ae79a768-617f-4554-a015-8c4c3eedf9cb
 
-	column zone_id
+	column 'ID interno de zona'
 		dataType: string
-		lineageTag: b7134148-afd1-4cc7-b4ca-d8f03abcbbb1
 		summarizeBy: none
 		sourceColumn: zone_id
 
-	column prediction_date
+	column 'Fecha de predicción'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: d48d916c-f539-47f4-be6e-04c987b7412b
 		summarizeBy: none
 		sourceColumn: prediction_date
 
-		annotation UnderlyingDateTimeDataType = Date
-
-	column actual_trips
+	column 'Viajes reales'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: f617f9e8-acc2-483a-8783-c2cfbd8f0a07
 		summarizeBy: none
 		sourceColumn: actual_trips
 
-	column high_demand_threshold
+	column 'Umbral de alta demanda'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 220a36ca-1ab6-453e-accb-bfc01d6507cb
 		summarizeBy: none
 		sourceColumn: high_demand_threshold
 
-	column actual_high_demand
+	column 'Alta demanda real'
 		dataType: int64
 		formatString: 0
-		lineageTag: 1c8c4c6a-8616-4a18-ab8d-bdf0e0a34d97
 		summarizeBy: none
 		sourceColumn: actual_high_demand
 
-	column predicted_high_demand
+	column 'Alta demanda predicha'
 		dataType: int64
 		formatString: 0
-		lineageTag: ece6d4a2-002d-4dd6-a7f0-759ea8f2376c
 		summarizeBy: none
 		sourceColumn: predicted_high_demand
 
-	column probability_high_demand
+	column 'Probabilidad de alta demanda'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: f4b109f4-e712-4a49-b8aa-2c466d50fd16
 		summarizeBy: none
 		sourceColumn: probability_high_demand
 
-	column temporal_cutoff
+	column 'Fecha de corte temporal'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: 7736a1ac-47fe-44ff-ab44-e09d9c2211d7
 		summarizeBy: none
 		sourceColumn: temporal_cutoff
 
-		annotation UnderlyingDateTimeDataType = Date
-
-	column zone_name
+	column 'Nombre de zona'
 		dataType: string
-		lineageTag: 8369149e-695a-4593-adc7-ff61b6587016
 		summarizeBy: none
 		sourceColumn: zone_name
 
-	column model_name
+	column 'Nombre del modelo'
 		dataType: string
-		lineageTag: 13d21a52-7761-4b9e-b54d-2b7e047c7990
 		summarizeBy: none
 		sourceColumn: model_name
 
-	column dataset_split
+	column 'Conjunto de evaluación'
 		dataType: string
-		lineageTag: fe94b69f-5e47-43ca-83d3-d9e253bec0a6
 		summarizeBy: none
 		sourceColumn: dataset_split
 
-	column pickup_date
+	column 'Fecha de recogida'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: fbe6b080-1e27-4e6c-8147-78d32f25a5ac
 		summarizeBy: none
 		sourceColumn: pickup_date
 
-		annotation UnderlyingDateTimeDataType = Date
-
-	column pickup_location_id
+	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
-		lineageTag: ad1b4bf3-a834-4c0d-b41a-3d031b5977ae
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
-	column label
+	column 'Clase real'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 0b56a3bf-0dae-4193-b50e-565c3dbb0a20
 		summarizeBy: none
 		sourceColumn: label
 
-	column prediction
+	column 'Clase predicha'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: a42061bf-59a6-4cc2-8c09-d3e3debc61f3
 		summarizeBy: none
 		sourceColumn: prediction
 
-	column generated_at_utc
+	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: a1acfa21-60c4-4a35-8af4-6f2fdeabda54
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -147,4 +120,3 @@ table Fact_ClasificacionDemanda
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

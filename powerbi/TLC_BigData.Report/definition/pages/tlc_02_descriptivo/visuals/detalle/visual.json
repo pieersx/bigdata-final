@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 465,
-    "z": 5000,
+    "z": 5,
     "height": 225,
     "width": 620,
-    "tabOrder": 5000
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "donutChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_PerfilHorario"
                     }
                   },
-                  "Property": "pickup_hour"
+                  "Property": "Hora de recogida"
                 }
               },
-              "queryRef": "Fact_PerfilHorario.pickup_hour",
-              "nativeQueryRef": "pickup_hour",
-              "active": true
+              "queryRef": "Fact_PerfilHorario.Hora de recogida",
+              "nativeQueryRef": "Hora de recogida"
             }
           ]
         },

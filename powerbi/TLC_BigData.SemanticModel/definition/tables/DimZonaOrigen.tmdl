@@ -1,27 +1,22 @@
 table DimZonaOrigen
-	lineageTag: a3766b57-5353-4730-ba00-986807325009
 
-	column LocationID
+	column 'ID de zona'
 		dataType: int64
-		lineageTag: 41f57ad6-0136-4255-9946-33fdbb19c7d1
 		summarizeBy: none
 		sourceColumn: LocationID
 
-	column Borough
+	column 'Distrito'
 		dataType: string
-		lineageTag: 584e5f3a-0acf-445a-b684-b4b125c4f5f3
 		summarizeBy: none
 		sourceColumn: Borough
 
-	column Zone
+	column 'Zona'
 		dataType: string
-		lineageTag: 495ba83a-cbe9-414f-99f5-808f6cec4e07
 		summarizeBy: none
 		sourceColumn: Zone
 
-	column service_zone
+	column 'Tipo de zona'
 		dataType: string
-		lineageTag: 21f6d6e2-ebe2-4c5a-a978-7efb4892ffbe
 		summarizeBy: none
 		sourceColumn: service_zone
 
@@ -36,4 +31,3 @@ table DimZonaOrigen
 				    Tipos
 
 	annotation PBI_ResultType = Table
-

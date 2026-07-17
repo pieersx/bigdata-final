@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_FinanzasServicio"
                     }
                   },
-                  "Property": "month_start"
+                  "Property": "Mes"
                 }
               },
-              "queryRef": "Fact_FinanzasServicio.month_start",
-              "nativeQueryRef": "month_start",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_FinanzasServicio"
-                    }
-                  },
-                  "Property": "service"
-                }
-              },
-              "queryRef": "Fact_FinanzasServicio.service",
-              "nativeQueryRef": "service"
+              "queryRef": "Fact_FinanzasServicio.Mes",
+              "nativeQueryRef": "Mes"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D3 Ingresos Totales"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_FinanzasServicio"
+                    }
+                  },
+                  "Property": "Servicio"
+                }
+              },
+              "queryRef": "Fact_FinanzasServicio.Servicio",
+              "nativeQueryRef": "Servicio"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_FinanzasServicio"
                   }
                 },
-                "Property": "month_start"
+                "Property": "Mes"
               }
             },
             "direction": "Ascending"

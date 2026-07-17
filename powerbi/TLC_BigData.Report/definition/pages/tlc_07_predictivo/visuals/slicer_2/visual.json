@@ -4,10 +4,10 @@
   "position": {
     "x": 410,
     "y": 15,
-    "z": 9000,
+    "z": 12,
     "height": 72,
     "width": 185,
-    "tabOrder": 9000
+    "tabOrder": 12
   },
   "visual": {
     "visualType": "slicer",
@@ -23,63 +23,16 @@
                       "Entity": "Fact_PronosticoDemanda"
                     }
                   },
-                  "Property": "horizon_day"
+                  "Property": "Día del horizonte"
                 }
               },
-              "queryRef": "Fact_PronosticoDemanda.horizon_day",
-              "nativeQueryRef": "horizon_day",
-              "active": true
+              "queryRef": "Fact_PronosticoDemanda.Día del horizonte",
+              "nativeQueryRef": "Día del horizonte"
             }
           ]
         }
       }
     },
-    "objects": {
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "83855cf5b673e6e991a4",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_PronosticoDemanda"
-              }
-            },
-            "Property": "horizon_day"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

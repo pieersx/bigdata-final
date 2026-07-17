@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 465,
-    "z": 5000,
+    "z": 5,
     "height": 225,
     "width": 620,
-    "tabOrder": 5000
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "donutChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_FactoresPropina"
                     }
                   },
-                  "Property": "pickup_borough"
+                  "Property": "Distrito de origen"
                 }
               },
-              "queryRef": "Fact_FactoresPropina.pickup_borough",
-              "nativeQueryRef": "pickup_borough",
-              "active": true
+              "queryRef": "Fact_FactoresPropina.Distrito de origen",
+              "nativeQueryRef": "Distrito de origen"
             }
           ]
         },

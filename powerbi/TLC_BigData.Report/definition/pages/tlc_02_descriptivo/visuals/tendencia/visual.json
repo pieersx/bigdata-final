@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_PerfilHorario"
                     }
                   },
-                  "Property": "pickup_date"
+                  "Property": "Fecha de recogida"
                 }
               },
-              "queryRef": "Fact_PerfilHorario.pickup_date",
-              "nativeQueryRef": "pickup_date",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_PerfilHorario"
-                    }
-                  },
-                  "Property": "service"
-                }
-              },
-              "queryRef": "Fact_PerfilHorario.service",
-              "nativeQueryRef": "service"
+              "queryRef": "Fact_PerfilHorario.Fecha de recogida",
+              "nativeQueryRef": "Fecha de recogida"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D2 Viajes Totales"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_PerfilHorario"
+                    }
+                  },
+                  "Property": "Servicio"
+                }
+              },
+              "queryRef": "Fact_PerfilHorario.Servicio",
+              "nativeQueryRef": "Servicio"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_PerfilHorario"
                   }
                 },
-                "Property": "pickup_date"
+                "Property": "Fecha de recogida"
               }
             },
             "direction": "Ascending"

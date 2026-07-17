@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_AnomaliasDiarias"
                     }
                   },
-                  "Property": "pickup_date"
+                  "Property": "Fecha de recogida"
                 }
               },
-              "queryRef": "Fact_AnomaliasDiarias.pickup_date",
-              "nativeQueryRef": "pickup_date",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_AnomaliasDiarias"
-                    }
-                  },
-                  "Property": "service"
-                }
-              },
-              "queryRef": "Fact_AnomaliasDiarias.service",
-              "nativeQueryRef": "service"
+              "queryRef": "Fact_AnomaliasDiarias.Fecha de recogida",
+              "nativeQueryRef": "Fecha de recogida"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D4 Anomalias Detectadas"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_AnomaliasDiarias"
+                    }
+                  },
+                  "Property": "Servicio"
+                }
+              },
+              "queryRef": "Fact_AnomaliasDiarias.Servicio",
+              "nativeQueryRef": "Servicio"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_AnomaliasDiarias"
                   }
                 },
-                "Property": "pickup_date"
+                "Property": "Fecha de recogida"
               }
             },
             "direction": "Ascending"

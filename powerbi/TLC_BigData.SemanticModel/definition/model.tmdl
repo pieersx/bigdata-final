@@ -7,12 +7,9 @@ model Model
 		returnErrorValuesAsNull
 
 annotation __PBI_TimeIntelligenceEnabled = 0
-
 annotation PBI_ProTooling = ["DevMode"]
-
 annotation PBI_QueryOrder = ["Fact_DemandaDiaria","Fact_PerfilHorario","Fact_FinanzasServicio","Fact_RendimientoRutas","Fact_FactoresPropina","Fact_AnomaliasDiarias","Fact_PronosticoDemanda","Fact_ZonasSegmentadas","Fact_ClasificacionDemanda","Fact_MetricasPronostico","Fact_PerfilesSegmentacion","Fact_MetricasSegmentacion","Fact_MatrizConfusion","Fact_MetricasClasificacion","Fact_MetricasModelos","DimFecha","DimServicio","DimPago","DimHora","DimZonaOrigen","DimZonaDestino","DimCluster","D10_Auditoria"]
 
-ref table D10_Auditoria
 ref table Fact_DemandaDiaria
 ref table Fact_PerfilHorario
 ref table Fact_FinanzasServicio
@@ -35,6 +32,6 @@ ref table DimHora
 ref table DimZonaOrigen
 ref table DimZonaDestino
 ref table DimCluster
+ref table D10_Auditoria
 
 ref cultureInfo es-ES
-

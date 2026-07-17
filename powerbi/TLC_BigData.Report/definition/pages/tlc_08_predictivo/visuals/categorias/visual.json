@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_ZonasSegmentadas"
                     }
                   },
-                  "Property": "segment_label"
+                  "Property": "Perfil del segmento"
                 }
               },
-              "queryRef": "Fact_ZonasSegmentadas.segment_label",
-              "nativeQueryRef": "segment_label",
-              "active": true
+              "queryRef": "Fact_ZonasSegmentadas.Perfil del segmento",
+              "nativeQueryRef": "Perfil del segmento"
             }
           ]
         },

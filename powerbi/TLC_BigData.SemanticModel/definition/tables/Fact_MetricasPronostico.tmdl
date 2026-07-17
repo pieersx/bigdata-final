@@ -1,50 +1,41 @@
 table Fact_MetricasPronostico
-	lineageTag: fdacc39a-e32e-45a5-9630-a91327e50475
 
-	measure 'D7 WMAPE' = DIVIDE(CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = "wmape_percent"), 100)
+	measure 'D7 Error WMAPE' = DIVIDE(CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "wmape_percent"), 100)
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: 75c9926b-74e3-4fee-9aea-18d4c6c8a597
 
-	measure 'D7 RMSE' = CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = "rmse")
+	measure 'D7 Error RMSE' = CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "rmse")
 		formatString: #,0.00
 		displayFolder: Medidas
-		lineageTag: d157d425-8d8b-4972-8bc4-570975187528
 
-	measure 'D7 R2' = CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = "r2")
+	measure 'D7 Coeficiente R²' = CALCULATE(MAX(Fact_MetricasPronostico[Valor de la métrica]), Fact_MetricasPronostico[Nombre de la métrica] = "r2")
 		formatString: 0.0000
 		displayFolder: Medidas
-		lineageTag: 98d2fb66-d145-45be-a301-8c577c5d9459
 
-	column model_name
+	column 'Nombre del modelo'
 		dataType: string
-		lineageTag: 88aee051-bf78-4217-ac23-37c10c2b8916
 		summarizeBy: none
 		sourceColumn: model_name
 
-	column metric_name
+	column 'Nombre de la métrica'
 		dataType: string
-		lineageTag: 6174d07d-2634-4fae-b99f-458d25a68588
 		summarizeBy: none
 		sourceColumn: metric_name
 
-	column metric_value
+	column 'Valor de la métrica'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 645f591c-6c2d-4338-8873-c22b7f8b029c
 		summarizeBy: none
 		sourceColumn: metric_value
 
-	column metric_text
+	column 'Detalle de la métrica'
 		dataType: string
-		lineageTag: 639cb831-4356-4b46-9054-3b1bb3f67a45
 		summarizeBy: none
 		sourceColumn: metric_text
 
-	column generated_at_utc
+	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 55dbd05c-816e-4d4b-8988-95f123022d61
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -60,4 +51,3 @@ table Fact_MetricasPronostico
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

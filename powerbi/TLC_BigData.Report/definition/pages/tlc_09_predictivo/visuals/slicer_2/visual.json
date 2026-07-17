@@ -4,10 +4,10 @@
   "position": {
     "x": 410,
     "y": 15,
-    "z": 9000,
+    "z": 12,
     "height": 72,
     "width": 185,
-    "tabOrder": 9000
+    "tabOrder": 12
   },
   "visual": {
     "visualType": "slicer",
@@ -23,63 +23,16 @@
                       "Entity": "Fact_ClasificacionDemanda"
                     }
                   },
-                  "Property": "predicted_high_demand"
+                  "Property": "Alta demanda predicha"
                 }
               },
-              "queryRef": "Fact_ClasificacionDemanda.predicted_high_demand",
-              "nativeQueryRef": "predicted_high_demand",
-              "active": true
+              "queryRef": "Fact_ClasificacionDemanda.Alta demanda predicha",
+              "nativeQueryRef": "Alta demanda predicha"
             }
           ]
         }
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0171d90bc89e80a7bae3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_ClasificacionDemanda"
-              }
-            },
-            "Property": "predicted_high_demand"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_PerfilHorario"
                     }
                   },
-                  "Property": "pickup_hour"
+                  "Property": "Hora de recogida"
                 }
               },
-              "queryRef": "Fact_PerfilHorario.pickup_hour",
-              "nativeQueryRef": "pickup_hour",
-              "active": true
+              "queryRef": "Fact_PerfilHorario.Hora de recogida",
+              "nativeQueryRef": "Hora de recogida"
             }
           ]
         },

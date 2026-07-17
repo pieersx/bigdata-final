@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 465,
-    "z": 5000,
+    "z": 5,
     "height": 225,
     "width": 620,
-    "tabOrder": 5000
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "donutChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_FinanzasServicio"
                     }
                   },
-                  "Property": "payment_type"
+                  "Property": "Tipo de pago"
                 }
               },
-              "queryRef": "Fact_FinanzasServicio.payment_type",
-              "nativeQueryRef": "payment_type",
-              "active": true
+              "queryRef": "Fact_FinanzasServicio.Tipo de pago",
+              "nativeQueryRef": "Tipo de pago"
             }
           ]
         },

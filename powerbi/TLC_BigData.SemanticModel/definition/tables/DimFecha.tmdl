@@ -1,66 +1,52 @@
 table DimFecha
-	lineageTag: 5911ad3a-2819-45ef-93ea-b8c6939f2086
 
-	column Fecha
+	column 'Fecha'
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: c425f6a9-1871-49a8-ae69-c7466b4db0ee
 		summarizeBy: none
 		sourceColumn: Fecha
 
-		annotation UnderlyingDateTimeDataType = Date
-
-	column Año
+	column 'Año'
 		dataType: int64
-		lineageTag: 1d8029e6-d602-4bb9-9cb5-7ced6986ef14
 		summarizeBy: none
 		sourceColumn: Año
 
-	column MesNumero
+	column 'MesNumero'
 		dataType: int64
-		lineageTag: 153974d8-9f8d-425b-a419-4bf8abe9d688
 		summarizeBy: none
 		sourceColumn: MesNumero
 
-	column Mes
+	column 'Mes'
 		dataType: string
-		lineageTag: 363083c7-6cdc-4280-8029-4464aae2c380
 		summarizeBy: none
 		sourceColumn: Mes
 
-	column Trimestre
+	column 'Trimestre'
 		dataType: string
-		lineageTag: 4226d68d-f189-4a06-bd78-22f0bd332181
 		summarizeBy: none
 		sourceColumn: Trimestre
 
-	column AñoMes
+	column 'AñoMes'
 		dataType: string
-		lineageTag: 2c05806a-09cf-4beb-acfe-9a1d5b56cf59
 		summarizeBy: none
 		sourceColumn: AñoMes
 
-	column AñoMesOrden
+	column 'AñoMesOrden'
 		dataType: int64
-		lineageTag: 60f86474-4dfc-4cf0-8f4c-79c15e4600ce
 		summarizeBy: none
 		sourceColumn: AñoMesOrden
 
-	column DiaSemanaNumero
+	column 'DiaSemanaNumero'
 		dataType: int64
-		lineageTag: d2a4b84d-43ee-406f-99fa-d120bd8e1cde
 		summarizeBy: none
 		sourceColumn: DiaSemanaNumero
 
-	column DiaSemana
+	column 'DiaSemana'
 		dataType: string
-		lineageTag: 90376412-4f7e-4295-b834-0df1ba027961
 		summarizeBy: none
 		sourceColumn: DiaSemana
 
-	column EsFinSemana
+	column 'EsFinSemana'
 		dataType: boolean
-		lineageTag: 3ef2a4a8-2434-49c7-b40f-6034fa5e2c19
 		summarizeBy: none
 		sourceColumn: EsFinSemana
 
@@ -75,4 +61,3 @@ table DimFecha
 				    Tipos
 
 	annotation PBI_ResultType = Table
-

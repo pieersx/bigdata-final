@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_ZonasSegmentadas"
                     }
                   },
-                  "Property": "pickup_location_id"
+                  "Property": "ID zona de origen"
                 }
               },
-              "queryRef": "Fact_ZonasSegmentadas.pickup_location_id",
-              "nativeQueryRef": "pickup_location_id",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_ZonasSegmentadas"
-                    }
-                  },
-                  "Property": "borough"
-                }
-              },
-              "queryRef": "Fact_ZonasSegmentadas.borough",
-              "nativeQueryRef": "borough"
+              "queryRef": "Fact_ZonasSegmentadas.ID zona de origen",
+              "nativeQueryRef": "ID zona de origen"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D8 Zonas Segmentadas"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_ZonasSegmentadas"
+                    }
+                  },
+                  "Property": "borough"
+                }
+              },
+              "queryRef": "Fact_ZonasSegmentadas.borough",
+              "nativeQueryRef": "borough"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_ZonasSegmentadas"
                   }
                 },
-                "Property": "pickup_location_id"
+                "Property": "ID zona de origen"
               }
             },
             "direction": "Ascending"

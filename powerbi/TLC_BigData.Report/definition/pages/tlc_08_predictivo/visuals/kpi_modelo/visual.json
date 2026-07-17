@@ -4,10 +4,10 @@
   "position": {
     "x": 500,
     "y": 95,
-    "z": 6000,
+    "z": 6,
     "height": 115,
     "width": 230,
-    "tabOrder": 6000
+    "tabOrder": 6
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Fact_MetricasSegmentacion"
                     }
                   },
-                  "Property": "D8 Silhouette"
+                  "Property": "D8 Calidad de Segmentos (Silhouette)"
                 }
               },
-              "queryRef": "Fact_MetricasSegmentacion.D8 Silhouette",
-              "nativeQueryRef": "D8 Silhouette"
+              "queryRef": "Fact_MetricasSegmentacion.D8 Calidad de Segmentos (Silhouette)",
+              "nativeQueryRef": "D8 Calidad de Segmentos (Silhouette)"
             }
           ]
         }

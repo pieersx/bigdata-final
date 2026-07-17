@@ -1,45 +1,37 @@
 table Fact_MetricasClasificacion
-	lineageTag: 52e6bf01-26ac-4f9f-b78f-8908efcf6c41
 
-	measure 'D9 AUC' = CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = "auc_roc")
+	measure 'D9 Área bajo ROC (AUC)' = CALCULATE(MAX(Fact_MetricasClasificacion[Valor de la métrica]), Fact_MetricasClasificacion[Nombre de la métrica] = "auc_roc")
 		formatString: 0.0000
 		displayFolder: Medidas
-		lineageTag: b01fc949-07e9-41ad-9879-52a322226a65
 
-	measure 'D9 F1' = CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = "f1")
+	measure 'D9 Puntaje F1' = CALCULATE(MAX(Fact_MetricasClasificacion[Valor de la métrica]), Fact_MetricasClasificacion[Nombre de la métrica] = "f1")
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: 74ffe361-7c41-48c7-a200-52e04a63954a
 
-	column model_name
+	column 'Nombre del modelo'
 		dataType: string
-		lineageTag: a4fa42ce-508d-468f-b20f-c5113d737a14
 		summarizeBy: none
 		sourceColumn: model_name
 
-	column metric_name
+	column 'Nombre de la métrica'
 		dataType: string
-		lineageTag: d71304e7-2401-402f-bb10-5e47c7cec57d
 		summarizeBy: none
 		sourceColumn: metric_name
 
-	column metric_value
+	column 'Valor de la métrica'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 1bc6cbf2-6253-4ade-aa63-7d8a90005a82
 		summarizeBy: none
 		sourceColumn: metric_value
 
-	column metric_text
+	column 'Detalle de la métrica'
 		dataType: string
-		lineageTag: cb5c9e65-89c1-4096-8f7b-ce3643f69597
 		summarizeBy: none
 		sourceColumn: metric_text
 
-	column generated_at_utc
+	column 'Fecha de generación UTC'
 		dataType: dateTime
 		formatString: General Date
-		lineageTag: 8169c531-827f-4128-a5b7-6a9ea0eae4da
 		summarizeBy: none
 		sourceColumn: generated_at_utc
 
@@ -55,4 +47,3 @@ table Fact_MetricasClasificacion
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

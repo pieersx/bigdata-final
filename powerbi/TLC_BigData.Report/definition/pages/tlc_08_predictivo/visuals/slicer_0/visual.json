@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 15,
-    "z": 7000,
+    "z": 10,
     "height": 72,
     "width": 185,
-    "tabOrder": 7000
+    "tabOrder": 10
   },
   "visual": {
     "visualType": "slicer",
@@ -27,59 +27,12 @@
                 }
               },
               "queryRef": "DimCluster.Segmento",
-              "nativeQueryRef": "Segmento",
-              "active": true
+              "nativeQueryRef": "Segmento"
             }
           ]
         }
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b310f31aa2721a7cd181",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimCluster"
-              }
-            },
-            "Property": "Segmento"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

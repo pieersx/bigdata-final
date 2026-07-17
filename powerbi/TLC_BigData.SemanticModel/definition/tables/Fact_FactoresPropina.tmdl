@@ -1,139 +1,116 @@
 table Fact_FactoresPropina
-	lineageTag: 438eaa64-1645-4c0c-b3e3-c9842ec54953
 
-	measure 'D6 Tasa Propina Ponderada' = DIVIDE(SUM(Fact_FactoresPropina[tip_revenue]), SUM(Fact_FactoresPropina[fare_revenue]))
+	measure 'D6 Tasa Propina Ponderada' = DIVIDE(SUM(Fact_FactoresPropina[Ingresos por propinas]), SUM(Fact_FactoresPropina[Ingresos por tarifa]))
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: 2d2f9727-3701-4223-a013-9a6af7e70f09
 
-	measure 'D6 Viajes con Propina %' = DIVIDE(SUM(Fact_FactoresPropina[tipped_trips]), SUM(Fact_FactoresPropina[trip_count]))
+	measure 'D6 Viajes con Propina %' = DIVIDE(SUM(Fact_FactoresPropina[Viajes con propina]), SUM(Fact_FactoresPropina[Cantidad de viajes]))
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: e195d642-4a6d-4566-ae5d-4203b007dfab
 
-	measure 'D6 Viajes Analizados' = SUM(Fact_FactoresPropina[trip_count])
+	measure 'D6 Viajes Analizados' = SUM(Fact_FactoresPropina[Cantidad de viajes])
 		formatString: #,0
 		displayFolder: Medidas
-		lineageTag: 9ebe68d1-f115-4d27-adcc-18a3f1036f06
 
-	column pickup_day_of_week
+	column 'Día de la semana'
 		dataType: int64
 		formatString: 0
-		lineageTag: aa360a13-a904-43ec-9df3-a146d1e84fb2
 		summarizeBy: none
 		sourceColumn: pickup_day_of_week
 
-	column pickup_hour
+	column 'Hora de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 14b64fa5-6c00-4cae-9b1b-1e1c3c33dd15
 		summarizeBy: none
 		sourceColumn: pickup_hour
 
-	column service
+	column 'Servicio'
 		dataType: string
-		lineageTag: 790cf3ae-8ebd-424a-ba64-d6e4eec96d1e
 		summarizeBy: none
 		sourceColumn: service
 
-	column payment_type
+	column 'Tipo de pago'
 		dataType: int64
 		formatString: 0
-		lineageTag: 3cc8d72b-4768-4588-815f-f47c78a7b25e
 		summarizeBy: none
 		sourceColumn: payment_type
 
-	column pickup_borough
+	column 'Distrito de origen'
 		dataType: string
-		lineageTag: 001257c6-09e5-4c69-8bf1-11ce8e1dba5c
 		summarizeBy: none
 		sourceColumn: pickup_borough
 
-	column trip_count
+	column 'Cantidad de viajes'
 		dataType: int64
 		formatString: 0
-		lineageTag: 89a55553-8708-471a-810d-87515274a490
 		summarizeBy: none
 		sourceColumn: trip_count
 
-	column tipped_trips
+	column 'Viajes con propina'
 		dataType: int64
 		formatString: 0
-		lineageTag: 69d8a7b9-73ff-4b52-92b3-e818f7a31156
 		summarizeBy: none
 		sourceColumn: tipped_trips
 
-	column fare_revenue
+	column 'Ingresos por tarifa'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: ec1cc3d9-6599-404c-801e-507f0d597fd3
 		summarizeBy: none
 		sourceColumn: fare_revenue
 
-	column tip_revenue
+	column 'Ingresos por propinas'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: efd67a50-de7d-4045-a733-617daff94bda
 		summarizeBy: none
 		sourceColumn: tip_revenue
 
-	column avg_trip_tip_rate
+	column 'Tasa promedio de propina por viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: f8464329-1926-42f1-aef0-4a0f15e008d3
 		summarizeBy: none
 		sourceColumn: avg_trip_tip_rate
 
-	column avg_trip_distance
+	column 'Distancia promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 73e05fe6-375a-47ec-b121-3a11ebc9e001
 		summarizeBy: none
 		sourceColumn: avg_trip_distance
 
-	column avg_trip_duration_minutes
+	column 'Duración promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: fbc5f52f-a6bd-4396-8406-4ebdaf6293e3
 		summarizeBy: none
 		sourceColumn: avg_trip_duration_minutes
 
-	column tipped_trip_share
+	column 'Proporción de viajes con propina'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: a4691873-9589-4971-9fc7-c240fa8a56b3
 		summarizeBy: none
 		sourceColumn: tipped_trip_share
 
-	column aggregate_tip_rate
+	column 'Tasa agregada de propina'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: c941e228-4f1a-4bef-90fe-8f01badc378f
 		summarizeBy: none
 		sourceColumn: aggregate_tip_rate
 
-	column pickup_year
+	column 'Año de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 65d22dd1-c36f-48c3-b91d-46256c440f98
 		summarizeBy: none
 		sourceColumn: pickup_year
 
-	column pickup_month
+	column 'Mes de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 20936a3c-9b36-4453-8221-26d8c339d2ab
 		summarizeBy: none
 		sourceColumn: pickup_month
 
-	column month_start
+	column 'Mes'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: 74ffcc14-1471-4275-8432-fe691670f61f
 		summarizeBy: none
 		sourceColumn: month_start
-
-		annotation UnderlyingDateTimeDataType = Date
 
 	partition Fact_FactoresPropina = m
 		mode: import
@@ -147,4 +124,3 @@ table Fact_FactoresPropina
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

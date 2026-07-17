@@ -4,10 +4,10 @@
   "position": {
     "x": 410,
     "y": 15,
-    "z": 8000,
+    "z": 12,
     "height": 72,
     "width": 185,
-    "tabOrder": 8000
+    "tabOrder": 12
   },
   "visual": {
     "visualType": "slicer",
@@ -27,71 +27,12 @@
                 }
               },
               "queryRef": "DimHora.Hora",
-              "nativeQueryRef": "Hora",
-              "active": true
+              "nativeQueryRef": "Hora"
             }
           ]
         }
       }
     },
-    "objects": {
-      "general": [
-        {
-          "properties": {}
-        }
-      ],
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3167b0ab12da73174aa8",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimHora"
-              }
-            },
-            "Property": "Hora"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

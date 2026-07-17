@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "D10_Auditoria.Categoría",
-              "nativeQueryRef": "Categoría",
-              "active": true
+              "nativeQueryRef": "Categoría"
             }
           ]
         },

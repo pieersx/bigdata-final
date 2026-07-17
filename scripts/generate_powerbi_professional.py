@@ -50,6 +50,128 @@ FACTS = (
 )
 
 
+# Nombre tecnico del Parquet -> nombre visible en el modelo semantico. El
+# sourceColumn conserva el nombre original para mantener el lineage y no
+# modificar los artefactos Gold.
+COLUMN_LABELS = {
+    "pickup_date": "Fecha de recogida",
+    "pickup_month": "Mes de recogida",
+    "pickup_day_of_week": "Día de la semana",
+    "pickup_hour": "Hora de recogida",
+    "pickup_year": "Año de recogida",
+    "month_start": "Mes",
+    "service": "Servicio",
+    "service_type": "Tipo de servicio",
+    "pickup_location_id": "ID zona de origen",
+    "pickup_borough": "Distrito de origen",
+    "pickup_zone": "Zona de origen",
+    "pickup_service_zone": "Tipo de zona de origen",
+    "dropoff_location_id": "ID zona de destino",
+    "dropoff_borough": "Distrito de destino",
+    "dropoff_zone": "Zona de destino",
+    "trip_count": "Cantidad de viajes",
+    "passenger_total": "Cantidad de pasajeros",
+    "total_revenue": "Ingresos totales",
+    "fare_revenue": "Ingresos por tarifa",
+    "tip_revenue": "Ingresos por propinas",
+    "tolls_revenue": "Ingresos por peajes",
+    "taxes_and_surcharges": "Impuestos y recargos",
+    "distance_miles": "Distancia total en millas",
+    "duration_minutes": "Duración total en minutos",
+    "avg_trip_distance": "Distancia promedio del viaje",
+    "avg_trip_duration_minutes": "Duración promedio del viaje",
+    "avg_total_amount": "Importe total promedio",
+    "avg_tip_amount": "Propina promedio",
+    "night_trips": "Viajes nocturnos",
+    "rush_hour_trips": "Viajes en hora punta",
+    "weekend_trips": "Viajes de fin de semana",
+    "revenue_per_trip": "Ingreso por viaje",
+    "avg_speed_mph": "Velocidad promedio en mph",
+    "tip_share": "Proporción de propina",
+    "payment_type": "Tipo de pago",
+    "tipped_trips": "Viajes con propina",
+    "baseline_avg_trips": "Promedio base de viajes",
+    "baseline_stddev_trips": "Desviación base de viajes",
+    "baseline_avg_revenue": "Ingreso promedio base",
+    "baseline_stddev_revenue": "Desviación base de ingresos",
+    "demand_zscore": "Puntaje Z de demanda",
+    "revenue_zscore": "Puntaje Z de ingresos",
+    "is_anomaly": "Es anomalía",
+    "anomaly_direction": "Dirección de la anomalía",
+    "median_trip_duration_minutes": "Mediana de duración del viaje",
+    "avg_fare_per_mile": "Tarifa promedio por milla",
+    "avg_trip_tip_rate": "Tasa promedio de propina por viaje",
+    "tipped_trip_share": "Proporción de viajes con propina",
+    "aggregate_tip_rate": "Tasa agregada de propina",
+    "forecast_date": "Fecha pronosticada",
+    "forecast_trips": "Viajes pronosticados",
+    "horizon_day": "Día del horizonte",
+    "forecast_lower_95": "Límite inferior al 95 %",
+    "forecast_upper_95": "Límite superior al 95 %",
+    "zone_id": "ID interno de zona",
+    "zone_name": "Nombre de zona",
+    "prediction_date": "Fecha de predicción",
+    "actual_trips": "Viajes reales",
+    "high_demand_threshold": "Umbral de alta demanda",
+    "actual_high_demand": "Alta demanda real",
+    "predicted_high_demand": "Alta demanda predicha",
+    "probability_high_demand": "Probabilidad de alta demanda",
+    "temporal_cutoff": "Fecha de corte temporal",
+    "dataset_split": "Conjunto de evaluación",
+    "label": "Clase real",
+    "prediction": "Clase predicha",
+    "actual_label": "Clase real",
+    "predicted_label": "Clase predicha",
+    "count": "Cantidad de casos",
+    "segment_id": "ID de segmento",
+    "segment_label": "Perfil del segmento",
+    "zone_count": "Cantidad de zonas",
+    "total_trips": "Viajes totales",
+    "avg_daily_trips": "Viajes diarios promedio",
+    "avg_avg_daily_trips": "Promedio de viajes diarios",
+    "demand_stddev": "Variabilidad de la demanda",
+    "avg_demand_stddev": "Variabilidad promedio de la demanda",
+    "active_days": "Días activos",
+    "avg_active_days": "Días activos promedio",
+    "avg_fare_amount": "Tarifa promedio",
+    "avg_avg_fare_amount": "Promedio de tarifa",
+    "avg_avg_trip_distance": "Promedio de distancia",
+    "avg_duration_minutes": "Duración promedio en minutos",
+    "avg_avg_duration_minutes": "Promedio de duración",
+    "avg_total_revenue": "Ingreso total promedio",
+    "demand_rank": "Nivel de demanda",
+    "trip_share": "Participación de viajes",
+    "model_name": "Nombre del modelo",
+    "metric_name": "Nombre de la métrica",
+    "metric_value": "Valor de la métrica",
+    "metric_text": "Detalle de la métrica",
+    "generated_at_utc": "Fecha de generación UTC",
+    "ds": "Fecha de la serie",
+    "yhat": "Predicción del modelo",
+    "LocationID": "ID de zona",
+    "Borough": "Distrito",
+    "Zone": "Zona",
+    "service_zone": "Tipo de zona",
+    "ServicioNombre": "Nombre del servicio",
+    "PagoNombre": "Forma de pago",
+    "EsHoraPico": "Es hora punta",
+}
+
+
+def column_label(source_name: str) -> str:
+    return COLUMN_LABELS.get(source_name, source_name)
+
+
+def translate_dax(expression: str) -> str:
+    translated = expression
+    for fact in FACTS:
+        for source_name, visible_name in COLUMN_LABELS.items():
+            translated = translated.replace(
+                f"{fact.name}[{source_name}]", f"{fact.name}[{visible_name}]"
+            )
+    return translated
+
+
 MEASURES: dict[str, tuple[tuple[str, str, str], ...]] = {
     "Fact_DemandaDiaria": (
         ("D1 Viajes Totales", "SUM(Fact_DemandaDiaria[trip_count])", "#,0"),
@@ -71,7 +193,7 @@ MEASURES: dict[str, tuple[tuple[str, str, str], ...]] = {
     "Fact_AnomaliasDiarias": (
         ("D4 Anomalias Detectadas", "CALCULATE(COUNTROWS(Fact_AnomaliasDiarias), Fact_AnomaliasDiarias[is_anomaly] = TRUE())", "#,0"),
         ("D4 Porcentaje Anomalias", "DIVIDE([D4 Anomalias Detectadas], COUNTROWS(Fact_AnomaliasDiarias))", "0.00%"),
-        ("D4 ZScore Demanda Max", "MAXX(Fact_AnomaliasDiarias, ABS(Fact_AnomaliasDiarias[demand_zscore]))", "0.00"),
+        ("D4 Puntaje Z Máximo", "MAXX(Fact_AnomaliasDiarias, ABS(Fact_AnomaliasDiarias[demand_zscore]))", "0.00"),
     ),
     "Fact_RendimientoRutas": (
         ("D5 Viajes Rutas", "SUM(Fact_RendimientoRutas[trip_count])", "#,0"),
@@ -96,35 +218,35 @@ MEASURES: dict[str, tuple[tuple[str, str, str], ...]] = {
     "Fact_ClasificacionDemanda": (
         ("D9 Casos Evaluados", "COUNTROWS(Fact_ClasificacionDemanda)", "#,0"),
         ("D9 Aciertos", "SUMX(Fact_ClasificacionDemanda, IF(Fact_ClasificacionDemanda[actual_high_demand] = Fact_ClasificacionDemanda[predicted_high_demand], 1, 0))", "#,0"),
-        ("D9 Accuracy Calculada", "DIVIDE([D9 Aciertos], [D9 Casos Evaluados])", "0.00%"),
+        ("D9 Exactitud Calculada", "DIVIDE([D9 Aciertos], [D9 Casos Evaluados])", "0.00%"),
         ("D9 Probabilidad Promedio", "AVERAGE(Fact_ClasificacionDemanda[probability_high_demand])", "0.00%"),
     ),
     "Fact_MetricasPronostico": (
-        ("D7 WMAPE", "DIVIDE(CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"wmape_percent\"), 100)", "0.00%"),
-        ("D7 RMSE", "CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"rmse\")", "#,0.00"),
-        ("D7 R2", "CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"r2\")", "0.0000"),
+        ("D7 Error WMAPE", "DIVIDE(CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"wmape_percent\"), 100)", "0.00%"),
+        ("D7 Error RMSE", "CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"rmse\")", "#,0.00"),
+        ("D7 Coeficiente R²", "CALCULATE(MAX(Fact_MetricasPronostico[metric_value]), Fact_MetricasPronostico[metric_name] = \"r2\")", "0.0000"),
     ),
     "Fact_MetricasSegmentacion": (
-        ("D8 Silhouette", "CALCULATE(MAX(Fact_MetricasSegmentacion[metric_value]), Fact_MetricasSegmentacion[metric_name] = \"silhouette\")", "0.0000"),
+        ("D8 Calidad de Segmentos (Silhouette)", "CALCULATE(MAX(Fact_MetricasSegmentacion[metric_value]), Fact_MetricasSegmentacion[metric_name] = \"silhouette\")", "0.0000"),
     ),
     "Fact_MetricasClasificacion": (
-        ("D9 AUC", "CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = \"auc_roc\")", "0.0000"),
-        ("D9 F1", "CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = \"f1\")", "0.00%"),
+        ("D9 Área bajo ROC (AUC)", "CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = \"auc_roc\")", "0.0000"),
+        ("D9 Puntaje F1", "CALCULATE(MAX(Fact_MetricasClasificacion[metric_value]), Fact_MetricasClasificacion[metric_name] = \"f1\")", "0.00%"),
     ),
     "Fact_MatrizConfusion": (("D9 Matriz Casos", "SUM(Fact_MatrizConfusion[count])", "#,0"),),
 }
 
 
 PAGES = (
-    ("tlc_01_descriptivo", "01 Resumen ejecutivo", "Fact_DemandaDiaria", "D1 Viajes Totales", "D1 Ingresos Totales", "pickup_borough", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"))),
-    ("tlc_02_descriptivo", "02 Demanda temporal", "Fact_PerfilHorario", "D2 Viajes Totales", "D2 Duracion Promedio Ponderada", "pickup_hour", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("DimHora", "Hora"))),
-    ("tlc_03_descriptivo", "03 Ingresos y tarifas", "Fact_FinanzasServicio", "D3 Ingresos Totales", "D3 Tasa Propina Ponderada", "payment_type", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("DimPago", "TipoPago"))),
-    ("tlc_04_diagnostico", "04 Causas del cambio", "Fact_AnomaliasDiarias", "D4 Anomalias Detectadas", "D4 Porcentaje Anomalias", "anomaly_direction", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("Fact_AnomaliasDiarias", "anomaly_direction"))),
-    ("tlc_05_diagnostico", "05 Rutas y congestión", "Fact_RendimientoRutas", "D5 Viajes Rutas", "D5 Duracion Ponderada", "pickup_zone", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("DimZonaOrigen", "Borough"), ("DimZonaDestino", "Borough"))),
-    ("tlc_06_diagnostico", "06 Propinas y anomalías", "Fact_FactoresPropina", "D6 Tasa Propina Ponderada", "D6 Viajes con Propina %", "pickup_borough", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("DimPago", "TipoPago"), ("DimHora", "Hora"))),
-    ("tlc_07_predictivo", "07 Pronóstico de demanda", "Fact_PronosticoDemanda", "D7 Viajes Pronosticados", "D7 Limite Superior 95", "service", "forecast_date", "service", (("DimFecha", "Año"), ("DimServicio", "Servicio"), ("Fact_PronosticoDemanda", "horizon_day"))),
+    ("tlc_01_descriptivo", "01 Resumen ejecutivo", "Fact_DemandaDiaria", "D1 Viajes Totales", "D1 Ingresos Totales", "pickup_borough", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"))),
+    ("tlc_02_descriptivo", "02 Demanda temporal", "Fact_PerfilHorario", "D2 Viajes Totales", "D2 Duracion Promedio Ponderada", "pickup_hour", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("DimHora", "Hora"))),
+    ("tlc_03_descriptivo", "03 Ingresos y tarifas", "Fact_FinanzasServicio", "D3 Ingresos Totales", "D3 Tasa Propina Ponderada", "payment_type", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("DimPago", "PagoNombre"))),
+    ("tlc_04_diagnostico", "04 Causas del cambio", "Fact_AnomaliasDiarias", "D4 Anomalias Detectadas", "D4 Porcentaje Anomalias", "anomaly_direction", "pickup_date", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("Fact_AnomaliasDiarias", "anomaly_direction"))),
+    ("tlc_05_diagnostico", "05 Rutas y congestión", "Fact_RendimientoRutas", "D5 Viajes Rutas", "D5 Duracion Ponderada", "pickup_zone", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("DimZonaOrigen", "Borough"), ("DimZonaDestino", "Borough"))),
+    ("tlc_06_diagnostico", "06 Propinas y anomalías", "Fact_FactoresPropina", "D6 Tasa Propina Ponderada", "D6 Viajes con Propina %", "pickup_borough", "month_start", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("DimPago", "PagoNombre"), ("DimHora", "Hora"))),
+    ("tlc_07_predictivo", "07 Pronóstico de demanda", "Fact_PronosticoDemanda", "D7 Viajes Pronosticados", "D7 Limite Superior 95", "service", "forecast_date", "service", (("DimFecha", "Año"), ("DimServicio", "ServicioNombre"), ("Fact_PronosticoDemanda", "horizon_day"))),
     ("tlc_08_predictivo", "08 Segmentación de zonas", "Fact_ZonasSegmentadas", "D8 Zonas Segmentadas", "D8 Ingreso por Viaje", "segment_label", "pickup_location_id", "borough", (("DimCluster", "Segmento"), ("DimZonaOrigen", "Borough"))),
-    ("tlc_09_predictivo", "09 Clasificación de alta demanda", "Fact_ClasificacionDemanda", "D9 Accuracy Calculada", "D9 Casos Evaluados", "dataset_split", "prediction_date", "predicted_high_demand", (("DimFecha", "Año"), ("Fact_ClasificacionDemanda", "dataset_split"), ("Fact_ClasificacionDemanda", "predicted_high_demand"))),
+    ("tlc_09_predictivo", "09 Clasificación de alta demanda", "Fact_ClasificacionDemanda", "D9 Exactitud Calculada", "D9 Casos Evaluados", "dataset_split", "prediction_date", "predicted_high_demand", (("DimFecha", "Año"), ("Fact_ClasificacionDemanda", "dataset_split"), ("Fact_ClasificacionDemanda", "predicted_high_demand"))),
     ("tlc_10_auditoria", "10 Control y auditoría", "D10_Auditoria", "A10 Eventos", "A10 Eventos OK", "Categoría", "Fecha", "Estado", (("D10_Auditoria", "Estado"), ("D10_Auditoria", "Servicio"))),
 )
 
@@ -203,11 +325,12 @@ def parquet_m(fact: Fact) -> str:
 def table_tmdl(fact: Fact) -> str:
     lines = [f"table {fact.name}"]
     for name, dax, fmt in MEASURES.get(fact.name, ()):
-        lines += [f"\n\tmeasure '{name}' = {dax}", f"\t\tformatString: {fmt}", "\t\tdisplayFolder: Medidas"]
-    for name, dtype, fmt in fact_schema(fact):
-        lines += [f"\n\tcolumn '{name}'" if " " in name else f"\n\tcolumn {name}", f"\t\tdataType: {dtype}"]
+        lines += [f"\n\tmeasure '{name}' = {translate_dax(dax)}", f"\t\tformatString: {fmt}", "\t\tdisplayFolder: Medidas"]
+    for source_name, dtype, fmt in fact_schema(fact):
+        visible_name = column_label(source_name)
+        lines += [f"\n\tcolumn '{visible_name}'", f"\t\tdataType: {dtype}"]
         if fmt: lines.append(f"\t\tformatString: {fmt}")
-        lines += ["\t\tsummarizeBy: none", f"\t\tsourceColumn: {name}"]
+        lines += ["\t\tsummarizeBy: none", f"\t\tsourceColumn: {source_name}"]
     source = parquet_m(fact).replace("\n", "\n\t\t\t\t")
     lines += [f"\n\tpartition {fact.name} = m", "\t\tmode: import", "\t\tsource =", f"\t\t\t\t{source}", "", "\tannotation PBI_ResultType = Table", ""]
     return "\n".join(lines)
@@ -231,7 +354,7 @@ def dim_tmdl(name: str) -> str:
     transforms = ", ".join(f'{{"{c}", type date}}' if t=="date" else f'{{"{c}", Int64.Type}}' if t=="int" else f'{{"{c}", type logical}}' if t=="logical" else f'{{"{c}", type text}}' for c,_,t in cols)
     lines=[f"table {name}"]
     for c,dtype,_ in cols:
-        lines += [f"\n\tcolumn '{c}'", f"\t\tdataType: {dtype}", "\t\tsummarizeBy: none", f"\t\tsourceColumn: {c}"]
+        lines += [f"\n\tcolumn '{column_label(c)}'", f"\t\tdataType: {dtype}", "\t\tsummarizeBy: none", f"\t\tsourceColumn: {c}"]
     m=f'let\n    Origen = Csv.Document(File.Contents("{path}"),[Delimiter=",", Columns={count}, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),\n    Tipos = Table.TransformColumnTypes(Encabezados,{{{transforms}}}, "es-ES")\nin\n    Tipos'
     lines += [f"\n\tpartition {name} = m", "\t\tmode: import", "\t\tsource =", "\t\t\t\t"+m.replace("\n","\n\t\t\t\t"), "", "\tannotation PBI_ResultType = Table", ""]
     return "\n".join(lines)
@@ -249,7 +372,7 @@ def audit_tmdl() -> str:
 def relationships_tmdl() -> str:
     rels=[]
     def add(fact,col,dim,dcol):
-        rels.extend((f"relationship {uuid.uuid4()}", f"\tfromColumn: {fact}.{col}", f"\ttoColumn: {dim}.'{dcol}'", "",))
+        rels.extend((f"relationship {uuid.uuid4()}", f"\tfromColumn: {fact}.'{column_label(col)}'", f"\ttoColumn: {dim}.'{column_label(dcol)}'", "",))
     for fact,col in (("Fact_DemandaDiaria","pickup_date"),("Fact_PerfilHorario","pickup_date"),("Fact_AnomaliasDiarias","pickup_date"),("Fact_PronosticoDemanda","forecast_date"),("Fact_ClasificacionDemanda","prediction_date"),("Fact_FinanzasServicio","month_start"),("Fact_RendimientoRutas","month_start"),("Fact_FactoresPropina","month_start")): add(fact,col,"DimFecha","Fecha")
     for fact in ("Fact_DemandaDiaria","Fact_PerfilHorario","Fact_FinanzasServicio","Fact_RendimientoRutas","Fact_FactoresPropina","Fact_AnomaliasDiarias","Fact_PronosticoDemanda"): add(fact,"service","DimServicio","Servicio")
     for fact in ("Fact_DemandaDiaria","Fact_PerfilHorario","Fact_RendimientoRutas","Fact_AnomaliasDiarias","Fact_ZonasSegmentadas","Fact_ClasificacionDemanda"): add(fact,"pickup_location_id","DimZonaOrigen","LocationID")
@@ -262,6 +385,8 @@ def relationships_tmdl() -> str:
 
 def field(entity: str, prop: str, measure: bool=False):
     kind="Measure" if measure else "Column"
+    if not measure:
+        prop = column_label(prop)
     return {kind:{"Expression":{"SourceRef":{"Entity":entity}},"Property":prop}}
 
 
@@ -276,17 +401,17 @@ def card(name, entity, measure, x, y, z):
 
 
 def chart(name, vtype, entity, category, measure, x,y,w,h,z,series=None, ascending=False):
-    v=base(name,x,y,w,h,z); c=field(entity,category); m=field(entity,measure,True)
-    state={"Category":{"projections":[projection(c,f"{entity}.{category}",category)]},"Y":{"projections":[projection(m,f"{entity}.{measure}",measure)]}}
+    v=base(name,x,y,w,h,z); visible_category=column_label(category); c=field(entity,category); m=field(entity,measure,True)
+    state={"Category":{"projections":[projection(c,f"{entity}.{visible_category}",visible_category)]},"Y":{"projections":[projection(m,f"{entity}.{measure}",measure)]}}
     if series:
-        s=field(entity,series); state["Series"]={"projections":[projection(s,f"{entity}.{series}",series)]}
+        visible_series=column_label(series); s=field(entity,series); state["Series"]={"projections":[projection(s,f"{entity}.{visible_series}",visible_series)]}
     v["visual"]={"visualType":vtype,"query":{"queryState":state,"sortDefinition":{"sort":[{"field":c if ascending else m,"direction":"Ascending" if ascending else "Descending"}],"isDefaultSort":True}},"drillFilterOtherVisuals":True}
     return v
 
 
 def slicer(name, entity, prop, x,y,z):
-    v=base(name,x,y,185,72,z); f=field(entity,prop)
-    v["visual"]={"visualType":"slicer","query":{"queryState":{"Values":{"projections":[projection(f,f"{entity}.{prop}",prop)]}}},"drillFilterOtherVisuals":True}
+    v=base(name,x,y,185,72,z); visible_prop=column_label(prop); f=field(entity,prop)
+    v["visual"]={"visualType":"slicer","query":{"queryState":{"Values":{"projections":[projection(f,f"{entity}.{visible_prop}",visible_prop)]}}},"drillFilterOtherVisuals":True}
     return v
 
 
@@ -300,9 +425,9 @@ def build_report():
         dump(root/"page.json",{"$schema":"https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json","name":page_name,"displayName":title,"displayOption":"FitToPage","height":720,"width":1280})
         visuals={"kpi1":card("kpi1",entity,kpi1,20,95,0),"kpi2":card("kpi2",entity,kpi2,260,95,1),"categorias":chart("categorias","clusteredBarChart",entity,category,kpi1,20,225,600,220,2),"tendencia":chart("tendencia","lineChart",entity,date_col,kpi1,640,225,620,220,3,series,True),"comparacion":chart("comparacion","clusteredColumnChart",entity,series,kpi2,20,465,600,225,4),"detalle":chart("detalle","donutChart",entity,category,kpi1,640,465,620,225,5)}
         predictive = {
-            "tlc_07_predictivo": ("Fact_MetricasPronostico", "D7 WMAPE"),
-            "tlc_08_predictivo": ("Fact_MetricasSegmentacion", "D8 Silhouette"),
-            "tlc_09_predictivo": ("Fact_MetricasClasificacion", "D9 AUC"),
+            "tlc_07_predictivo": ("Fact_MetricasPronostico", "D7 Error WMAPE"),
+            "tlc_08_predictivo": ("Fact_MetricasSegmentacion", "D8 Calidad de Segmentos (Silhouette)"),
+            "tlc_09_predictivo": ("Fact_MetricasClasificacion", "D9 Área bajo ROC (AUC)"),
         }
         if page_name in predictive:
             metric_entity, metric_measure = predictive[page_name]

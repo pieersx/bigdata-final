@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 465,
-    "z": 4000,
+    "z": 4,
     "height": 225,
     "width": 600,
-    "tabOrder": 4000
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_AnomaliasDiarias"
                     }
                   },
-                  "Property": "service"
+                  "Property": "Servicio"
                 }
               },
-              "queryRef": "Fact_AnomaliasDiarias.service",
-              "nativeQueryRef": "service",
-              "active": true
+              "queryRef": "Fact_AnomaliasDiarias.Servicio",
+              "nativeQueryRef": "Servicio"
             }
           ]
         },

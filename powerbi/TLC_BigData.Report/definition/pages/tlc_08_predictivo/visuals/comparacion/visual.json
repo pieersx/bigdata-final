@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 465,
-    "z": 4000,
+    "z": 4,
     "height": 225,
     "width": 600,
-    "tabOrder": 4000
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "Fact_ZonasSegmentadas.borough",
-              "nativeQueryRef": "borough",
-              "active": true
+              "nativeQueryRef": "borough"
             }
           ]
         },

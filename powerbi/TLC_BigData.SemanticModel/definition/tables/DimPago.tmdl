@@ -1,15 +1,12 @@
 table DimPago
-	lineageTag: 93487cc6-7128-40ef-981d-d564a2fe8194
 
-	column TipoPago
+	column 'TipoPago'
 		dataType: int64
-		lineageTag: aa9e458f-4560-4346-a252-c61f9f90c4cd
 		summarizeBy: none
 		sourceColumn: TipoPago
 
-	column PagoNombre
+	column 'Forma de pago'
 		dataType: string
-		lineageTag: c2a7e1ca-95ea-4ce1-a876-f841dcd30dc2
 		summarizeBy: none
 		sourceColumn: PagoNombre
 
@@ -24,4 +21,3 @@ table DimPago
 				    Tipos
 
 	annotation PBI_ResultType = Table
-

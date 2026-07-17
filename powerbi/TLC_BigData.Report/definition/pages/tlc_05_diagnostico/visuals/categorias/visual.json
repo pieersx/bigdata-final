@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_RendimientoRutas"
                     }
                   },
-                  "Property": "pickup_zone"
+                  "Property": "Zona de origen"
                 }
               },
-              "queryRef": "Fact_RendimientoRutas.pickup_zone",
-              "nativeQueryRef": "pickup_zone",
-              "active": true
+              "queryRef": "Fact_RendimientoRutas.Zona de origen",
+              "nativeQueryRef": "Zona de origen"
             }
           ]
         },

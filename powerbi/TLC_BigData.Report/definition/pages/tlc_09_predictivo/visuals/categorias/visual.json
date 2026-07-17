@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 225,
-    "z": 2000,
+    "z": 2,
     "height": 220,
     "width": 600,
-    "tabOrder": 2000
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_ClasificacionDemanda"
                     }
                   },
-                  "Property": "dataset_split"
+                  "Property": "Conjunto de evaluación"
                 }
               },
-              "queryRef": "Fact_ClasificacionDemanda.dataset_split",
-              "nativeQueryRef": "dataset_split",
-              "active": true
+              "queryRef": "Fact_ClasificacionDemanda.Conjunto de evaluación",
+              "nativeQueryRef": "Conjunto de evaluación"
             }
           ]
         },
@@ -42,11 +41,11 @@
                       "Entity": "Fact_ClasificacionDemanda"
                     }
                   },
-                  "Property": "D9 Accuracy Calculada"
+                  "Property": "D9 Exactitud Calculada"
                 }
               },
-              "queryRef": "Fact_ClasificacionDemanda.D9 Accuracy Calculada",
-              "nativeQueryRef": "D9 Accuracy Calculada"
+              "queryRef": "Fact_ClasificacionDemanda.D9 Exactitud Calculada",
+              "nativeQueryRef": "D9 Exactitud Calculada"
             }
           ]
         }
@@ -61,7 +60,7 @@
                     "Entity": "Fact_ClasificacionDemanda"
                   }
                 },
-                "Property": "D9 Accuracy Calculada"
+                "Property": "D9 Exactitud Calculada"
               }
             },
             "direction": "Descending"

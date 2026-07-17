@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 465,
-    "z": 4000,
+    "z": 4,
     "height": 225,
     "width": 600,
-    "tabOrder": 4000
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -23,12 +23,11 @@
                       "Entity": "Fact_ClasificacionDemanda"
                     }
                   },
-                  "Property": "predicted_high_demand"
+                  "Property": "Alta demanda predicha"
                 }
               },
-              "queryRef": "Fact_ClasificacionDemanda.predicted_high_demand",
-              "nativeQueryRef": "predicted_high_demand",
-              "active": true
+              "queryRef": "Fact_ClasificacionDemanda.Alta demanda predicha",
+              "nativeQueryRef": "Alta demanda predicha"
             }
           ]
         },

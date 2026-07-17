@@ -1,252 +1,212 @@
 table Fact_AnomaliasDiarias
-	lineageTag: 8ef51b1a-ea64-498b-8f9c-63c813770da0
 
-	measure 'D4 Anomalias Detectadas' = CALCULATE(COUNTROWS(Fact_AnomaliasDiarias), Fact_AnomaliasDiarias[is_anomaly] = TRUE())
+	measure 'D4 Anomalias Detectadas' = CALCULATE(COUNTROWS(Fact_AnomaliasDiarias), Fact_AnomaliasDiarias[Es anomalía] = TRUE())
 		formatString: #,0
 		displayFolder: Medidas
-		lineageTag: 2ea0f916-2e4c-42c3-ab98-e36ef0162707
 
 	measure 'D4 Porcentaje Anomalias' = DIVIDE([D4 Anomalias Detectadas], COUNTROWS(Fact_AnomaliasDiarias))
 		formatString: 0.00%
 		displayFolder: Medidas
-		lineageTag: 2346474f-6d60-4892-9c6c-9c2d8d5a0773
 
-	measure 'D4 ZScore Demanda Max' = MAXX(Fact_AnomaliasDiarias, ABS(Fact_AnomaliasDiarias[demand_zscore]))
+	measure 'D4 Puntaje Z Máximo' = MAXX(Fact_AnomaliasDiarias, ABS(Fact_AnomaliasDiarias[Puntaje Z de demanda]))
 		formatString: 0.00
 		displayFolder: Medidas
-		lineageTag: abb8e7e9-3191-43a3-9972-66900fc644e0
 
-	column pickup_date
+	column 'Fecha de recogida'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: 5411d3a1-2317-4382-9d51-60fba09bf681
 		summarizeBy: none
 		sourceColumn: pickup_date
 
-		annotation UnderlyingDateTimeDataType = Date
-
-	column pickup_day_of_week
+	column 'Día de la semana'
 		dataType: int64
 		formatString: 0
-		lineageTag: 6afebdb0-4ae7-4f26-a201-7e7cbe25cd20
 		summarizeBy: none
 		sourceColumn: pickup_day_of_week
 
-	column service
+	column 'Servicio'
 		dataType: string
-		lineageTag: 8e2a8634-c961-497b-83d9-3d50ed7dc194
 		summarizeBy: none
 		sourceColumn: service
 
-	column pickup_location_id
+	column 'ID zona de origen'
 		dataType: int64
 		formatString: 0
-		lineageTag: fc00d4a6-c837-4a8c-9460-dca7049e4d17
 		summarizeBy: none
 		sourceColumn: pickup_location_id
 
-	column pickup_borough
+	column 'Distrito de origen'
 		dataType: string
-		lineageTag: 04350ab8-5bb4-46d3-bca7-a61836b1ca95
 		summarizeBy: none
 		sourceColumn: pickup_borough
 
-	column pickup_zone
+	column 'Zona de origen'
 		dataType: string
-		lineageTag: bdd24bc4-2973-4060-b1fb-27aff3b6a79c
 		summarizeBy: none
 		sourceColumn: pickup_zone
 
-	column pickup_service_zone
+	column 'Tipo de zona de origen'
 		dataType: string
-		lineageTag: dc94ddaf-4ea4-48e5-930b-0a8f7eb781d1
 		summarizeBy: none
 		sourceColumn: pickup_service_zone
 
-	column trip_count
+	column 'Cantidad de viajes'
 		dataType: int64
 		formatString: 0
-		lineageTag: 31054d56-d9a8-4ed6-82dc-c2276294ab34
 		summarizeBy: none
 		sourceColumn: trip_count
 
-	column passenger_total
+	column 'Cantidad de pasajeros'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: fa19d8e4-cd26-4206-b20c-3ec63d1a3614
 		summarizeBy: none
 		sourceColumn: passenger_total
 
-	column total_revenue
+	column 'Ingresos totales'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 9bdf6982-09bf-48e7-9326-24d932ece5b4
 		summarizeBy: none
 		sourceColumn: total_revenue
 
-	column fare_revenue
+	column 'Ingresos por tarifa'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: c1e66ae0-4076-4713-a2d2-9a28fe6f5352
 		summarizeBy: none
 		sourceColumn: fare_revenue
 
-	column tip_revenue
+	column 'Ingresos por propinas'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: f653c2dc-f49e-45db-a582-5267659c3aa9
 		summarizeBy: none
 		sourceColumn: tip_revenue
 
-	column tolls_revenue
+	column 'Ingresos por peajes'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 95b8bfeb-99d7-46e2-a59d-699d5583c72e
 		summarizeBy: none
 		sourceColumn: tolls_revenue
 
-	column distance_miles
+	column 'Distancia total en millas'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: ba1ece1c-4f00-4c56-a3e4-e501d654e02d
 		summarizeBy: none
 		sourceColumn: distance_miles
 
-	column duration_minutes
+	column 'Duración total en minutos'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 6876d8da-a4a5-4331-8cac-99629214bfb0
 		summarizeBy: none
 		sourceColumn: duration_minutes
 
-	column avg_trip_distance
+	column 'Distancia promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: c6ad95cb-6908-4834-97d9-ad4aeb0a2a80
 		summarizeBy: none
 		sourceColumn: avg_trip_distance
 
-	column avg_trip_duration_minutes
+	column 'Duración promedio del viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: d9c9b7d0-afd8-49c1-88e7-ae26ca12c7ae
 		summarizeBy: none
 		sourceColumn: avg_trip_duration_minutes
 
-	column avg_total_amount
+	column 'Importe total promedio'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: dc64f249-6c72-4d9c-90ee-a8b034b5f282
 		summarizeBy: none
 		sourceColumn: avg_total_amount
 
-	column night_trips
+	column 'Viajes nocturnos'
 		dataType: int64
 		formatString: 0
-		lineageTag: f2ed2fb6-8ee5-487c-a7ef-adb430508fa5
 		summarizeBy: none
 		sourceColumn: night_trips
 
-	column rush_hour_trips
+	column 'Viajes en hora punta'
 		dataType: int64
 		formatString: 0
-		lineageTag: 3dc538ac-70f1-40c8-a713-b51975d25efb
 		summarizeBy: none
 		sourceColumn: rush_hour_trips
 
-	column weekend_trips
+	column 'Viajes de fin de semana'
 		dataType: int64
 		formatString: 0
-		lineageTag: 29726ba1-2e33-48ab-b64f-4afd75670cff
 		summarizeBy: none
 		sourceColumn: weekend_trips
 
-	column revenue_per_trip
+	column 'Ingreso por viaje'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 0d0bdf55-e933-4825-b4da-cadfd502f215
 		summarizeBy: none
 		sourceColumn: revenue_per_trip
 
-	column avg_speed_mph
+	column 'Velocidad promedio en mph'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 63fb64ec-bf40-4c76-a3e5-fe468f80bad9
 		summarizeBy: none
 		sourceColumn: avg_speed_mph
 
-	column tip_share
+	column 'Proporción de propina'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 60654a48-5580-4eb1-8b4a-a7c2c0f53984
 		summarizeBy: none
 		sourceColumn: tip_share
 
-	column baseline_avg_trips
+	column 'Promedio base de viajes'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 9ab7831e-430f-4f8c-a1c6-55997c1c28db
 		summarizeBy: none
 		sourceColumn: baseline_avg_trips
 
-	column baseline_stddev_trips
+	column 'Desviación base de viajes'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 8b18ad31-3a78-440a-b498-42bb6cbd930d
 		summarizeBy: none
 		sourceColumn: baseline_stddev_trips
 
-	column baseline_avg_revenue
+	column 'Ingreso promedio base'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 3de4c039-4a90-4d30-ab47-3e13b74da0c2
 		summarizeBy: none
 		sourceColumn: baseline_avg_revenue
 
-	column baseline_stddev_revenue
+	column 'Desviación base de ingresos'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: 0637f9ea-14b0-459f-b848-2b1b18c2c085
 		summarizeBy: none
 		sourceColumn: baseline_stddev_revenue
 
-	column demand_zscore
+	column 'Puntaje Z de demanda'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: f359961c-6372-4e77-9b58-fb1a7d47841d
 		summarizeBy: none
 		sourceColumn: demand_zscore
 
-	column revenue_zscore
+	column 'Puntaje Z de ingresos'
 		dataType: double
 		formatString: #,0.00
-		lineageTag: a7861e6c-16f4-4883-95e6-8270d59bed4f
 		summarizeBy: none
 		sourceColumn: revenue_zscore
 
-	column is_anomaly
+	column 'Es anomalía'
 		dataType: boolean
-		lineageTag: 4b823af0-09fd-48a5-9835-fa91c7994872
 		summarizeBy: none
 		sourceColumn: is_anomaly
 
-	column anomaly_direction
+	column 'Dirección de la anomalía'
 		dataType: string
-		lineageTag: ad71ed37-e0c1-474f-aad0-afe9eea6b04a
 		summarizeBy: none
 		sourceColumn: anomaly_direction
 
-	column pickup_year
+	column 'Año de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 9983c0bc-fec6-413f-8730-7f0c76a5de96
 		summarizeBy: none
 		sourceColumn: pickup_year
 
-	column pickup_month
+	column 'Mes de recogida'
 		dataType: int64
 		formatString: 0
-		lineageTag: 0384fd58-616e-40d4-935d-4b1826150254
 		summarizeBy: none
 		sourceColumn: pickup_month
 
@@ -262,4 +222,3 @@ table Fact_AnomaliasDiarias
 				    Combinado
 
 	annotation PBI_ResultType = Table
-

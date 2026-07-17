@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 465,
-    "z": 5000,
+    "z": 5,
     "height": 225,
     "width": 620,
-    "tabOrder": 5000
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "donutChart",
@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "D10_Auditoria.Categoría",
-              "nativeQueryRef": "Categoría",
-              "active": true
+              "nativeQueryRef": "Categoría"
             }
           ]
         },

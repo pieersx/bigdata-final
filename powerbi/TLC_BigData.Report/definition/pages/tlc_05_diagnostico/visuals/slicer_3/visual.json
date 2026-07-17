@@ -4,10 +4,10 @@
   "position": {
     "x": 605,
     "y": 15,
-    "z": 9000,
+    "z": 13,
     "height": 72,
     "width": 185,
-    "tabOrder": 9000
+    "tabOrder": 13
   },
   "visual": {
     "visualType": "slicer",
@@ -23,70 +23,16 @@
                       "Entity": "DimZonaDestino"
                     }
                   },
-                  "Property": "Borough"
+                  "Property": "Distrito"
                 }
               },
-              "queryRef": "DimZonaDestino.Borough",
-              "nativeQueryRef": "Borough",
-              "active": true
+              "queryRef": "DimZonaDestino.Distrito",
+              "nativeQueryRef": "Distrito"
             }
           ]
         }
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            },
-            "isInvertedSelectionMode": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "a740e1012a7249578485",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimZonaDestino"
-              }
-            },
-            "Property": "Borough"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

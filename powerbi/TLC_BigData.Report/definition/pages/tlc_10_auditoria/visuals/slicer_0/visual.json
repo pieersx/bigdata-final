@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 15,
-    "z": 6000,
+    "z": 10,
     "height": 72,
     "width": 185,
-    "tabOrder": 6000
+    "tabOrder": 10
   },
   "visual": {
     "visualType": "slicer",
@@ -27,59 +27,12 @@
                 }
               },
               "queryRef": "D10_Auditoria.Estado",
-              "nativeQueryRef": "Estado",
-              "active": true
+              "nativeQueryRef": "Estado"
             }
           ]
         }
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Dropdown'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1da9bd0737af4ad9fdae",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "D10_Auditoria"
-              }
-            },
-            "Property": "Estado"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

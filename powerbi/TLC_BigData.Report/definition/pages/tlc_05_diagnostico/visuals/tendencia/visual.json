@@ -4,10 +4,10 @@
   "position": {
     "x": 640,
     "y": 225,
-    "z": 3000,
+    "z": 3,
     "height": 220,
     "width": 620,
-    "tabOrder": 3000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "lineChart",
@@ -23,30 +23,11 @@
                       "Entity": "Fact_RendimientoRutas"
                     }
                   },
-                  "Property": "month_start"
+                  "Property": "Mes"
                 }
               },
-              "queryRef": "Fact_RendimientoRutas.month_start",
-              "nativeQueryRef": "month_start",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Fact_RendimientoRutas"
-                    }
-                  },
-                  "Property": "service"
-                }
-              },
-              "queryRef": "Fact_RendimientoRutas.service",
-              "nativeQueryRef": "service"
+              "queryRef": "Fact_RendimientoRutas.Mes",
+              "nativeQueryRef": "Mes"
             }
           ]
         },
@@ -67,6 +48,24 @@
               "nativeQueryRef": "D5 Viajes Rutas"
             }
           ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_RendimientoRutas"
+                    }
+                  },
+                  "Property": "Servicio"
+                }
+              },
+              "queryRef": "Fact_RendimientoRutas.Servicio",
+              "nativeQueryRef": "Servicio"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -79,7 +78,7 @@
                     "Entity": "Fact_RendimientoRutas"
                   }
                 },
-                "Property": "month_start"
+                "Property": "Mes"
               }
             },
             "direction": "Ascending"
@@ -89,51 +88,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d19e6272211e098e93ed",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_RendimientoRutas"
-              }
-            },
-            "Property": "month_start"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8ce1cdbd9a7cfa9353e5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_RendimientoRutas"
-              }
-            },
-            "Property": "service"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1be0a10ede81ea860808",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_RendimientoRutas"
-              }
-            },
-            "Property": "D5 Viajes Rutas"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

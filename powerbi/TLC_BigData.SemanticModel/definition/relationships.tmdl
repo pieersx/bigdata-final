@@ -1,112 +1,111 @@
-relationship 51b33bd3-61ca-495e-ae6e-ae21843b2885
-	fromColumn: Fact_DemandaDiaria.pickup_date
-	toColumn: DimFecha.Fecha
+relationship e3d598bb-3117-40d1-a423-37fad96d550f
+	fromColumn: Fact_DemandaDiaria.'Fecha de recogida'
+	toColumn: DimFecha.'Fecha'
 
-relationship bbb7ff93-c644-4901-a5ec-cc8cc74bec50
-	fromColumn: Fact_PerfilHorario.pickup_date
-	toColumn: DimFecha.Fecha
+relationship 0c3801ff-56f8-4f7c-91d0-c430e722b071
+	fromColumn: Fact_PerfilHorario.'Fecha de recogida'
+	toColumn: DimFecha.'Fecha'
 
-relationship f43ab0e4-bc2a-4321-9597-ada363d2ad9d
-	fromColumn: Fact_AnomaliasDiarias.pickup_date
-	toColumn: DimFecha.Fecha
+relationship 73c916f2-28f4-4ee1-bee7-7ec0b50c9124
+	fromColumn: Fact_AnomaliasDiarias.'Fecha de recogida'
+	toColumn: DimFecha.'Fecha'
 
-relationship c3fd8d02-5858-41ce-94b6-4041733474ad
-	fromColumn: Fact_PronosticoDemanda.forecast_date
-	toColumn: DimFecha.Fecha
+relationship 0de28b2b-5eb4-439e-8ca8-ff7b102f64da
+	fromColumn: Fact_PronosticoDemanda.'Fecha pronosticada'
+	toColumn: DimFecha.'Fecha'
 
-relationship 48cdf8e1-2d77-4dde-9d06-de42da40e5e9
-	fromColumn: Fact_ClasificacionDemanda.prediction_date
-	toColumn: DimFecha.Fecha
+relationship 53239061-682b-4291-b296-a08d7d3966f5
+	fromColumn: Fact_ClasificacionDemanda.'Fecha de predicción'
+	toColumn: DimFecha.'Fecha'
 
-relationship 16cc5eea-a66a-4634-89da-363483c6c23e
-	fromColumn: Fact_FinanzasServicio.month_start
-	toColumn: DimFecha.Fecha
+relationship 7d688054-cf6c-4c0e-91c7-9dd71a49d6ee
+	fromColumn: Fact_FinanzasServicio.'Mes'
+	toColumn: DimFecha.'Fecha'
 
-relationship 046ee8f5-5d47-44e4-89a5-bc07635180bc
-	fromColumn: Fact_RendimientoRutas.month_start
-	toColumn: DimFecha.Fecha
+relationship c94fcd98-ec79-483f-ae52-a2bdff3ea9e8
+	fromColumn: Fact_RendimientoRutas.'Mes'
+	toColumn: DimFecha.'Fecha'
 
-relationship 379666c5-37f5-4c61-9fa4-3820eb4b4eeb
-	fromColumn: Fact_FactoresPropina.month_start
-	toColumn: DimFecha.Fecha
+relationship 6ff89c20-139d-4d90-9918-e3d6da76682e
+	fromColumn: Fact_FactoresPropina.'Mes'
+	toColumn: DimFecha.'Fecha'
 
-relationship cc2e5729-3148-4660-abba-227a46b505fa
-	fromColumn: Fact_DemandaDiaria.service
-	toColumn: DimServicio.Servicio
+relationship da1a6a54-5bab-4b51-97d3-05a7d93dc7d1
+	fromColumn: Fact_DemandaDiaria.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship 9059fcc6-6860-4124-823c-0905fe424fe5
-	fromColumn: Fact_PerfilHorario.service
-	toColumn: DimServicio.Servicio
+relationship 546fd3bc-ba5c-40c9-b6b0-0798a9e88ef7
+	fromColumn: Fact_PerfilHorario.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship b1b62195-fd37-4ef9-8483-198ae1f72e43
-	fromColumn: Fact_FinanzasServicio.service
-	toColumn: DimServicio.Servicio
+relationship a59ba9fe-2707-49ff-97a3-a6c1ab3f4d4d
+	fromColumn: Fact_FinanzasServicio.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship dce6158b-18c5-4782-ae02-31dc406177b4
-	fromColumn: Fact_RendimientoRutas.service
-	toColumn: DimServicio.Servicio
+relationship 0ba5e146-1a7e-4a28-83ed-a4ceae098eb1
+	fromColumn: Fact_RendimientoRutas.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship de87861b-428a-4d2d-89a9-f75b8e8a9db2
-	fromColumn: Fact_FactoresPropina.service
-	toColumn: DimServicio.Servicio
+relationship a8c6b1ac-2347-4f03-afc4-595d15e23757
+	fromColumn: Fact_FactoresPropina.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship 4572d5ee-3f40-487e-9813-0d24e5416414
-	fromColumn: Fact_AnomaliasDiarias.service
-	toColumn: DimServicio.Servicio
+relationship 5ab05190-8330-4a57-aa03-d59694adc5df
+	fromColumn: Fact_AnomaliasDiarias.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship 95c65b9d-2fbb-475d-8778-92b1c73f834e
-	fromColumn: Fact_PronosticoDemanda.service
-	toColumn: DimServicio.Servicio
+relationship 3dc033c5-5c61-421f-99b7-665f1a60be83
+	fromColumn: Fact_PronosticoDemanda.'Servicio'
+	toColumn: DimServicio.'Servicio'
 
-relationship 06b2d53b-5f03-4394-9fde-d823c3a6ee51
-	fromColumn: Fact_DemandaDiaria.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship 232f86e9-3bdc-44e4-ae3b-88dbf0adf410
+	fromColumn: Fact_DemandaDiaria.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship 835d243e-452e-4ba4-8114-6471a79f7b3c
-	fromColumn: Fact_PerfilHorario.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship ec52190c-9b4a-491c-a112-72ac4dab1391
+	fromColumn: Fact_PerfilHorario.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship 253b1eb4-c833-4e9d-bf73-fc5f931b341d
-	fromColumn: Fact_RendimientoRutas.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship 4701f3ab-aa7f-446d-bac8-6be0bdf92122
+	fromColumn: Fact_RendimientoRutas.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship 4a5ae4cf-20b7-4e7b-b88e-605068aeb654
-	fromColumn: Fact_AnomaliasDiarias.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship edfab932-b424-4ee3-b887-990ddc7be3be
+	fromColumn: Fact_AnomaliasDiarias.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship 99e9cc4e-e135-41da-9562-6cb06c4ce50a
-	fromColumn: Fact_ZonasSegmentadas.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship 0a0a5150-b04d-44a2-a3fd-41e7bf2e22c6
+	fromColumn: Fact_ZonasSegmentadas.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship ba484810-bda8-4ebb-9858-934eb9b9c821
-	fromColumn: Fact_ClasificacionDemanda.pickup_location_id
-	toColumn: DimZonaOrigen.LocationID
+relationship a991cd07-9667-4a84-a24f-cb82e229530b
+	fromColumn: Fact_ClasificacionDemanda.'ID zona de origen'
+	toColumn: DimZonaOrigen.'ID de zona'
 
-relationship c40a789c-236b-4c87-bbe7-45d125644863
-	fromColumn: Fact_RendimientoRutas.dropoff_location_id
-	toColumn: DimZonaDestino.LocationID
+relationship ad6aed7f-98c2-44a2-8da9-6f07e0d8bcfe
+	fromColumn: Fact_RendimientoRutas.'ID zona de destino'
+	toColumn: DimZonaDestino.'ID de zona'
 
-relationship 335f8fb1-d998-4810-acfd-90c92ca96ef5
-	fromColumn: Fact_FinanzasServicio.payment_type
-	toColumn: DimPago.TipoPago
+relationship 475ae241-9d4a-4a8c-8c5c-2d6c39e9a699
+	fromColumn: Fact_FinanzasServicio.'Tipo de pago'
+	toColumn: DimPago.'TipoPago'
 
-relationship 25498d23-ec4d-4725-a57b-21dc884be57d
-	fromColumn: Fact_FactoresPropina.payment_type
-	toColumn: DimPago.TipoPago
+relationship 20bfdc66-b94a-479e-90e7-dc81f3e90cfe
+	fromColumn: Fact_FactoresPropina.'Tipo de pago'
+	toColumn: DimPago.'TipoPago'
 
-relationship fa588be1-c597-42b8-8482-86287477726c
-	fromColumn: Fact_PerfilHorario.pickup_hour
-	toColumn: DimHora.Hora
+relationship 07a95e3f-e847-47d0-b577-57cf52fdc46a
+	fromColumn: Fact_PerfilHorario.'Hora de recogida'
+	toColumn: DimHora.'Hora'
 
-relationship 87296b5b-2d5f-4770-a883-f65dca6a71f9
-	fromColumn: Fact_FactoresPropina.pickup_hour
-	toColumn: DimHora.Hora
+relationship 530a75e8-9fcd-4009-a40f-80403e65267b
+	fromColumn: Fact_FactoresPropina.'Hora de recogida'
+	toColumn: DimHora.'Hora'
 
-relationship 0c5bf078-09d6-445b-9462-02d9a94a49c2
-	fromColumn: Fact_ZonasSegmentadas.segment_id
-	toColumn: DimCluster.SegmentoID
+relationship 8c0e0fa7-ffc7-4198-bf02-54b917a99967
+	fromColumn: Fact_ZonasSegmentadas.'ID de segmento'
+	toColumn: DimCluster.'SegmentoID'
 
-relationship b7e38dc3-aafd-4784-a938-dd6741e7b316
-	fromColumn: Fact_PerfilesSegmentacion.segment_id
-	toColumn: DimCluster.SegmentoID
-
+relationship e4335838-11e6-409f-b087-00f2e2fde3e1
+	fromColumn: Fact_PerfilesSegmentacion.'ID de segmento'
+	toColumn: DimCluster.'SegmentoID'
